@@ -78,6 +78,7 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 .sec-label{width:100%;font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
 .modes-row{display:flex;gap:10px;width:100%;overflow-x:auto;padding-bottom:4px;margin-bottom:12px}
 .modes-row::-webkit-scrollbar{display:none}
+.modes-row{touch-action:pan-x!important}
 .mode-card{
   flex-shrink:0;background:var(--surface);border:2px solid var(--border);
   border-radius:18px;padding:14px 16px;cursor:pointer;
@@ -170,8 +171,9 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 .swipe-overlay.right{background:rgba(76,175,116,.2);color:var(--green)}
 .swipe-overlay.left{background:rgba(224,85,85,.2);color:var(--red)}
 
-.answer-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;flex-shrink:0;transition:opacity .3s}
+.answer-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;flex-shrink:0;transition:opacity .25s .05s}
 .answer-btns.hidden{opacity:0;pointer-events:none}
+.btn-no,.btn-yes{min-width:0}
 .btn-no{background:rgba(224,85,85,.12);border:1px solid rgba(224,85,85,.3);color:var(--red);border-radius:18px;padding:16px;font-size:15px;font-weight:700;cursor:pointer;transition:transform .1s}
 .btn-yes{background:rgba(76,175,116,.12);border:1px solid rgba(76,175,116,.3);color:var(--green);border-radius:18px;padding:16px;font-size:15px;font-weight:700;cursor:pointer;transition:transform .1s}
 .btn-no:active{transform:scale(.94)} .btn-yes:active{transform:scale(.94)}
@@ -451,6 +453,7 @@ let timerInterval = null;
 let timerLeft = SPEED_SECONDS;
 let pinBuf = '', settingPin = false, tmpPin = '';
 let selectedMode = 'classic';
+let swipeAbort = null;
 
 function defaultState() {
   return { pin:null, xp:0, streak:0, lastDate:null, sessions:0, cards:{},
@@ -665,13 +668,12 @@ function showCard() {
   // Reset card
   const inner = document.getElementById('card-inner');
   inner.style.transition = 'none';
-  inner.style.transform = '';
+  inner.classList.remove('flipped');
   const wrap = document.getElementById('card-wrap');
   wrap.style.transition = 'none';
   wrap.style.transform = '';
-  wrap.style.boxShadow = '';
   wrap.style.opacity = '1';
-  setTimeout(()=>{inner.style.transition='';wrap.style.transition='';},50);
+  requestAnimationFrame(() => { inner.style.transition = ''; wrap.style.transition = ''; });
 
   document.getElementById('swipe-right').style.opacity = '0';
   document.getElementById('swipe-left').style.opacity = '0';
@@ -692,70 +694,62 @@ function flipCard() {
 
 // ─── SWIPE ───────────────────────────────────
 function setupSwipe() {
+  if (swipeAbort) swipeAbort.abort();
+  swipeAbort = new AbortController();
+  const sig = swipeAbort.signal;
   const wrap = document.getElementById('card-wrap');
   let startX=0, startY=0, dragging=false;
 
-  const clone = wrap.cloneNode(true);
-  wrap.parentNode.replaceChild(clone, wrap);
-  const newWrap = document.getElementById('card-wrap');
-
-  newWrap.addEventListener('touchstart', e => {
+  wrap.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
     dragging = false;
-  }, {passive:true});
+  }, {passive:true, signal:sig});
 
-  newWrap.addEventListener('touchmove', e => {
+  wrap.addEventListener('touchmove', e => {
+    if (!isFlipped) return;
     const dx = e.touches[0].clientX - startX;
     const dy = e.touches[0].clientY - startY;
-    if (!isFlipped) return;
     if (Math.abs(dy) > Math.abs(dx) && !dragging) return;
     e.preventDefault();
     dragging = true;
-    const rot = dx / 18;
-    newWrap.style.transition = 'none';
-    newWrap.style.transform = `translateX(${dx}px) rotate(${rot}deg)`;
+    wrap.style.transition = 'none';
+    wrap.style.transform = `translateX(${dx}px) rotate(${dx/18}deg)`;
     const pct = Math.min(Math.abs(dx)/120, 1);
     document.getElementById('swipe-right').style.opacity = dx > 0 ? pct : 0;
     document.getElementById('swipe-left').style.opacity  = dx < 0 ? pct : 0;
-  }, {passive:false});
+  }, {passive:false, signal:sig});
 
-  newWrap.addEventListener('touchend', e => {
+  wrap.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - startX;
     const dy = e.changedTouches[0].clientY - startY;
-
     if (!dragging && Math.abs(dx) < 10 && Math.abs(dy) < 10) {
-      // tap
       if (!isFlipped) flipCard();
-      return;
+      dragging = false; return;
     }
-
-    if (!isFlipped) { resetCardPos(newWrap); return; }
-
+    if (!isFlipped) { resetCardPos(); dragging = false; return; }
     if (Math.abs(dx) > 90) {
       const knew = dx > 0;
-      newWrap.style.transition = 'transform .35s ease, opacity .35s';
-      newWrap.style.transform = `translateX(${knew?500:-500}px) rotate(${knew?25:-25}deg)`;
-      newWrap.style.opacity = '0';
-      setTimeout(()=>answer(knew), 350);
-    } else {
-      resetCardPos(newWrap);
-    }
+      wrap.style.transition = 'transform .35s ease, opacity .35s';
+      wrap.style.transform = `translateX(${knew?500:-500}px) rotate(${knew?25:-25}deg)`;
+      wrap.style.opacity = '0';
+      setTimeout(() => answer(knew), 350);
+    } else { resetCardPos(); }
     dragging = false;
-  }, {passive:true});
+  }, {passive:true, signal:sig});
 
-  // Also handle click for desktop
-  newWrap.addEventListener('click', e => {
-    if (!isFlipped) flipCard();
-  });
+  wrap.addEventListener('click', () => {
+    if (!isFlipped && !dragging) flipCard();
+  }, {signal:sig});
 }
 
-function resetCardPos(wrap) {
+function resetCardPos() {
+  const wrap = document.getElementById('card-wrap');
   wrap.style.transition = 'transform .3s, opacity .3s';
   wrap.style.transform = '';
   wrap.style.opacity = '1';
-  document.getElementById('swipe-right').style.opacity='0';
-  document.getElementById('swipe-left').style.opacity='0';
+  document.getElementById('swipe-right').style.opacity = '0';
+  document.getElementById('swipe-left').style.opacity  = '0';
 }
 
 // ─── TIMER ───────────────────────────────────
@@ -898,7 +892,7 @@ function finishSession() {
 }
 
 function goHome() { showScreen('home-screen'); updateHome(); }
-function exitSession() { clearTimer(); goHome(); }
+function exitSession() { clearTimer(); if(swipeAbort){swipeAbort.abort();swipeAbort=null;} goHome(); }
 
 // ═══════════════════════════════════════════════
 // UTILS
