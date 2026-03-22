@@ -335,18 +335,18 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 
     <div class="card-wrap" id="card-wrap">
       <div class="card-inner" id="card-inner">
-        <!-- FRONT: meaning -->
+        <!-- FRONT: phrase -->
         <div class="card-face front">
-          <div class="face-hint">What phrase means this?</div>
-          <div class="face-meaning" id="face-meaning"></div>
-          <div class="face-example" id="face-example"></div>
-          <div class="tap-hint" id="tap-hint">tap to reveal phrase</div>
-        </div>
-        <!-- BACK: phrase -->
-        <div class="card-face back">
-          <div class="face-hint">The phrase is:</div>
+          <div class="face-hint">What does this mean?</div>
           <div class="face-phrase" id="face-phrase"></div>
           <div class="face-section" id="face-section"></div>
+          <div class="tap-hint" id="tap-hint">tap to reveal meaning</div>
+        </div>
+        <!-- BACK: meaning + example -->
+        <div class="card-face back">
+          <div class="face-hint">Meaning:</div>
+          <div class="face-meaning" id="face-meaning"></div>
+          <div class="face-example" id="face-example"></div>
         </div>
       </div>
       <div class="swipe-overlay right" id="swipe-right">✓</div>
