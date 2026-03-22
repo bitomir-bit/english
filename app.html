@@ -695,9 +695,8 @@ function setupSwipe() {
   const wrap = document.getElementById('card-wrap');
   let startX=0, startY=0, dragging=false;
 
-  const clone = wrap.cloneNode(false);
+  const clone = wrap.cloneNode(true);
   wrap.parentNode.replaceChild(clone, wrap);
-  // re-get elements after DOM replace
   const newWrap = document.getElementById('card-wrap');
 
   newWrap.addEventListener('touchstart', e => {
