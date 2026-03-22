@@ -235,6 +235,8 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 }
 .again-btn:active{transform:scale(.97)}
 .home-link{font-size:13px;color:var(--muted);background:none;border:none;cursor:pointer;padding:4px}
+.exit-btn{background:var(--s2);border:1px solid var(--border);color:var(--muted);border-radius:10px;padding:6px 12px;font-size:13px;cursor:pointer;transition:background .1s,color .1s;flex-shrink:0}
+.exit-btn:active{background:var(--border);color:var(--text)}
 
 /* ── TOAST ── */
 #toast{
@@ -320,6 +322,7 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
   <!-- CARD SCREEN (classic / speed / weak / boss) -->
   <div id="card-screen" class="screen">
     <div class="card-topbar">
+      <button class="exit-btn" onclick="exitSession()">✕</button>
       <div class="card-prog" id="card-prog">1 / 10</div>
       <div class="card-xp-lbl">⚡ <span id="sess-xp">0</span> XP</div>
     </div>
@@ -359,6 +362,7 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
   <!-- MULTIPLE CHOICE SCREEN -->
   <div id="choice-screen" class="screen">
     <div class="choice-topbar">
+      <button class="exit-btn" onclick="exitSession()">✕</button>
       <div class="card-prog" id="ch-prog">1 / 10</div>
       <div class="card-xp-lbl">⚡ <span id="ch-xp">0</span> XP</div>
     </div>
@@ -895,6 +899,7 @@ function finishSession() {
 }
 
 function goHome() { showScreen('home-screen'); updateHome(); }
+function exitSession() { clearTimer(); goHome(); }
 
 // ═══════════════════════════════════════════════
 // UTILS
