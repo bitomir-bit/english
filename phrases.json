@@ -561,1217 +561,1791 @@
   },
   {
     "id": 80,
+    "phrase": "Ride it out",
+    "meaning": "don't panic, just wait for a difficult situation to pass",
+    "example": "The market is bad now — just ride it out.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 81,
+    "phrase": "All hands on deck",
+    "meaning": "everyone must help immediately",
+    "example": "We need to finish this today — all hands on deck.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 82,
+    "phrase": "I don't mean to interrupt, but...",
+    "meaning": "polite way to break into a conversation",
+    "example": "I don't mean to interrupt, but I have a question.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 83,
+    "phrase": "Credit to Anna for organizing this",
+    "meaning": "give recognition/praise to someone",
+    "example": "Credit to the team for delivering on time.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 84,
+    "phrase": "I'll be there at 7-ish",
+    "meaning": "the -ish suffix means approximately",
+    "example": "He's 30-ish. It'll take 2 hours-ish.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 85,
+    "phrase": "Please loop us in on the final report",
+    "meaning": "include us in the communication/update",
+    "example": "Loop me in when you hear back.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 86,
+    "phrase": "We tailored the offer to the client's needs",
+    "meaning": "customize to fit specific requirements",
+    "example": "A tailored approach works better than a generic one.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 87,
+    "phrase": "Don't worry, the booking is taken care of",
+    "meaning": "it's already handled, no need to worry.",
+    "example": "",
+    "section": "Business & Work"
+  },
+  {
+    "id": 88,
+    "phrase": "Let's not deviate from this strategy",
+    "meaning": "go in a different direction from the plan",
+    "example": "We can't afford to deviate now.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 89,
+    "phrase": "What's the head count for the event?",
+    "meaning": "how many people will be there?",
+    "example": "We need head count by Friday.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 90,
+    "phrase": "We agreed, but with one caveat",
+    "meaning": "with one condition or warning attached",
+    "example": "I'll approve it, with one caveat.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 91,
+    "phrase": "We need higher granularity in the sales data",
+    "meaning": "more detail, broken down further",
+    "example": "Drill down to order level, not just daily totals.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 92,
+    "phrase": "Without further ado, let's begin",
+    "meaning": "let's start now without more delay. Common opening phrase.",
+    "example": "",
+    "section": "Business & Work"
+  },
+  {
+    "id": 93,
+    "phrase": "You're exaggerating — it wasn't that bad",
+    "meaning": "making something sound bigger or worse than it really is",
+    "example": "That's an exaggeration.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 94,
+    "phrase": "It slipped my mind",
+    "meaning": "I temporarily forgot something",
+    "example": "Sorry, it completely slipped my mind.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 95,
+    "phrase": "He has skin in the game",
+    "meaning": "he has personal risk or financial stake in the outcome",
+    "example": "He invested his own money, so he has skin in the game.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 96,
+    "phrase": "A jack of all trades, master of none",
+    "meaning": "can do many things but not expert at any one. Full quote:",
+    "example": "...but often better than a master of one.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 97,
+    "phrase": "He implicitly blamed me",
+    "meaning": "blamed indirectly, not said clearly but understood",
+    "example": "He didn't say it, but the implication was clear.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 98,
+    "phrase": "He's gaslighting me",
+    "meaning": "making someone doubt their own feelings, memory, or reality",
+    "example": "Stop gaslighting me — I know what I heard.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 99,
+    "phrase": "My takeaway was that we need to focus on retention",
+    "meaning": "the main thing I concluded or learned",
+    "example": "What's your takeaway from the meeting?",
+    "section": "Business & Work"
+  },
+  {
+    "id": 100,
+    "phrase": "The company's plan is short-sighted",
+    "meaning": "not thinking about future consequences, only focusing on now",
+    "example": "A short-sighted decision.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 101,
+    "phrase": "Zero-sum game",
+    "meaning": "if one person gains, another loses",
+    "example": "Not all business is a zero-sum game — both sides can win.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 102,
+    "phrase": "I get imposter syndrome whenever I present",
+    "meaning": "feeling like a fraud even when you're competent, fear of being \"found out.\"",
+    "example": "",
+    "section": "Business & Work"
+  },
+  {
+    "id": 103,
+    "phrase": "I need to reconcile these numbers",
+    "meaning": "make figures match across reports",
+    "example": "The data doesn't reconcile with what was sent yesterday.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 104,
+    "phrase": "Root cause analysis",
+    "meaning": "finding the underlying reason behind a problem, not just the symptoms",
+    "example": "Let's do a root cause analysis.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 105,
+    "phrase": "You slayed that presentation",
+    "meaning": "you did it extremely well. Casual/slang",
+    "example": "She absolutely slayed it.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 106,
+    "phrase": "It's a borderline case",
+    "meaning": "right on the edge between two categories, not clearly one or the other",
+    "example": "It's borderline whether we should approve this.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 107,
+    "phrase": "Don't jinx it",
+    "meaning": "don't bring bad luck by being too confident",
+    "example": "I feel good about the deal but I don't want to jinx it.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 108,
+    "phrase": "I'm having trouble comprehending this",
+    "meaning": "I can't fully understand it. More formal than \"I don't get it.\"",
+    "example": "",
+    "section": "Business & Work"
+  },
+  {
+    "id": 109,
+    "phrase": "We need to hit the ground running",
+    "meaning": "start immediately and with full effort",
+    "example": "There's no time to warm up — we hit the ground running.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 110,
+    "phrase": "The underlying problem is communication",
+    "meaning": "the real, hidden issue beneath the surface",
+    "example": "We need to address the underlying cause.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 111,
+    "phrase": "Top-line growth",
+    "meaning": "increase in revenue/sales (as opposed to bottom-line = profit)",
+    "example": "The focus this year is top-line growth.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 112,
+    "phrase": "The trailer gives a sneak peek",
+    "meaning": "a brief early preview of something",
+    "example": "Here's a sneak peek at the new dashboard.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 113,
+    "phrase": "What are the highlights?",
+    "meaning": "brief summary of the most important points",
+    "example": "Give me the highlights from the meeting.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 114,
+    "phrase": "I didn't try to eavesdrop — I just overheard it",
+    "meaning": "secretly listen to someone else's conversation",
+    "example": "Eavesdropping is different from accidentally overhearing.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 115,
+    "phrase": "Most of the team works in the bullpen",
+    "meaning": "open office area with many desks",
+    "example": "Hot-desking in a bullpen setup.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 116,
+    "phrase": "She is very resilient",
+    "meaning": "handles stress well and bounces back strong",
+    "example": "Children can be very resilient.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 117,
+    "phrase": "Playing devil's advocate",
+    "meaning": "arguing the opposite side to test or challenge an idea, not because you believe it",
+    "example": "I'm just playing devil's advocate here.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 118,
+    "phrase": "I'm just playing along",
+    "meaning": "going with what someone else is doing/saying",
+    "example": "I knew it was a joke, I was just playing along.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 119,
+    "phrase": "She was very vocal about the problem",
+    "meaning": "spoke openly and clearly about it",
+    "example": "He's very vocal about his opinions.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 120,
+    "phrase": "One mistake caused a cascade of issues",
+    "meaning": "a chain reaction where one thing triggers another",
+    "example": "A cascade of failures.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 121,
+    "phrase": "Can you give me a breakdown of the costs?",
+    "meaning": "a detailed list or explanation of each part",
+    "example": "I need a full cost breakdown.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 122,
+    "phrase": "Let's drill down into the data",
+    "meaning": "look deeper into the details",
+    "example": "Let's drill down by region.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 123,
+    "phrase": "We found discrepancies between the reports",
+    "meaning": "differences that don't match, possibly errors",
+    "example": "There are discrepancies in the numbers.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 124,
+    "phrase": "The utilization of this tool is very low",
+    "meaning": "how much something is actually being used",
+    "example": "Tool utilization dropped this quarter.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 125,
+    "phrase": "We tentatively agreed to meet on Friday",
+    "meaning": "not confirmed yet, subject to change",
+    "example": "Tentatively scheduled for 3pm.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 126,
+    "phrase": "Let's truncate the text",
+    "meaning": "cut it down, shorten it",
+    "example": "Truncate the description to 150 characters.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 127,
+    "phrase": "The rules are too rigid",
+    "meaning": "too strict, not flexible",
+    "example": "We need a more flexible approach.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 128,
+    "phrase": "Be mindful of your tone in emails",
+    "meaning": "be aware and careful about something",
+    "example": "Be mindful of how this might come across.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 129,
+    "phrase": "The audacity of him to say that",
+    "meaning": "shocking boldness or rudeness",
+    "example": "The audacity! I can't believe he said that.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 130,
+    "phrase": "Step up your game",
+    "meaning": "improve your performance, do better",
+    "example": "If you want the promotion, you need to step up.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 131,
+    "phrase": "A quick synopsis",
+    "meaning": "a short summary of a story, report, or movie",
+    "example": "Give me a 2-sentence synopsis.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 132,
+    "phrase": "How are you coping?",
+    "meaning": "how are you managing a difficult situation?",
+    "example": "How are you coping with the new workload?",
+    "section": "Business & Work"
+  },
+  {
+    "id": 133,
+    "phrase": "She made a pledge to donate",
+    "meaning": "a serious promise or commitment",
+    "example": "They made a public pledge.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 134,
+    "phrase": "He felt vindicated",
+    "meaning": "shown to be correct or justified after being doubted",
+    "example": "The results vindicated his approach.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 135,
+    "phrase": "She concealed the letter",
+    "meaning": "kept something hidden or secret",
+    "example": "The issue was concealed from management.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 136,
+    "phrase": "She devoted her life to helping others",
+    "meaning": "commit yourself fully to something",
+    "example": "He devotes 2 hours a day to learning.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 137,
+    "phrase": "A word of advice",
+    "meaning": "polite opening before giving a tip or warning",
+    "example": "A word of advice: don't send that email on Friday.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 138,
+    "phrase": "I vowed never to lie to him again",
+    "meaning": "make a solemn, serious promise",
+    "example": "She vowed to finish it this week.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 139,
+    "phrase": "He enjoyed a solitary walk",
+    "meaning": "alone, without others",
+    "example": "I prefer solitary work in the mornings.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 140,
+    "phrase": "The discussion got heated",
+    "meaning": "became emotional, intense, and angry",
+    "example": "Things got heated in the meeting.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 141,
+    "phrase": "Let's grab coffee and catch up",
+    "meaning": "meet to update each other after time apart",
+    "example": "We should catch up soon.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 142,
+    "phrase": "The staff were disgruntled",
+    "meaning": "unhappy and annoyed, typically about workplace changes",
+    "example": "Disgruntled employees are a retention risk.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 143,
+    "phrase": "suit up",
+    "meaning": "dress more formally or put on proper clothes/uniform",
+    "example": "We need to suit up before the client visit.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 144,
+    "phrase": "There is a division between the teams",
+    "meaning": "a split or separation between groups",
+    "example": "There's a real division in priorities.",
+    "section": "Business & Work"
+  },
+  {
+    "id": 145,
     "phrase": "In UX design, smooth transitions give users an illusion of continuity",
     "meaning": "feeling of unbroken flow.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 81,
+    "id": 146,
     "phrase": "The app is live and running after the update",
     "meaning": "currently active and working.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 82,
+    "id": 147,
     "phrase": "For your reference, the policy was updated last month",
     "meaning": "providing context or background info.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 83,
+    "id": 148,
     "phrase": "What is the ask for me? / What is being requested?",
     "meaning": "what do you need from me specifically.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 84,
+    "id": 149,
     "phrase": "We need to ramp up our marketing efforts",
     "meaning": "increase gradually and steadily.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 85,
+    "id": 150,
     "phrase": "We are looking for high-caliber employees",
     "meaning": "very skilled, high quality.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 86,
+    "id": 151,
     "phrase": "Can you filter out the mistakes before sending it?",
     "meaning": "remove unwanted elements.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 87,
+    "id": 152,
     "phrase": "Not the best course of action",
     "meaning": "not the smartest or most effective thing to do.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 88,
+    "id": 153,
     "phrase": "Give him a heads up about the meeting",
     "meaning": "warn someone in advance.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 89,
+    "id": 154,
     "phrase": "I need to flag this for the manager",
     "meaning": "mark it so it gets attention (a problem or important point).",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 90,
+    "id": 155,
     "phrase": "His family always took precedence over work",
     "meaning": "was considered more important, came first.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 91,
+    "id": 156,
     "phrase": "Take a look at this in your own time",
     "meaning": "no rush, do it when convenient.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 92,
+    "id": 157,
     "phrase": "Can you expand that idea in your report?",
     "meaning": "make it bigger, longer, more detailed.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 93,
+    "id": 158,
     "phrase": "We need everyone to buy in before we start",
     "meaning": "support and commit to the idea.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 94,
+    "id": 159,
     "phrase": "We took steps to mitigate the risk",
     "meaning": "make the risk smaller.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 95,
+    "id": 160,
     "phrase": "I will run it by you before we start",
     "meaning": "ask for your opinion or approval first.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 96,
+    "id": 161,
     "phrase": "The company made a gradual shift to remote work",
     "meaning": "slow change from one state to another.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 97,
+    "id": 162,
     "phrase": "I finished the report ahead of time",
     "meaning": "before the deadline.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 98,
+    "id": 163,
     "phrase": "Please let me know ahead of time if you can't come",
     "meaning": "in advance, before it happens.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 99,
+    "id": 164,
     "phrase": "At hawk / ad hoc tasks",
     "meaning": "tasks not planned in advance, done for a specific purpose.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 100,
+    "id": 165,
     "phrase": "If you want to win the game, we have to be mental about it — give 100%",
     "meaning": "fully committed and intense.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 101,
+    "id": 166,
     "phrase": "Sorry, I can't join — I have a meeting clash",
     "meaning": "two meetings overlap. Alternatives:",
     "example": "schedule conflict*, *overlapping meetings.",
     "section": "Business & Work"
   },
   {
-    "id": 102,
+    "id": 167,
     "phrase": "The team is standing by in case of an emergency",
     "meaning": "ready and waiting",
     "example": "I'll be standing by if you need me.",
     "section": "Business & Work"
   },
   {
-    "id": 103,
+    "id": 168,
     "phrase": "It doesn't affect the top line",
     "meaning": "doesn't change company revenue (only maybe profit). Opposite of",
     "example": "bottom line.",
     "section": "Business & Work"
   },
   {
-    "id": 104,
+    "id": 169,
     "phrase": "Our company is going through a rough patch right now",
     "meaning": "a difficult period",
     "example": "Business is not great at the moment.",
     "section": "Business & Work"
   },
   {
-    "id": 105,
+    "id": 170,
     "phrase": "We smoothed out the process to make it faster",
     "meaning": "fixed problems, removed friction.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 106,
+    "id": 171,
     "phrase": "The economy is looking up this quarter",
     "meaning": "things are starting to improve.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 107,
+    "id": 172,
     "phrase": "How am I supposed to know?",
     "meaning": "I have no way of knowing that (rhetorical, slightly frustrated).",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 108,
+    "id": 173,
     "phrase": "Don't be afraid to speak up in the meeting",
     "meaning": "say what you think, share your opinion.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 109,
+    "id": 174,
     "phrase": "It was meant to be a quick trip, but we stayed for a week",
     "meaning": "the original plan was X, but it changed.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 110,
+    "id": 175,
     "phrase": "No offense, but I think this design could be better",
     "meaning": "softening criticism. Response:",
     "example": "None taken — thanks for the feedback.",
     "section": "Business & Work"
   },
   {
-    "id": 111,
+    "id": 176,
     "phrase": "The team voiced their concerns in the meeting",
     "meaning": "openly shared worries or objections.",
     "example": "",
     "section": "Business & Work"
   },
   {
-    "id": 112,
+    "id": 177,
     "phrase": "Stop bragging about your vacation",
     "meaning": "showing off, talking too much about your achievements.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 113,
+    "id": 178,
     "phrase": "She really hyped up the movie, but it wasn't that good",
     "meaning": "built up excitement that wasn't deserved.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 114,
+    "id": 179,
     "phrase": "She's hyping you up before your presentation",
     "meaning": "giving you energy and confidence (*you've got this*).",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 115,
+    "id": 180,
     "phrase": "Don't let me down — I'm counting on you",
     "meaning": "don't disappoint me.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 116,
+    "id": 181,
     "phrase": "I'm just being humble / keeping it low-key",
     "meaning": "not showing off even when you deserve credit.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 117,
+    "id": 182,
     "phrase": "I got some recognition, but I'm just keeping it low-key",
     "meaning": "not making a big deal of it.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 118,
+    "id": 183,
     "phrase": "Sometimes it's good to put your guard down and trust people",
     "meaning": "stop being defensive, be open.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 119,
+    "id": 184,
     "phrase": "He keeps his guard up around new colleagues",
     "meaning": "stays cautious and defensive.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 120,
+    "id": 185,
     "phrase": "He has a savior complex — always trying to fix everyone's problems",
     "meaning": "feels compelled to rescue others.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 121,
+    "id": 186,
     "phrase": "The project had a rocky start, but now everything runs smoothly",
     "meaning": "difficult beginning, now working well.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 122,
+    "id": 187,
     "phrase": "Don't try to reinvent the wheel",
     "meaning": "don't redo what already exists and works.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 123,
+    "id": 188,
     "phrase": "My brain just checked out for a second",
     "meaning": "I stopped paying attention briefly.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 124,
+    "id": 189,
     "phrase": "Some people's behavior online really creeps me out",
     "meaning": "makes me feel uncomfortable or uneasy.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 125,
+    "id": 190,
     "phrase": "I'm being a mess",
     "meaning": "I'm disorganized / not performing well.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 126,
+    "id": 191,
     "phrase": "I'm on the verge of losing my patience",
     "meaning": "about to lose patience.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 127,
+    "id": 192,
     "phrase": "The tides are turning",
     "meaning": "the situation is changing (figurative).",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 128,
+    "id": 193,
     "phrase": "We turned into a dead end",
     "meaning": "reached a point with no way forward / no growth.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 129,
+    "id": 194,
     "phrase": "It felt like everything was slipping away",
     "meaning": "falling apart, going out of control.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 130,
+    "id": 195,
     "phrase": "Our team was outflanked because we didn't see it coming",
     "meaning": "someone gained an advantage over us.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 131,
+    "id": 196,
     "phrase": "If you don't innovate soon, you'll be outflanked by cheaper alternatives",
     "meaning": "others will win.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 132,
+    "id": 197,
     "phrase": "Light them up",
     "meaning": "dominate them",
     "example": "The team really lit them up in the second half.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 133,
+    "id": 198,
     "phrase": "The crowd lit up when the band came out",
     "meaning": "became very excited and energetic.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 134,
+    "id": 199,
     "phrase": "We got away with it",
     "meaning": "did something wrong but weren't caught or punished.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 135,
+    "id": 200,
     "phrase": "We got away for the weekend",
     "meaning": "took a short trip or break.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 136,
+    "id": 201,
     "phrase": "Measure twice, cut once",
     "meaning": "think carefully and check before acting. Don't make hard-to-fix mistakes.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 137,
+    "id": 202,
     "phrase": "He bowed to the pressure and agreed to the deal",
     "meaning": "gave in, stopped resisting (figurative).",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 138,
+    "id": 203,
     "phrase": "I'm on my way",
     "meaning": "I'm coming, I'll be there soon",
     "example": "I'll be there in 10 minutes.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 139,
+    "id": 204,
     "phrase": "Orion is one of the easiest constellations to recognize",
     "meaning": "example of night sky reference.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 140,
+    "id": 205,
     "phrase": "The car almost fell into a ravine",
     "meaning": "deep narrow valley with steep sides.",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 141,
+    "id": 206,
     "phrase": "I would appreciate it if you could help",
     "meaning": "polite way to make a request",
     "example": "I would appreciate it if you could review this before the meeting.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 142,
+    "id": 207,
     "phrase": "Let go of me",
     "meaning": "demand to be released from someone's grip",
     "example": "He grabbed my hand and I shouted, let go of me.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 143,
+    "id": 208,
     "phrase": "Back off",
     "meaning": "step away / stop pressuring someone",
     "example": "Back off, you're too close. You need to back off a little.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 144,
+    "id": 209,
     "phrase": "There is no way to know",
     "meaning": "expressing complete uncertainty",
     "example": "There is no way to know what will happen next.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 145,
+    "id": 210,
     "phrase": "The restaurant caters for weddings",
     "meaning": "provides food or services for events/people",
     "example": "Our platform caters to enterprise clients.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 146,
+    "id": 211,
     "phrase": "Does that bother you?",
     "meaning": "does it annoy or upset you?",
     "example": "Does the noise bother you?",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 147,
+    "id": 212,
     "phrase": "I'm parched",
     "meaning": "I'm very thirsty. More expressive than \"I'm thirsty.\"",
     "example": "After the run I was completely parched.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 148,
+    "id": 213,
     "phrase": "You're pissed off at me",
     "meaning": "you're angry at me. Note: ❌ \"pissed off me\" → ✅ \"pissed off at me\"",
     "example": "",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 149,
+    "id": 214,
     "phrase": "Let's resurrect this idea",
     "meaning": "bring something back after it was dropped or stopped",
     "example": "We shelved it last year, but let's resurrect it.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 150,
+    "id": 215,
     "phrase": "Spiders really freak me out",
     "meaning": "scare or disturb me strongly",
     "example": "That movie freaked me out.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 151,
+    "id": 216,
     "phrase": "He finally snapped",
     "meaning": "suddenly lost emotional control after pressure built up",
     "example": "After hours of stress, he finally snapped.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 152,
+    "id": 217,
     "phrase": "She gave him the cold shoulder",
     "meaning": "deliberately ignored or was unfriendly toward someone",
     "example": "After the argument, she gave him the cold shoulder.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 153,
+    "id": 218,
     "phrase": "The kids dressed up as superheroes",
     "meaning": "wore a costume",
     "example": "We dressed up for Halloween.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 154,
+    "id": 219,
     "phrase": "The movie was highly anticipated",
     "meaning": "expected eagerly by many people",
     "example": "The launch was highly anticipated by the team.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 155,
+    "id": 220,
     "phrase": "Please reconsider your decision",
     "meaning": "think again about something",
     "example": "I hope you'll reconsider.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 156,
+    "id": 221,
     "phrase": "I've got a lot on my plate",
     "meaning": "I'm very busy or overwhelmed",
     "example": "I can't join today — I've got a lot on my plate.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 157,
+    "id": 222,
+    "phrase": "Cheer up — things will get better",
+    "meaning": "telling someone to feel more positive",
+    "example": "Cheer up, it's not that bad.",
+    "section": "Idioms & Figurative Language"
+  },
+  {
+    "id": 223,
+    "phrase": "Let's work like there's no tomorrow",
+    "meaning": "maximum effort, give everything you have",
+    "example": "We need to push hard today.",
+    "section": "Idioms & Figurative Language"
+  },
+  {
+    "id": 224,
+    "phrase": "Not in this forum",
+    "meaning": "this is not the right place or group to discuss something",
+    "example": "Let's take this offline — not in this forum.",
+    "section": "Idioms & Figurative Language"
+  },
+  {
+    "id": 225,
+    "phrase": "Can you do me a favor?",
+    "meaning": "polite way to ask for something",
+    "example": "Can you do me a favor and send the file?",
+    "section": "Idioms & Figurative Language"
+  },
+  {
+    "id": 226,
     "phrase": "I'm on the mend",
     "meaning": "getting better after being sick or hurt",
     "example": "I was sick last week, but now I'm on the mend.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 158,
+    "id": 227,
     "phrase": "I'm famished",
     "meaning": "I'm very hungry. More intense than \"I'm hungry.\"",
     "example": "Let's eat — I'm famished.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 159,
+    "id": 228,
     "phrase": "How could you ambush him like that?",
     "meaning": "surprise someone unexpectedly, emotionally or physically",
     "example": "She ambushed him with the question in front of the team.",
     "section": "Idioms & Figurative Language"
   },
   {
-    "id": 160,
+    "id": 229,
     "phrase": "pragmatic",
     "meaning": "practical and realistic, not emotional or idealistic.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 161,
+    "id": 230,
     "phrase": "particularities",
     "meaning": "specific details that make something unique.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 162,
+    "id": 231,
     "phrase": "flawed",
     "meaning": "imperfect, containing errors or weaknesses.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 163,
+    "id": 232,
     "phrase": "ingenuity",
     "meaning": "the ability to solve problems in smart, creative ways.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 164,
+    "id": 233,
     "phrase": "endurance",
     "meaning": "the ability to keep going even when something is hard or painful.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 165,
+    "id": 234,
     "phrase": "durability",
     "meaning": "how long something lasts while staying in good condition.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 166,
+    "id": 235,
     "phrase": "prevention",
     "meaning": "stopping something bad from happening.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 167,
+    "id": 236,
     "phrase": "revival",
     "meaning": "bringing something back to life or popularity",
     "example": "There's a revival of 90s fashion.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 168,
+    "id": 237,
     "phrase": "retrieve",
     "meaning": "to get something back, recover it",
     "example": "The app can retrieve data from the cloud.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 169,
+    "id": 238,
     "phrase": "contemplate",
     "meaning": "to think carefully and deeply",
     "example": "She took a moment to contemplate before speaking.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 170,
+    "id": 239,
     "phrase": "amplify",
     "meaning": "to increase volume, intensity, or impact",
     "example": "Social media can amplify a message to millions.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 171,
+    "id": 240,
     "phrase": "compile",
     "meaning": "to gather and organize information into one place",
     "example": "I compiled everything into one report.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 172,
+    "id": 241,
     "phrase": "terminate",
     "meaning": "to end completely, formally",
     "example": "The company terminated his employment.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 173,
+    "id": 242,
     "phrase": "purge",
     "meaning": "to remove or get rid of something completely",
     "example": "The government tried to purge corruption.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 174,
+    "id": 243,
     "phrase": "premise",
     "meaning": "the initial idea or assumption behind an argument",
     "example": "The experiment proved the premise correct.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 175,
+    "id": 244,
     "phrase": "void",
     "meaning": "having no legal power; also a feeling of emptiness",
     "example": "The contract is void.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 176,
+    "id": 245,
     "phrase": "fatigue",
     "meaning": "extreme physical or mental tiredness",
     "example": "After the marathon, I felt total fatigue.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 177,
+    "id": 246,
     "phrase": "meticulously",
     "meaning": "very carefully, paying attention to every detail.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 178,
+    "id": 247,
     "phrase": "sufficient",
     "meaning": "enough. *That's sufficient.* (Sounds formal; casual: *that'll do.*)",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 179,
+    "id": 248,
     "phrase": "reluctant",
     "meaning": "not willing, hesitant",
     "example": "I was reluctant to speak in public.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 180,
+    "id": 249,
     "phrase": "halt",
     "meaning": "to stop",
     "example": "The army was ordered to halt the advance.* Also noun: *a sudden halt.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 181,
+    "id": 250,
     "phrase": "hazy",
     "meaning": "blurry, foggy, unclear",
     "example": "The mountains looked hazy in the distance. My memory of that day is hazy.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 182,
+    "id": 251,
     "phrase": "intact",
     "meaning": "completely whole, not damaged",
     "example": "The package arrived intact.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 183,
+    "id": 252,
     "phrase": "attuned",
     "meaning": "sensitive to, in sync with",
     "example": "He's very attuned to people's emotions.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 184,
+    "id": 253,
     "phrase": "uphold / upheld",
     "meaning": "to support, maintain, or confirm a principle or decision",
     "example": "She upheld the company's values.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 185,
+    "id": 254,
     "phrase": "snatch",
     "meaning": "to take something quickly, often without permission",
     "example": "My phone was snatched on the train.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 186,
+    "id": 255,
     "phrase": "toss",
     "meaning": "to throw lightly or casually",
     "example": "He tossed the keys on the table. Toss the salad gently.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 187,
+    "id": 256,
     "phrase": "nagging",
     "meaning": "bothering someone by complaining or asking repeatedly.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 188,
+    "id": 257,
     "phrase": "inherit",
     "meaning": "to receive something from someone, often after they pass away",
     "example": "She inherited her father's talent.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 189,
+    "id": 258,
     "phrase": "trapped",
     "meaning": "stuck somewhere, unable to escape",
     "example": "He got trapped in the elevator for an hour.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 190,
+    "id": 259,
     "phrase": "behold",
     "meaning": "to look at (old-fashioned, dramatic)",
     "example": "Behold the sunset!",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 191,
+    "id": 260,
     "phrase": "savior complex",
     "meaning": "compulsion to fix everyone's problems.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 192,
+    "id": 261,
     "phrase": "fugitive",
     "meaning": "a person running away from the law; also figurative:",
     "example": "a fugitive moment of happiness.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 193,
+    "id": 262,
     "phrase": "shard",
     "meaning": "a small sharp piece of something broken (glass, metal, pottery).",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 194,
+    "id": 263,
     "phrase": "reckon",
     "meaning": "to estimate or believe (informal)",
     "example": "I reckon we need about 50 chairs.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 195,
+    "id": 264,
     "phrase": "concede",
     "meaning": "to admit you were wrong after denying it",
     "example": "He finally conceded that he was wrong.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 196,
+    "id": 265,
     "phrase": "fellow",
     "meaning": "a colleague or companion (slightly formal)",
     "example": "He greeted his fellow workers with a smile.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 197,
+    "id": 266,
     "phrase": "distress call",
     "meaning": "an emergency signal asking for help",
     "example": "The ship sent out a distress call after hitting an iceberg.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 198,
+    "id": 267,
     "phrase": "stretch",
     "meaning": "to extend or pull something outward",
     "example": "He stretched the fabric to fit the frame.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 199,
+    "id": 268,
     "phrase": "cuddle",
     "meaning": "to hold someone close in a long, comforting way",
     "example": "Sometimes all you need is a warm blanket and a cuddle.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 200,
+    "id": 269,
     "phrase": "sustain",
     "meaning": "to support or give strength to continue",
     "example": "May our values uphold and sustain us in difficult times.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 201,
+    "id": 270,
     "phrase": "infirmary",
     "meaning": "a small medical room or clinic inside an institution (school, military base)",
     "example": "The soldiers were treated in the base infirmary.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 202,
+    "id": 271,
     "phrase": "tolerate",
     "meaning": "to accept or put up with something unpleasant",
     "example": "How much stupidity am I willing to tolerate today?",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 203,
+    "id": 272,
     "phrase": "diminish",
     "meaning": "to make smaller or weaker",
     "example": "We want to strengthen our relationship rather than diminish it.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 204,
+    "id": 273,
     "phrase": "resurrect",
     "meaning": "to bring something back to life or use after it stopped",
     "example": "Let's resurrect this idea — maybe it can still work.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 205,
+    "id": 274,
     "phrase": "bulking",
     "meaning": "eating more calories + training hard to gain muscle",
     "example": "I'm bulking right now, so I eat around 3,200 calories a day.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 206,
+    "id": 275,
     "phrase": "cutting",
     "meaning": "eating less to lose fat while keeping muscle",
     "example": "I'm cutting now, so I keep calories low and protein high.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 207,
+    "id": 276,
     "phrase": "diminutive",
     "meaning": "a smaller or cuter form of a word",
     "example": "\"Doggy\" is a diminutive form of \"dog.\"",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 208,
+    "id": 277,
     "phrase": "nauseous",
     "meaning": "feeling like you're going to vomit",
     "example": "The motion on the boat made me feel nauseous.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 209,
+    "id": 278,
+    "phrase": "glum",
+    "meaning": "looking sad or down",
+    "example": "Hey, why so glum — did something happen?",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 279,
+    "phrase": "venison",
+    "meaning": "deer meat",
+    "example": "They cooked venison for dinner.",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 280,
+    "phrase": "muck",
+    "meaning": "dirt or mud",
+    "example": "His shoes were covered in muck.",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 281,
+    "phrase": "specimen",
+    "meaning": "a sample sent for testing or study",
+    "example": "The doctor sent the specimen to the lab.",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 282,
+    "phrase": "ulterior motives",
+    "meaning": "hidden reasons behind someone's actions",
+    "example": "He helped us, but he had ulterior motives.",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 283,
+    "phrase": "mace",
+    "meaning": "a self-defense spray (pepper spray)",
+    "example": "She carried mace in her bag for safety.",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 284,
+    "phrase": "boot camp",
+    "meaning": "an intensive, hard training program",
+    "example": "This fitness boot camp is killing me.",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 285,
+    "phrase": "tiff",
+    "meaning": "a small argument",
+    "example": "We had a little tiff, but we're fine now.",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 286,
+    "phrase": "do tell",
+    "meaning": "\"tell me more,\" an invitation to continue sharing",
+    "example": "You met someone interesting? Do tell.",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 287,
+    "phrase": "banger",
+    "meaning": "a song that's amazing and energetic (slang)",
+    "example": "This track is a banger.",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 288,
+    "phrase": "outlandish",
+    "meaning": "very strange or far from normal",
+    "example": "An outlandish idea.",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 289,
+    "phrase": "disgruntled",
+    "meaning": "unhappy and annoyed, especially at work",
+    "example": "The disgruntled employee filed a complaint.",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 290,
+    "phrase": "resilient",
+    "meaning": "able to handle stress and bounce back strong",
+    "example": "She's incredibly resilient under pressure.",
+    "section": "Vocabulary (Single Words)"
+  },
+  {
+    "id": 291,
     "phrase": "outcast",
     "meaning": "someone rejected or excluded from a group",
     "example": "He felt like an outcast at his new school.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 210,
+    "id": 292,
     "phrase": "vivid",
     "meaning": "clear, bright, very detailed, producing strong images in the mind",
     "example": "She gave a vivid description of the sunset.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 211,
+    "id": 293,
     "phrase": "smothering",
     "meaning": "overly protective or controlling to the point of suffocation",
     "example": "His constant attention felt smothering.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 212,
+    "id": 294,
     "phrase": "assimilation",
     "meaning": "slowly adapting to a new culture, environment, or set of ideas",
     "example": "Language is a big part of assimilation.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 213,
+    "id": 295,
     "phrase": "obscure / obscured",
     "meaning": "hidden or blocked from view",
     "example": "The camera was obscured by dust.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 214,
+    "id": 296,
     "phrase": "morbid",
     "meaning": "dark, related to death or disturbing topics",
     "example": "His jokes are getting more morbid.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 215,
+    "id": 297,
     "phrase": "devastated",
     "meaning": "extremely sad or emotionally destroyed",
     "example": "She was devastated after the news.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 216,
+    "id": 298,
     "phrase": "death trap",
     "meaning": "a dangerously unsafe place or situation",
     "example": "The old abandoned building was a death trap.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 217,
+    "id": 299,
     "phrase": "vermin",
     "meaning": "small harmful animals like rats or mice, often carrying disease. Formal/serious tone",
     "example": "The old building was full of vermin.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 218,
+    "id": 300,
     "phrase": "pests",
     "meaning": "anything that harms or annoys — insects, weeds, rodents. More casual than vermin",
     "example": "The garden is full of pests.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 219,
+    "id": 301,
     "phrase": "sanctuary",
     "meaning": "a safe, peaceful place away from stress",
     "example": "The garden became her sanctuary.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 220,
+    "id": 302,
     "phrase": "endure",
     "meaning": "to survive or tolerate something very difficult over time",
     "example": "They endured months of harsh weather.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 221,
+    "id": 303,
     "phrase": "curfew",
     "meaning": "a time by which someone must be home",
     "example": "Her parents set a curfew of 10pm.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 222,
+    "id": 304,
     "phrase": "kooky",
     "meaning": "strange or eccentric in a playful way",
     "example": "She has a kooky sense of humor.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 223,
+    "id": 305,
     "phrase": "scavenge",
     "meaning": "to take useful items from abandoned things",
     "example": "He scavenged parts from the old machine.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 224,
+    "id": 306,
     "phrase": "mush",
     "meaning": "soft, squishy, formless substance",
     "example": "The bread got wet and turned to mush.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 225,
+    "id": 307,
     "phrase": "fairy tale",
     "meaning": "(1) a children's story with magic. (2) figuratively: something unrealistic",
     "example": "That business plan is a fairy tale.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 226,
+    "id": 308,
     "phrase": "transmission",
     "meaning": "(1) a radio/TV broadcast",
     "example": "I heard the transmission on the radio.* (2) a car's gearbox. *The transmission is making a strange noise.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 227,
+    "id": 309,
     "phrase": "lure",
     "meaning": "to attract someone toward something, often with temptation",
     "example": "The smell of food lured him into the kitchen.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 228,
+    "id": 310,
     "phrase": "riddle",
     "meaning": "a puzzle question with a clever answer",
     "example": "Can you solve this riddle?",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 229,
+    "id": 311,
     "phrase": "tackle",
     "meaning": "(1) physically knock someone to the ground",
     "example": "He tackled me during the game.* (2) figuratively: deal with a problem. *Let's tackle this issue head-on.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 230,
+    "id": 312,
     "phrase": "concussion",
     "meaning": "a brain injury caused by a strong hit to the head.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 231,
+    "id": 313,
     "phrase": "intruder",
     "meaning": "a person who breaks into a place without permission.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 232,
+    "id": 314,
     "phrase": "outpost",
     "meaning": "a small base far from the main location",
     "example": "The soldiers were stationed at a remote outpost.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 233,
+    "id": 315,
     "phrase": "reconnaissance (recon)",
     "meaning": "gathering information, often from a distance or from the air.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 234,
+    "id": 316,
     "phrase": "underwhelming",
     "meaning": "not as good as expected.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 235,
+    "id": 317,
     "phrase": "void",
     "meaning": "emptiness; also legally invalid.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 236,
+    "id": 318,
     "phrase": "status quo",
     "meaning": "the current state of things.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 237,
+    "id": 319,
     "phrase": "tier",
     "meaning": "a level or layer in a system or ranking.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 238,
+    "id": 320,
     "phrase": "clawback",
     "meaning": "in sales, when a company takes back a commission already paid (e.g., deal was cancelled).",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 239,
+    "id": 321,
     "phrase": "grace period",
     "meaning": "extra time after a deadline to do something without a penalty.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 240,
+    "id": 322,
     "phrase": "brine",
     "meaning": "to soak meat in salty water before cooking",
     "example": "I'm brining the turkey overnight.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 241,
+    "id": 323,
     "phrase": "cadence",
     "meaning": "the rhythm or frequency of something",
     "example": "Let's set the cadence for reviewing our growth metrics.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 242,
+    "id": 324,
     "phrase": "instrumental",
     "meaning": "(1) playing a key role in something",
     "example": "He was instrumental in the company's success.* (2) music without vocals, only instruments. *I like listening to instrumental music while working.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 243,
+    "id": 325,
     "phrase": "clawback",
     "meaning": "repayment of commission or bonus, usually when a deal falls through.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 244,
+    "id": 326,
     "phrase": "PTSD",
     "meaning": "post-traumatic stress disorder.",
     "example": "",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 245,
+    "id": 327,
     "phrase": "mourn",
     "meaning": "to feel deep sadness after someone dies",
     "example": "Millions mourned the actor.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 246,
+    "id": 328,
     "phrase": "precedence",
     "meaning": "the condition of being more important or considered first",
     "example": "Family always took precedence.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 247,
+    "id": 329,
     "phrase": "caliber",
     "meaning": "level of quality or skill",
     "example": "We're looking for high-caliber employees.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 248,
+    "id": 330,
     "phrase": "sanity",
     "meaning": "state of having a healthy mind; not going crazy",
     "example": "I'm trying to keep my sanity this week.",
     "section": "Vocabulary (Single Words)"
   },
   {
-    "id": 249,
+    "id": 331,
     "phrase": "\"vitals\"",
     "meaning": "key health metrics (heart rate, blood pressure, temperature). In business: key KPI numbers.",
     "example": "",
     "section": "Common Corrections & Awkward Phrases"
   },
   {
-    "id": 250,
+    "id": 332,
     "phrase": "\"rusty\" not \"rusted\"",
     "meaning": "when you're out of practice, say",
     "example": "rusty*, not *rusted*. *My English might be rusty.* ❌ *My English might be rusted.",
     "section": "Common Corrections & Awkward Phrases"
   },
   {
-    "id": 251,
+    "id": 333,
     "phrase": "\"colonel\"",
     "meaning": "pronounced \"kernel\" (not \"col-o-nel\")",
     "example": "Her father is a colonel in the army.",
     "section": "Common Corrections & Awkward Phrases"
   },
   {
-    "id": 252,
+    "id": 334,
     "phrase": "\"pissed off at\" not \"pissed off me\"",
     "meaning": "✅ *You're pissed off at me.* ❌ *You pissed off me.* (Unless you mean \"you annoyed me\" — then: *You pissed me off.*)",
     "example": "",
     "section": "Common Corrections & Awkward Phrases"
   },
   {
-    "id": 253,
+    "id": 335,
     "phrase": "\"look up\"",
     "meaning": "4 different meanings:",
     "example": "",
