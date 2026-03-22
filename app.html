@@ -9,277 +9,266 @@
 <title>My English</title>
 <style>
 :root {
-  --bg: #0f0f13;
-  --surface: #1a1a22;
-  --surface2: #23232f;
-  --border: #2e2e40;
-  --accent: #5b5fc7;
-  --accent2: #8b8ff7;
-  --text: #ffffff;
-  --muted: #888;
-  --dim: #444;
-  --green: #4caf74;
-  --red: #e05555;
-  --orange: #ff6b35;
+  --bg: #0f0f13; --surface: #1a1a22; --s2: #23232f; --border: #2e2e40;
+  --accent: #5b5fc7; --accent2: #8b8ff7;
+  --text: #fff; --muted: #777; --dim: #444;
+  --green: #4caf74; --red: #e05555; --orange: #ff6b35;
+  --mode-color: #5b5fc7;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-html, body { height: 100%; overflow: hidden; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-}
-#app {
-  width: 100%;
-  max-width: 430px;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:var(--bg)}
+body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;color:var(--text)}
+#app{width:100%;max-width:430px;height:100%;position:relative;overflow:hidden}
 
 /* ── SCREENS ── */
-.screen {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: env(safe-area-inset-top, 20px) 24px env(safe-area-inset-bottom, 24px);
-  overflow-y: auto;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
+.screen{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  padding:max(env(safe-area-inset-top,20px),20px) 22px max(env(safe-area-inset-bottom,24px),24px);
+  overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .2s;
 }
-.screen.active { opacity: 1; pointer-events: all; }
+.screen.active{opacity:1;pointer-events:all}
+.screen::-webkit-scrollbar{display:none}
 
-/* ── PIN SCREEN ── */
-#pin-screen { justify-content: center; gap: 0; background: var(--bg); }
-.pin-logo { font-size: 52px; margin-bottom: 12px; margin-top: -40px; }
-.pin-title { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
-.pin-sub { font-size: 13px; color: var(--muted); margin-top: 6px; margin-bottom: 36px; }
-.pin-dots { display: flex; gap: 18px; margin-bottom: 40px; }
-.dot {
-  width: 16px; height: 16px; border-radius: 50%;
-  border: 2px solid var(--accent);
-  background: transparent;
-  transition: background 0.15s, transform 0.1s;
+/* ── PIN ── */
+#pin-screen{justify-content:center;gap:0}
+.pin-logo{font-size:52px;margin-bottom:12px;margin-top:-30px}
+.pin-title{font-size:24px;font-weight:800}
+.pin-sub{font-size:13px;color:var(--muted);margin-top:6px;margin-bottom:34px;text-align:center;line-height:1.5}
+.pin-dots{display:flex;gap:18px;margin-bottom:38px}
+.dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--accent);transition:background .15s,transform .1s}
+.dot.filled{background:var(--accent);transform:scale(1.1)}
+.dot.err{border-color:var(--red);background:var(--red);animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%;max-width:272px}
+.pin-btn{
+  background:var(--s2);border:none;border-radius:50%;color:var(--text);
+  font-size:22px;font-weight:500;aspect-ratio:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:background .1s,transform .08s
 }
-.dot.filled { background: var(--accent); transform: scale(1.1); }
-.dot.error { border-color: var(--red); background: var(--red); animation: shake 0.3s; }
-@keyframes shake {
-  0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 60%{transform:translateX(6px)}
-}
-.pin-pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; width: 100%; max-width: 280px; }
-.pin-btn {
-  background: var(--surface2);
-  border: none; border-radius: 50%;
-  color: var(--text); font-size: 22px; font-weight: 500;
-  aspect-ratio: 1; cursor: pointer;
-  transition: background 0.1s, transform 0.08s;
-  display: flex; align-items: center; justify-content: center;
-}
-.pin-btn:active { background: #3a3a50; transform: scale(0.93); }
-.pin-btn.empty { background: transparent; cursor: default; }
-.pin-btn.del { font-size: 18px; background: transparent; }
-#pin-error { color: var(--red); font-size: 12px; margin-top: -28px; margin-bottom: 12px; min-height: 16px; }
+.pin-btn:active{background:#3a3a50;transform:scale(.92)}
+.pin-btn.empty,.pin-btn.del{background:transparent}
+.pin-btn.del{font-size:18px}
+#pin-err{color:var(--red);font-size:12px;height:16px;margin-top:-28px;margin-bottom:14px}
 
-/* ── HOME SCREEN ── */
-#home-screen { gap: 0; padding-top: max(env(safe-area-inset-top, 20px), 20px); }
-.home-header {
-  width: 100%; display: flex; justify-content: space-between; align-items: flex-start;
-  margin-bottom: 24px;
+/* ── HOME ── */
+#home-screen{gap:0;padding-top:max(env(safe-area-inset-top,20px),24px)}
+.home-hdr{width:100%;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px}
+.home-greeting{font-size:26px;font-weight:800;letter-spacing:-.5px}
+.home-date{font-size:12px;color:var(--muted);margin-top:4px}
+.streak-chip{
+  background:linear-gradient(135deg,var(--orange),#ff9f55);border-radius:20px;
+  padding:8px 14px;font-size:15px;font-weight:800;display:flex;align-items:center;
+  gap:5px;box-shadow:0 4px 20px rgba(255,107,53,.35);flex-shrink:0
 }
-.home-greeting { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
-.home-date { font-size: 12px; color: var(--muted); margin-top: 4px; }
-.streak-chip {
-  background: linear-gradient(135deg, var(--orange), #ff9f55);
-  border-radius: 20px; padding: 8px 14px;
-  font-size: 15px; font-weight: 800;
-  display: flex; align-items: center; gap: 5px;
-  box-shadow: 0 4px 20px rgba(255,107,53,0.35);
-  flex-shrink: 0;
+.level-card{
+  width:100%;background:var(--surface);border:1px solid var(--border);
+  border-radius:20px;padding:15px 18px;margin-bottom:12px
 }
+.level-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.level-name{font-size:14px;font-weight:700;color:var(--accent2)}
+.xp-text{font-size:12px;color:var(--muted)}
+.bar-bg{width:100%;height:8px;background:var(--border);border-radius:99px;overflow:hidden}
+.bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .6s}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;margin-bottom:12px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 8px;text-align:center}
+.stat-num{font-size:26px;font-weight:900}
+.stat-lbl{font-size:10px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.5px}
 
-.level-card {
-  width: 100%; background: var(--surface);
-  border: 1px solid var(--border); border-radius: 20px;
-  padding: 16px 18px; margin-bottom: 14px;
+/* Mode selector */
+.sec-label{width:100%;font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.modes-row{display:flex;gap:10px;width:100%;overflow-x:auto;padding-bottom:4px;margin-bottom:12px}
+.modes-row::-webkit-scrollbar{display:none}
+.mode-card{
+  flex-shrink:0;background:var(--surface);border:2px solid var(--border);
+  border-radius:18px;padding:14px 16px;cursor:pointer;
+  transition:border-color .2s,transform .1s;min-width:120px;text-align:center
 }
-.level-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.level-name { font-size: 14px; font-weight: 700; color: var(--accent2); }
-.xp-text { font-size: 12px; color: var(--muted); }
-.bar-bg { width: 100%; height: 8px; background: var(--border); border-radius: 99px; overflow: hidden; }
-.bar-fill {
-  height: 100%; border-radius: 99px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  transition: width 0.6s ease;
+.mode-card:active{transform:scale(.96)}
+.mode-card.selected{border-color:var(--mode-color);background:rgba(91,95,199,.08)}
+.mode-emoji{font-size:26px;margin-bottom:6px}
+.mode-name{font-size:13px;font-weight:700}
+.mode-desc{font-size:10px;color:var(--muted);margin-top:3px;line-height:1.4}
+.mode-card.m-choice{--mode-color:#2196f3}
+.mode-card.m-speed{--mode-color:#ff6b35}
+.mode-card.m-weak{--mode-color:#e05555}
+.mode-card.m-boss{--mode-color:#9c27b0}
+
+.ach-row{display:flex;gap:8px;width:100%;overflow-x:auto;padding-bottom:4px;margin-bottom:14px}
+.ach-row::-webkit-scrollbar{display:none}
+.ach-badge{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:10px 12px;font-size:20px;flex-shrink:0;cursor:pointer;
+  transition:transform .15s
 }
+.ach-badge:active{transform:scale(.92)}
+.ach-badge.locked{opacity:.2;filter:grayscale(1)}
+.ach-badge.unlocked{border-color:var(--accent);box-shadow:0 0 14px rgba(91,95,199,.3)}
 
-.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; margin-bottom: 14px; }
-.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 14px 8px; text-align: center; }
-.stat-num { font-size: 26px; font-weight: 900; }
-.stat-label { font-size: 10px; color: var(--muted); margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase; }
-
-.section-title { width: 100%; font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-
-.ach-row { display: flex; gap: 8px; width: 100%; margin-bottom: 20px; overflow-x: auto; padding-bottom: 4px; }
-.ach-badge {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 14px; padding: 10px 12px;
-  font-size: 20px; flex-shrink: 0; text-align: center;
-  position: relative; cursor: pointer;
-  transition: transform 0.15s;
+.due-banner{
+  width:100%;background:rgba(91,95,199,.1);border:1px solid rgba(91,95,199,.25);
+  border-radius:16px;padding:13px 16px;margin-bottom:14px;display:flex;align-items:center;gap:12px
 }
-.ach-badge:active { transform: scale(0.95); }
-.ach-badge.locked { opacity: 0.25; filter: grayscale(1); }
-.ach-badge.unlocked { border-color: var(--accent); box-shadow: 0 0 14px rgba(91,95,199,0.3); }
-
-.due-banner {
-  width: 100%; background: linear-gradient(135deg, rgba(91,95,199,0.15), rgba(91,95,199,0.05));
-  border: 1px solid rgba(91,95,199,0.3); border-radius: 16px;
-  padding: 14px 16px; margin-bottom: 16px;
-  display: flex; align-items: center; gap: 12px;
+.due-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.due-text{font-size:13px;color:var(--accent2);font-weight:600}
+.due-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.start-btn{
+  width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;
+  border-radius:20px;color:#fff;font-size:17px;font-weight:700;padding:18px;cursor:pointer;
+  box-shadow:0 8px 30px rgba(91,95,199,.4);transition:transform .1s;margin-top:auto;flex-shrink:0
 }
-.due-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-.due-text { font-size: 13px; color: var(--accent2); font-weight: 600; }
-.due-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
-
-.start-btn {
-  width: 100%; background: linear-gradient(135deg, var(--accent), var(--accent2));
-  border: none; border-radius: 20px; color: #fff;
-  font-size: 17px; font-weight: 700; padding: 18px;
-  cursor: pointer; letter-spacing: 0.3px;
-  box-shadow: 0 8px 30px rgba(91,95,199,0.4);
-  transition: transform 0.1s, box-shadow 0.1s;
-  margin-top: auto;
-}
-.start-btn:active { transform: scale(0.97); box-shadow: 0 4px 16px rgba(91,95,199,0.3); }
+.start-btn:active{transform:scale(.97)}
 
 /* ── CARD SCREEN ── */
-#card-screen { justify-content: flex-start; padding-top: max(env(safe-area-inset-top, 20px), 20px); }
-.card-topbar { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.card-progress { font-size: 13px; color: var(--muted); font-weight: 600; }
-.card-xp-label { font-size: 13px; color: var(--accent2); font-weight: 700; }
-.session-bar { width: 100%; height: 4px; background: var(--border); border-radius: 99px; overflow: hidden; margin-bottom: 20px; }
-.session-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 99px; transition: width 0.4s ease; }
-.card-section-tag { align-self: flex-start; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; font-weight: 600; }
+#card-screen{justify-content:flex-start;padding-top:max(env(safe-area-inset-top,16px),16px)}
+.card-topbar{width:100%;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.card-prog{font-size:13px;color:var(--muted);font-weight:600}
+.card-xp-lbl{font-size:13px;color:var(--accent2);font-weight:700}
+.session-bar{width:100%;height:4px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:4px}
+.session-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px;transition:width .4s}
+.timer-bar-wrap{width:100%;height:4px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:14px}
+.timer-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--orange),var(--red));border-radius:99px;transform-origin:left;transition:width linear}
+.mode-badge{
+  align-self:flex-start;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  font-weight:700;color:var(--mode-color);margin-bottom:8px
+}
 
-.flashcard {
-  width: 100%; flex: 1;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 26px;
-  padding: 28px 22px;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 0; margin-bottom: 16px;
-  position: relative; overflow: hidden;
-  cursor: pointer; user-select: none;
-  transition: transform 0.1s;
-  min-height: 0;
+/* Flip card */
+.card-wrap{width:100%;flex:1;perspective:1200px;min-height:0;margin-bottom:14px;position:relative}
+.card-inner{
+  width:100%;height:100%;position:relative;transform-style:preserve-3d;
+  transition:transform .45s cubic-bezier(.4,0,.2,1);cursor:pointer
 }
-.flashcard:active { transform: scale(0.99); }
-.flashcard::before {
-  content: ''; position: absolute; top: -60px; right: -60px;
-  width: 180px; height: 180px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(91,95,199,0.12), transparent 70%);
-  pointer-events: none;
+.card-inner.flipped{transform:rotateY(180deg)}
+.card-face{
+  position:absolute;inset:0;backface-visibility:hidden;
+  background:var(--surface);border:1px solid var(--border);border-radius:24px;
+  padding:24px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden
 }
-.card-phrase {
-  font-size: 20px; font-weight: 700; line-height: 1.4;
-  text-align: center; color: var(--text);
+.card-face::before{
+  content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;
+  border-radius:50%;background:radial-gradient(circle,rgba(91,95,199,.12),transparent 70%);pointer-events:none
 }
-.card-divider { width: 40px; height: 2px; background: var(--border); border-radius: 99px; margin: 18px 0; flex-shrink: 0; }
-.card-meaning { font-size: 15px; color: var(--accent2); line-height: 1.5; text-align: center; }
-.card-example { font-size: 12px; color: var(--dim); font-style: italic; line-height: 1.5; text-align: center; margin-top: 10px; }
-.card-tap-hint { font-size: 11px; color: var(--dim); letter-spacing: 1px; text-transform: uppercase; margin-top: 20px; }
-.card-answer-area { opacity: 0; transition: opacity 0.3s; pointer-events: none; display: contents; }
-.card-answer-area.visible { opacity: 1; pointer-events: all; }
+.card-face.back{transform:rotateY(180deg)}
+.face-hint{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:16px}
+.face-meaning{font-size:18px;color:var(--accent2);line-height:1.5;text-align:center;font-weight:600}
+.face-example{font-size:12px;color:var(--dim);font-style:italic;line-height:1.5;text-align:center;margin-top:10px}
+.face-phrase{font-size:20px;font-weight:800;line-height:1.4;text-align:center;color:var(--text)}
+.face-section{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-top:12px}
+.tap-hint{
+  position:absolute;bottom:18px;left:0;right:0;text-align:center;
+  font-size:11px;color:var(--dim);letter-spacing:1px;text-transform:uppercase
+}
 
-.answer-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; flex-shrink: 0; }
-.btn-no, .btn-yes {
-  border: none; border-radius: 18px; padding: 16px;
-  font-size: 15px; font-weight: 700; cursor: pointer;
-  transition: transform 0.1s, opacity 0.1s;
+/* Swipe overlay */
+.swipe-overlay{
+  position:absolute;inset:0;border-radius:24px;opacity:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:36px;font-weight:900;pointer-events:none;transition:opacity .1s
 }
-.btn-no:active, .btn-yes:active { transform: scale(0.95); }
-.btn-no { background: rgba(224,85,85,0.15); border: 1px solid rgba(224,85,85,0.3); color: var(--red); }
-.btn-yes { background: rgba(76,175,116,0.15); border: 1px solid rgba(76,175,116,0.3); color: var(--green); }
+.swipe-overlay.right{background:rgba(76,175,116,.2);color:var(--green)}
+.swipe-overlay.left{background:rgba(224,85,85,.2);color:var(--red)}
 
-/* ── RESULT SCREEN ── */
-#result-screen { justify-content: center; gap: 16px; padding-top: max(env(safe-area-inset-top, 40px), 40px); }
-.result-emoji { font-size: 72px; }
-.result-title { font-size: 28px; font-weight: 900; letter-spacing: -0.5px; }
-.result-sub { font-size: 14px; color: var(--muted); margin-top: 4px; }
-.xp-gained {
-  background: var(--surface); border: 1px solid var(--accent);
-  border-radius: 22px; padding: 22px; width: 100%; text-align: center;
-  box-shadow: 0 0 30px rgba(91,95,199,0.2);
+.answer-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;flex-shrink:0;transition:opacity .3s}
+.answer-btns.hidden{opacity:0;pointer-events:none}
+.btn-no{background:rgba(224,85,85,.12);border:1px solid rgba(224,85,85,.3);color:var(--red);border-radius:18px;padding:16px;font-size:15px;font-weight:700;cursor:pointer;transition:transform .1s}
+.btn-yes{background:rgba(76,175,116,.12);border:1px solid rgba(76,175,116,.3);color:var(--green);border-radius:18px;padding:16px;font-size:15px;font-weight:700;cursor:pointer;transition:transform .1s}
+.btn-no:active{transform:scale(.94)} .btn-yes:active{transform:scale(.94)}
+
+/* ── CHOICE SCREEN ── */
+#choice-screen{justify-content:flex-start;padding-top:max(env(safe-area-inset-top,16px),16px)}
+.choice-topbar{width:100%;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.choice-session-bar{width:100%;height:4px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:16px}
+.choice-fill{height:100%;background:linear-gradient(90deg,#2196f3,#64b5f6);border-radius:99px;transition:width .4s}
+.choice-phrase-box{
+  width:100%;background:var(--surface);border:1px solid var(--border);border-radius:22px;
+  padding:24px 20px;text-align:center;margin-bottom:16px;flex-shrink:0
 }
-.xp-big { font-size: 42px; font-weight: 900; color: var(--accent2); letter-spacing: -1px; }
-.xp-sub { font-size: 12px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
-.result-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
-.rs { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 16px; text-align: center; }
-.rs-num { font-size: 28px; font-weight: 900; }
-.rs-num.g { color: var(--green); }
-.rs-num.r { color: var(--red); }
-.rs-label { font-size: 11px; color: var(--muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
-.streak-bonus {
-  background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(255,107,53,0.1));
-  border: 1px solid rgba(255,107,53,0.3);
-  border-radius: 16px; padding: 14px 18px; width: 100%;
-  display: flex; justify-content: space-between; align-items: center;
+.choice-phrase-hint{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#2196f3;margin-bottom:12px;font-weight:700}
+.choice-phrase{font-size:20px;font-weight:800;line-height:1.4}
+.choice-question{font-size:13px;color:var(--muted);margin-bottom:14px;align-self:flex-start;font-weight:600}
+.choices-grid{display:flex;flex-direction:column;gap:10px;width:100%}
+.choice-btn{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:16px;text-align:left;font-size:14px;color:var(--text);cursor:pointer;
+  line-height:1.4;transition:background .15s,border-color .15s,transform .1s;font-family:inherit
 }
-.sb-label { font-size: 14px; font-weight: 600; color: var(--orange); }
-.sb-val { font-size: 16px; font-weight: 800; color: var(--orange); }
-.again-btn {
-  width: 100%; background: linear-gradient(135deg, var(--accent), var(--accent2));
-  border: none; border-radius: 20px; color: #fff;
-  font-size: 17px; font-weight: 700; padding: 18px;
-  cursor: pointer; box-shadow: 0 8px 30px rgba(91,95,199,0.4);
-  transition: transform 0.1s;
+.choice-btn:active:not([disabled]){transform:scale(.98)}
+.choice-btn.correct{background:rgba(76,175,116,.15);border-color:var(--green);color:var(--green)}
+.choice-btn.wrong{background:rgba(224,85,85,.1);border-color:rgba(224,85,85,.3);color:var(--red)}
+
+/* ── BOSS BATTLE overlay ── */
+.boss-header{
+  width:100%;background:linear-gradient(135deg,rgba(156,39,176,.3),rgba(156,39,176,.1));
+  border:1px solid rgba(156,39,176,.4);border-radius:16px;padding:12px 16px;margin-bottom:12px;
+  text-align:center
 }
-.again-btn:active { transform: scale(0.97); }
-.home-link { font-size: 13px; color: var(--muted); background: none; border: none; cursor: pointer; padding: 4px; }
-.home-link:active { color: var(--text); }
+.boss-title{font-size:16px;font-weight:800;color:#ce93d8}
+.boss-sub{font-size:11px;color:rgba(206,147,216,.6);margin-top:2px}
+
+/* ── RESULT ── */
+#result-screen{justify-content:center;gap:14px;padding-top:max(env(safe-area-inset-top,40px),40px)}
+.result-emoji{font-size:72px}
+.result-title{font-size:28px;font-weight:900;letter-spacing:-.5px;text-align:center}
+.result-sub{font-size:14px;color:var(--muted);text-align:center}
+.xp-card{
+  width:100%;background:var(--surface);border:1px solid var(--accent);border-radius:22px;
+  padding:22px;text-align:center;box-shadow:0 0 30px rgba(91,95,199,.2)
+}
+.xp-big{font-size:44px;font-weight:900;color:var(--accent2);letter-spacing:-1px}
+.xp-sub{font-size:11px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+.result-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.rs{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;text-align:center}
+.rs-num{font-size:28px;font-weight:900} .rs-num.g{color:var(--green)} .rs-num.r{color:var(--red)}
+.rs-lbl{font-size:11px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.5px}
+.bonus-row{
+  width:100%;background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.3);
+  border-radius:16px;padding:13px 18px;display:flex;justify-content:space-between;align-items:center
+}
+.bonus-lbl{font-size:14px;font-weight:600;color:var(--orange)}
+.bonus-val{font-size:16px;font-weight:800;color:var(--orange)}
+.again-btn{
+  width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;
+  border-radius:20px;color:#fff;font-size:17px;font-weight:700;padding:18px;cursor:pointer;
+  box-shadow:0 8px 30px rgba(91,95,199,.4);transition:transform .1s
+}
+.again-btn:active{transform:scale(.97)}
+.home-link{font-size:13px;color:var(--muted);background:none;border:none;cursor:pointer;padding:4px}
 
 /* ── TOAST ── */
-#toast {
-  position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(20px);
-  background: var(--surface2); border: 1px solid var(--border);
-  border-radius: 14px; padding: 10px 20px;
-  font-size: 13px; font-weight: 600; color: var(--text);
-  opacity: 0; transition: opacity 0.2s, transform 0.2s;
-  pointer-events: none; white-space: nowrap; z-index: 100;
+#toast{
+  position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--s2);border:1px solid var(--border);border-radius:14px;
+  padding:10px 20px;font-size:13px;font-weight:600;color:var(--text);
+  opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;
+  white-space:nowrap;z-index:100
 }
-#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* ── SETUP PIN SCREEN ── */
-#setup-screen { justify-content: center; gap: 0; background: var(--bg); }
-
-/* scrollbar hide */
-.screen::-webkit-scrollbar { display: none; }
+/* ── TOOLTIP ── */
+#tooltip{
+  position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+  background:var(--s2);border:1px solid var(--border);border-radius:14px;
+  padding:12px 16px;font-size:12px;color:var(--text);max-width:240px;text-align:center;
+  opacity:0;transition:opacity .2s;pointer-events:none;z-index:99;line-height:1.5
+}
+#tooltip.show{opacity:1}
 </style>
 </head>
 <body>
 <div id="app">
 
-  <!-- PIN SCREEN -->
+  <!-- PIN -->
   <div id="pin-screen" class="screen active">
     <div class="pin-logo">🧠</div>
     <div class="pin-title">My English</div>
     <div class="pin-sub" id="pin-sub">Enter your PIN</div>
     <div class="pin-dots">
-      <div class="dot" id="d0"></div>
-      <div class="dot" id="d1"></div>
-      <div class="dot" id="d2"></div>
-      <div class="dot" id="d3"></div>
+      <div class="dot" id="d0"></div><div class="dot" id="d1"></div>
+      <div class="dot" id="d2"></div><div class="dot" id="d3"></div>
     </div>
-    <div id="pin-error"></div>
+    <div id="pin-err"></div>
     <div class="pin-pad">
       <button class="pin-btn" onclick="pinPress('1')">1</button>
       <button class="pin-btn" onclick="pinPress('2')">2</button>
@@ -296,16 +285,15 @@ body {
     </div>
   </div>
 
-  <!-- HOME SCREEN -->
+  <!-- HOME -->
   <div id="home-screen" class="screen">
-    <div class="home-header">
+    <div class="home-hdr">
       <div>
         <div class="home-greeting">Hey, Mykhailo 👋</div>
         <div class="home-date" id="home-date"></div>
       </div>
       <div class="streak-chip">🔥 <span id="streak-num">0</span></div>
     </div>
-
     <div class="level-card">
       <div class="level-row">
         <div class="level-name" id="level-name">Beginner</div>
@@ -313,77 +301,94 @@ body {
       </div>
       <div class="bar-bg"><div class="bar-fill" id="xp-bar" style="width:0%"></div></div>
     </div>
-
     <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-num" id="stat-total">0</div>
-        <div class="stat-label">Phrases</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num" id="stat-known">0%</div>
-        <div class="stat-label">Known</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num" id="stat-sessions">0</div>
-        <div class="stat-label">Sessions</div>
-      </div>
+      <div class="stat-card"><div class="stat-num" id="s-total">0</div><div class="stat-lbl">Phrases</div></div>
+      <div class="stat-card"><div class="stat-num" id="s-known">0%</div><div class="stat-lbl">Known</div></div>
+      <div class="stat-card"><div class="stat-num" id="s-sess">0</div><div class="stat-lbl">Sessions</div></div>
     </div>
-
-    <div class="section-title">Achievements</div>
+    <div class="sec-label">Practice Mode</div>
+    <div class="modes-row" id="modes-row"></div>
+    <div class="sec-label">Achievements</div>
     <div class="ach-row" id="ach-row"></div>
-
-    <div class="due-banner" id="due-banner">
+    <div class="due-banner">
       <div class="due-dot"></div>
-      <div>
-        <div class="due-text" id="due-text">Loading phrases...</div>
-        <div class="due-sub" id="due-sub"></div>
-      </div>
+      <div><div class="due-text" id="due-text">Ready</div><div class="due-sub" id="due-sub"></div></div>
     </div>
-
     <button class="start-btn" id="start-btn" onclick="startSession()">Start Practice →</button>
   </div>
 
-  <!-- CARD SCREEN -->
+  <!-- CARD SCREEN (classic / speed / weak / boss) -->
   <div id="card-screen" class="screen">
     <div class="card-topbar">
-      <div class="card-progress" id="card-progress">1 / 10</div>
-      <div class="card-xp-label">⚡ <span id="session-xp">0</span> XP</div>
+      <div class="card-prog" id="card-prog">1 / 10</div>
+      <div class="card-xp-lbl">⚡ <span id="sess-xp">0</span> XP</div>
     </div>
-    <div class="session-bar"><div class="session-fill" id="session-fill" style="width:0%"></div></div>
-    <div class="card-section-tag" id="card-section"></div>
-    <div class="flashcard" id="flashcard" onclick="revealCard()">
-      <div class="card-phrase" id="card-phrase"></div>
-      <div class="card-answer-area" id="card-answer">
-        <div class="card-divider"></div>
-        <div class="card-meaning" id="card-meaning"></div>
-        <div class="card-example" id="card-example"></div>
+    <div class="session-bar"><div class="session-fill" id="sess-fill" style="width:0%"></div></div>
+    <div class="timer-bar-wrap" id="timer-wrap" style="display:none">
+      <div class="timer-fill" id="timer-fill" style="width:100%"></div>
+    </div>
+    <div class="mode-badge" id="mode-badge"></div>
+    <div id="boss-header-wrap"></div>
+
+    <div class="card-wrap" id="card-wrap">
+      <div class="card-inner" id="card-inner">
+        <!-- FRONT: meaning -->
+        <div class="card-face front">
+          <div class="face-hint">What phrase means this?</div>
+          <div class="face-meaning" id="face-meaning"></div>
+          <div class="face-example" id="face-example"></div>
+          <div class="tap-hint" id="tap-hint">tap to reveal phrase</div>
+        </div>
+        <!-- BACK: phrase -->
+        <div class="card-face back">
+          <div class="face-hint">The phrase is:</div>
+          <div class="face-phrase" id="face-phrase"></div>
+          <div class="face-section" id="face-section"></div>
+        </div>
       </div>
-      <div class="card-tap-hint" id="card-hint">tap to reveal</div>
+      <div class="swipe-overlay right" id="swipe-right">✓</div>
+      <div class="swipe-overlay left" id="swipe-left">✗</div>
     </div>
-    <div class="answer-btns" id="answer-btns" style="opacity:0;pointer-events:none;transition:opacity 0.3s">
+
+    <div class="answer-btns hidden" id="answer-btns">
       <button class="btn-no" onclick="answer(false)">✗ Didn't know</button>
       <button class="btn-yes" onclick="answer(true)">✓ Knew it</button>
     </div>
   </div>
 
-  <!-- RESULT SCREEN -->
-  <div id="result-screen" class="screen">
-    <div class="result-emoji" id="result-emoji">🎯</div>
-    <div>
-      <div class="result-title" id="result-title">Session done!</div>
-      <div class="result-sub" id="result-sub"></div>
+  <!-- MULTIPLE CHOICE SCREEN -->
+  <div id="choice-screen" class="screen">
+    <div class="choice-topbar">
+      <div class="card-prog" id="ch-prog">1 / 10</div>
+      <div class="card-xp-lbl">⚡ <span id="ch-xp">0</span> XP</div>
     </div>
-    <div class="xp-gained">
-      <div class="xp-big" id="result-xp">+0 XP</div>
+    <div class="choice-session-bar"><div class="choice-fill" id="ch-fill" style="width:0%"></div></div>
+    <div class="choice-phrase-box">
+      <div class="choice-phrase-hint">🎯 Multiple Choice</div>
+      <div class="choice-phrase" id="ch-phrase"></div>
+    </div>
+    <div class="choice-question">Which meaning is correct?</div>
+    <div class="choices-grid" id="choices-grid"></div>
+  </div>
+
+  <!-- RESULT -->
+  <div id="result-screen" class="screen">
+    <div class="result-emoji" id="r-emoji">🎯</div>
+    <div>
+      <div class="result-title" id="r-title">Great session!</div>
+      <div class="result-sub" id="r-sub"></div>
+    </div>
+    <div class="xp-card">
+      <div class="xp-big" id="r-xp">+0 XP</div>
       <div class="xp-sub">earned this session</div>
     </div>
     <div class="result-stats">
-      <div class="rs"><div class="rs-num g" id="res-yes">0</div><div class="rs-label">Knew it</div></div>
-      <div class="rs"><div class="rs-num r" id="res-no">0</div><div class="rs-label">Missed</div></div>
+      <div class="rs"><div class="rs-num g" id="r-yes">0</div><div class="rs-lbl">Knew it</div></div>
+      <div class="rs"><div class="rs-num r" id="r-no">0</div><div class="rs-lbl">Missed</div></div>
     </div>
-    <div class="streak-bonus" id="streak-bonus" style="display:none">
-      <div class="sb-label">🔥 Streak bonus</div>
-      <div class="sb-val" id="streak-bonus-xp">+20 XP</div>
+    <div class="bonus-row" id="bonus-row" style="display:none">
+      <div class="bonus-lbl">🔥 Streak bonus</div>
+      <div class="bonus-val" id="bonus-val">+20 XP</div>
     </div>
     <button class="again-btn" onclick="startSession()">Practice Again →</button>
     <button class="home-link" onclick="goHome()">← Back to home</button>
@@ -391,329 +396,499 @@ body {
 
 </div>
 <div id="toast"></div>
+<div id="tooltip"></div>
 
 <script>
-// ── CONFIG ──────────────────────────────────────────────
-const PIN_KEY      = 'eng_pin';
-const STATE_KEY    = 'eng_state';
+// ═══════════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════════
+const SK = 'eng_state2';
 const SESSION_SIZE = 10;
+const SPEED_SECONDS = 5;
+
+const MODES = [
+  { id:'classic', name:'Classic',         emoji:'🃏', desc:'Flip cards · swipe to answer', cls:'m-classic' },
+  { id:'choice',  name:'Multi Choice',    emoji:'🎯', desc:'Pick the right meaning',       cls:'m-choice'  },
+  { id:'speed',   name:'Speed Round',     emoji:'⚡', desc:'5 seconds per card',           cls:'m-speed'   },
+  { id:'weak',    name:'Weak Phrases',    emoji:'💪', desc:'Focus on what you miss',       cls:'m-weak'    },
+  { id:'boss',    name:'Boss Battle',     emoji:'🏆', desc:'10 hardest · 3× XP',          cls:'m-boss'    },
+];
 
 const LEVELS = [
-  { name: 'Beginner',     min: 0,    max: 500  },
-  { name: 'Pre-Inter',    min: 500,  max: 1200 },
-  { name: 'Intermediate', min: 1200, max: 2500 },
-  { name: 'Upper-Inter',  min: 2500, max: 4500 },
-  { name: 'Advanced',     min: 4500, max: 7500 },
-  { name: 'Fluent 🎓',   min: 7500, max: 99999 },
+  { name:'Beginner',     min:0,    max:500  },
+  { name:'Pre-Inter',    min:500,  max:1200 },
+  { name:'Intermediate', min:1200, max:2500 },
+  { name:'Upper-Inter',  min:2500, max:4500 },
+  { name:'Advanced',     min:4500, max:7500 },
+  { name:'Fluent 🎓',   min:7500, max:99999},
 ];
 
-const ACHIEVEMENTS = [
-  { id: 'first',    emoji: '🚀', label: 'First session',   check: s => s.sessions >= 1 },
-  { id: 'streak3',  emoji: '🔥', label: '3-day streak',    check: s => s.streak >= 3 },
-  { id: 'streak7',  emoji: '💪', label: '7-day streak',    check: s => s.streak >= 7 },
-  { id: 'streak30', emoji: '🏆', label: '30-day streak',   check: s => s.streak >= 30 },
-  { id: 'c50',      emoji: '💯', label: '50 phrases known', check: s => knownCount(s) >= 50 },
-  { id: 'c100',     emoji: '⭐', label: '100 phrases',     check: s => knownCount(s) >= 100 },
-  { id: 'perfect',  emoji: '🎯', label: 'Perfect session', check: s => s.lastPerfect },
-  { id: 'fluent',   emoji: '🎓', label: 'All known',       check: s => s.xp >= 7500 },
+const ACHS = [
+  { id:'first',   emoji:'🚀', label:'First session',    check: s => s.sessions >= 1 },
+  { id:'str3',    emoji:'🔥', label:'3-day streak',     check: s => s.streak >= 3   },
+  { id:'str7',    emoji:'💪', label:'7-day streak',     check: s => s.streak >= 7   },
+  { id:'str30',   emoji:'🏆', label:'30-day streak',    check: s => s.streak >= 30  },
+  { id:'k50',     emoji:'💯', label:'50 phrases known', check: s => knownCount() >= 50  },
+  { id:'k100',    emoji:'⭐', label:'100 phrases known',check: s => knownCount() >= 100 },
+  { id:'perf',    emoji:'🎯', label:'Perfect session',  check: s => s.lastPerfect   },
+  { id:'speed1',  emoji:'⚡', label:'Speed demon',      check: s => s.speedWins >= 1},
+  { id:'boss1',   emoji:'👹', label:'Beat the boss',    check: s => s.bossWins >= 1 },
+  { id:'fluent',  emoji:'🎓', label:'Fluent!',          check: s => s.xp >= 7500   },
 ];
 
-// ── STATE ────────────────────────────────────────────────
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
 let phrases = [];
 let state   = {};
-let session = { queue: [], idx: 0, yes: 0, no: 0, xp: 0 };
-let revealed = false;
-let pinBuffer = '';
-let settingPin = false;
-let tmpPin = '';
+let session = { queue:[], idx:0, yes:0, no:0, xp:0, mode:'classic' };
+let isFlipped = false;
+let timerInterval = null;
+let timerLeft = SPEED_SECONDS;
+let pinBuf = '', settingPin = false, tmpPin = '';
+let selectedMode = 'classic';
 
 function defaultState() {
-  return { pin: null, xp: 0, streak: 0, lastDate: null, sessions: 0, cards: {}, lastPerfect: false, unlocked: [] };
+  return { pin:null, xp:0, streak:0, lastDate:null, sessions:0, cards:{},
+           lastPerfect:false, unlocked:[], speedWins:0, bossWins:0 };
 }
-
-function save() { localStorage.setItem(STATE_KEY, JSON.stringify(state)); }
-
+function save() { localStorage.setItem(SK, JSON.stringify(state)); }
 function load() {
-  try { state = JSON.parse(localStorage.getItem(STATE_KEY)) || defaultState(); }
+  try { state = JSON.parse(localStorage.getItem(SK)) || defaultState(); }
   catch { state = defaultState(); }
   if (!state.cards) state.cards = {};
+  if (!state.unlocked) state.unlocked = [];
+}
+function knownCount() {
+  return Object.values(state.cards).filter(c => c.ease >= 3).length;
 }
 
-function knownCount(s) {
-  return Object.values(s.cards).filter(c => c.ease >= 3).length;
-}
-
-// ── PHRASES ──────────────────────────────────────────────
+// ═══════════════════════════════════════════════
+// PHRASES
+// ═══════════════════════════════════════════════
 async function loadPhrases() {
   try {
     const r = await fetch('phrases.json?v=' + Date.now());
     if (!r.ok) throw new Error();
     phrases = await r.json();
-  } catch {
-    phrases = FALLBACK_PHRASES;
-  }
+  } catch { phrases = FALLBACK; }
   updateHome();
 }
 
-// ── PIN ──────────────────────────────────────────────────
+// ═══════════════════════════════════════════════
+// PIN
+// ═══════════════════════════════════════════════
 function pinPress(d) {
-  if (pinBuffer.length >= 4) return;
-  pinBuffer += d;
-  updateDots();
-  if (pinBuffer.length === 4) setTimeout(() => submitPin(), 120);
+  if (pinBuf.length >= 4) return;
+  pinBuf += d;
+  renderDots();
+  if (pinBuf.length === 4) setTimeout(submitPin, 120);
 }
-
-function pinDel() {
-  pinBuffer = pinBuffer.slice(0, -1);
-  updateDots();
-}
-
-function updateDots() {
-  for (let i = 0; i < 4; i++) {
-    const el = document.getElementById('d' + i);
-    el.className = 'dot' + (i < pinBuffer.length ? ' filled' : '');
+function pinDel() { pinBuf = pinBuf.slice(0,-1); renderDots(); }
+function renderDots() {
+  for (let i=0;i<4;i++) {
+    const el = document.getElementById('d'+i);
+    el.className = 'dot' + (i < pinBuf.length ? ' filled' : '');
   }
 }
-
 function submitPin() {
   if (settingPin) {
-    if (!tmpPin) {
-      tmpPin = pinBuffer;
-      pinBuffer = '';
-      updateDots();
-      document.getElementById('pin-sub').textContent = 'Confirm your PIN';
-      return;
-    }
-    if (pinBuffer === tmpPin) {
-      state.pin = pinBuffer;
-      save();
-      settingPin = false; tmpPin = '';
-      showToast('PIN set! 🔐');
-      showScreen('home-screen');
-    } else {
-      pinError('PINs don\'t match — try again');
-      tmpPin = ''; pinBuffer = '';
-    }
+    if (!tmpPin) { tmpPin = pinBuf; pinBuf = ''; renderDots(); document.getElementById('pin-sub').textContent = 'Confirm your PIN'; return; }
+    if (pinBuf === tmpPin) { state.pin = pinBuf; save(); settingPin=false; tmpPin=''; showToast('PIN saved 🔐'); updateStreak(); showScreen('home-screen'); }
+    else { pinErr("PINs don't match"); tmpPin=''; pinBuf=''; }
     return;
   }
-
-  if (!state.pin) {
-    // First launch — set PIN
-    settingPin = true;
-    tmpPin = '';
-    document.getElementById('pin-sub').textContent = 'Choose a 4-digit PIN';
-    pinBuffer = '';
-    updateDots();
-    return;
-  }
-
-  if (pinBuffer === state.pin) {
-    updateStreak();
-    showScreen('home-screen');
-  } else {
-    pinError('Wrong PIN');
-    pinBuffer = '';
-  }
+  if (!state.pin) { settingPin=true; tmpPin=''; document.getElementById('pin-sub').textContent = 'Choose a 4-digit PIN'; pinBuf=''; renderDots(); return; }
+  if (pinBuf === state.pin) { updateStreak(); showScreen('home-screen'); }
+  else { pinErr('Wrong PIN'); pinBuf=''; }
+}
+function pinErr(msg) {
+  document.getElementById('pin-err').textContent = msg;
+  for(let i=0;i<4;i++) document.getElementById('d'+i).className='dot err';
+  setTimeout(()=>{ document.getElementById('pin-err').textContent=''; renderDots(); },900);
 }
 
-function pinError(msg) {
-  document.getElementById('pin-error').textContent = msg;
-  for (let i = 0; i < 4; i++) document.getElementById('d' + i).className = 'dot error';
-  setTimeout(() => {
-    document.getElementById('pin-error').textContent = '';
-    updateDots();
-  }, 800);
-}
-
-// ── STREAK ───────────────────────────────────────────────
+// ═══════════════════════════════════════════════
+// STREAK
+// ═══════════════════════════════════════════════
+function todayStr() { return new Date().toISOString().slice(0,10); }
 function updateStreak() {
   const today = todayStr();
   if (state.lastDate === today) return;
-  const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
-  const yStr = yesterday.toISOString().slice(0, 10);
-  state.streak = (state.lastDate === yStr) ? state.streak + 1 : 1;
+  const d = new Date(); d.setDate(d.getDate()-1);
+  state.streak = (state.lastDate === d.toISOString().slice(0,10)) ? state.streak+1 : 1;
   state.lastDate = today;
   save();
 }
 
-function todayStr() { return new Date().toISOString().slice(0, 10); }
-
-// ── HOME ─────────────────────────────────────────────────
+// ═══════════════════════════════════════════════
+// HOME
+// ═══════════════════════════════════════════════
 function updateHome() {
-  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const now = new Date();
   document.getElementById('home-date').textContent =
-    days[now.getDay()] + ' · ' + now.toLocaleDateString('en-GB', { day:'numeric', month:'short' });
-
+    DAYS[now.getDay()] + ' · ' + now.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
   document.getElementById('streak-num').textContent = state.streak;
 
-  // Level
   const lvl = getLevel();
   document.getElementById('level-name').textContent = '⚡ ' + lvl.name;
   const pct = Math.round((state.xp - lvl.min) / (lvl.max - lvl.min) * 100);
-  document.getElementById('xp-bar').style.width = Math.min(pct, 100) + '%';
+  document.getElementById('xp-bar').style.width = Math.min(pct,100) + '%';
   document.getElementById('xp-text').textContent = state.xp + ' / ' + lvl.max + ' XP';
 
-  // Stats
-  document.getElementById('stat-total').textContent = phrases.length;
-  const kn = knownCount(state);
-  document.getElementById('stat-known').textContent =
-    phrases.length ? Math.round(kn / phrases.length * 100) + '%' : '0%';
-  document.getElementById('stat-sessions').textContent = state.sessions;
+  document.getElementById('s-total').textContent = phrases.length;
+  const kn = knownCount();
+  document.getElementById('s-known').textContent = phrases.length ? Math.round(kn/phrases.length*100)+'%' : '0%';
+  document.getElementById('s-sess').textContent = state.sessions;
 
-  // Achievements
-  renderAchievements();
+  renderModes();
+  renderAchs();
 
-  // Due banner
-  const due = getDueQueue();
-  document.getElementById('due-text').textContent =
-    due.length + ' phrase' + (due.length === 1 ? '' : 's') + ' ready to practice';
-  document.getElementById('due-sub').textContent =
-    kn + ' known · ' + (phrases.length - kn) + ' to learn';
+  const due = getDueQueue('classic');
+  document.getElementById('due-text').textContent = due.length + ' phrase' + (due.length===1?'':'s') + ' ready to practice';
+  document.getElementById('due-sub').textContent = kn + ' known · ' + (phrases.length-kn) + ' to learn';
 }
 
 function getLevel() {
-  return LEVELS.find(l => state.xp >= l.min && state.xp < l.max) || LEVELS[LEVELS.length - 1];
+  return LEVELS.find(l => state.xp >= l.min && state.xp < l.max) || LEVELS[LEVELS.length-1];
 }
 
-function renderAchievements() {
-  const row = document.getElementById('ach-row');
+function renderModes() {
+  const row = document.getElementById('modes-row');
   row.innerHTML = '';
-  ACHIEVEMENTS.forEach(a => {
-    const unlocked = a.check(state);
-    if (unlocked && !state.unlocked.includes(a.id)) {
-      state.unlocked.push(a.id);
-      save();
-    }
+  MODES.forEach(m => {
     const el = document.createElement('div');
-    el.className = 'ach-badge' + (unlocked ? ' unlocked' : ' locked');
-    el.textContent = a.emoji;
-    el.title = a.label;
+    el.className = 'mode-card ' + m.cls + (selectedMode===m.id ? ' selected' : '');
+    el.innerHTML = `<div class="mode-emoji">${m.emoji}</div><div class="mode-name">${m.name}</div><div class="mode-desc">${m.desc}</div>`;
+    el.onclick = () => { selectedMode = m.id; renderModes(); };
     row.appendChild(el);
   });
 }
 
-// ── SESSION ──────────────────────────────────────────────
-function getDueQueue() {
+function renderAchs() {
+  const row = document.getElementById('ach-row');
+  row.innerHTML = '';
+  ACHS.forEach(a => {
+    const unlocked = a.check(state);
+    if (unlocked && !state.unlocked.includes(a.id)) { state.unlocked.push(a.id); save(); }
+    const el = document.createElement('div');
+    el.className = 'ach-badge ' + (unlocked ? 'unlocked' : 'locked');
+    el.textContent = a.emoji;
+    el.onclick = () => showTip(a.label + (unlocked ? ' ✓' : ' — locked'));
+    row.appendChild(el);
+  });
+}
+
+// ═══════════════════════════════════════════════
+// SESSION
+// ═══════════════════════════════════════════════
+function getDueQueue(mode) {
   if (!phrases.length) return [];
   const now = Date.now();
-  const due = phrases.filter(p => {
-    const c = state.cards[p.id];
-    if (!c) return true; // new
-    return c.nextReview <= now;
-  });
-  // shuffle
-  for (let i = due.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [due[i], due[j]] = [due[j], due[i]];
+  let pool;
+  if (mode === 'weak') {
+    pool = phrases.filter(p => { const c=state.cards[p.id]; return c && (c.wrong>=1||c.ease<=2); });
+    if (!pool.length) pool = phrases.filter(p => { const c=state.cards[p.id]; return !c||c.nextReview<=now; });
+  } else if (mode === 'boss') {
+    pool = [...phrases].sort((a,b) => {
+      const ea = state.cards[a.id]?.ease ?? 2;
+      const eb = state.cards[b.id]?.ease ?? 2;
+      return ea - eb;
+    }).slice(0, 20);
+  } else {
+    pool = phrases.filter(p => { const c=state.cards[p.id]; return !c||c.nextReview<=now; });
+    if (!pool.length) pool = [...phrases];
   }
-  return due;
+  // shuffle
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+  return pool;
 }
 
 function startSession() {
-  const due = getDueQueue();
+  const mode = selectedMode;
+  const due = getDueQueue(mode);
   if (!due.length) { showToast('No phrases due — come back tomorrow! 🎉'); return; }
-  session.queue = due.slice(0, SESSION_SIZE);
-  session.idx = 0; session.yes = 0; session.no = 0; session.xp = 0;
+  const size = mode === 'boss' ? 10 : SESSION_SIZE;
+  session = { queue: due.slice(0,size), idx:0, yes:0, no:0, xp:0, mode };
+
+  if (mode === 'choice') {
+    showChoiceCard();
+    showScreen('choice-screen');
+  } else {
+    showCardScreen();
+    showScreen('card-screen');
+  }
+}
+
+// ═══════════════════════════════════════════════
+// CARD SCREEN (classic / speed / weak / boss)
+// ═══════════════════════════════════════════════
+function showCardScreen() {
+  const mode = session.mode;
+  const modeInfo = MODES.find(m=>m.id===mode);
+  const modeColors = { classic:'#5b5fc7', speed:'#ff6b35', weak:'#e05555', boss:'#9c27b0' };
+  document.documentElement.style.setProperty('--mode-color', modeColors[mode]||'#5b5fc7');
+  document.getElementById('mode-badge').textContent = modeInfo.emoji + ' ' + modeInfo.name.toUpperCase();
+
+  // Boss header
+  const bw = document.getElementById('boss-header-wrap');
+  if (mode === 'boss') {
+    bw.innerHTML = '<div class="boss-header"><div class="boss-title">👹 BOSS BATTLE</div><div class="boss-sub">3× XP · 10 hardest phrases</div></div>';
+  } else bw.innerHTML = '';
+
+  // Timer bar
+  document.getElementById('timer-wrap').style.display = mode==='speed' ? 'block' : 'none';
+
   showCard();
-  showScreen('card-screen');
 }
 
 function showCard() {
-  revealed = false;
+  clearTimer();
+  isFlipped = false;
   const p = session.queue[session.idx];
   const total = session.queue.length;
 
-  document.getElementById('card-progress').textContent = (session.idx + 1) + ' / ' + total;
-  document.getElementById('session-fill').style.width = (session.idx / total * 100) + '%';
-  document.getElementById('session-xp').textContent = session.xp;
-  document.getElementById('card-section').textContent = p.section;
-  document.getElementById('card-phrase').textContent = '"' + p.phrase + '"';
-  document.getElementById('card-meaning').textContent = p.meaning;
-  document.getElementById('card-example').textContent = p.example ? '"' + p.example + '"' : '';
-  document.getElementById('card-hint').style.display = 'block';
+  document.getElementById('card-prog').textContent = (session.idx+1) + ' / ' + total;
+  document.getElementById('sess-fill').style.width = (session.idx/total*100) + '%';
+  document.getElementById('sess-xp').textContent = session.xp;
+  document.getElementById('face-meaning').textContent = p.meaning;
+  document.getElementById('face-example').textContent = p.example ? '"' + p.example + '"' : '';
+  document.getElementById('face-phrase').textContent = '"' + p.phrase + '"';
+  document.getElementById('face-section').textContent = p.section;
+  document.getElementById('tap-hint').style.opacity = '1';
 
-  const ans = document.getElementById('card-answer');
-  ans.className = 'card-answer-area';
+  // Reset card
+  const inner = document.getElementById('card-inner');
+  inner.style.transition = 'none';
+  inner.style.transform = '';
+  const wrap = document.getElementById('card-wrap');
+  wrap.style.transition = 'none';
+  wrap.style.transform = '';
+  wrap.style.boxShadow = '';
+  wrap.style.opacity = '1';
+  setTimeout(()=>{inner.style.transition='';wrap.style.transition='';},50);
 
-  document.getElementById('answer-btns').style.opacity = '0';
-  document.getElementById('answer-btns').style.pointerEvents = 'none';
+  document.getElementById('swipe-right').style.opacity = '0';
+  document.getElementById('swipe-left').style.opacity = '0';
+  document.getElementById('answer-btns').className = 'answer-btns hidden';
+
+  if (session.mode === 'speed') startTimer();
+  setupSwipe();
 }
 
-function revealCard() {
-  if (revealed) return;
-  revealed = true;
-  document.getElementById('card-hint').style.display = 'none';
-  document.getElementById('card-answer').className = 'card-answer-area visible';
-  document.getElementById('answer-btns').style.opacity = '1';
-  document.getElementById('answer-btns').style.pointerEvents = 'all';
+function flipCard() {
+  if (isFlipped) return;
+  isFlipped = true;
+  document.getElementById('card-inner').classList.add('flipped');
+  document.getElementById('tap-hint').style.opacity = '0';
+  document.getElementById('answer-btns').className = 'answer-btns';
+  if (session.mode === 'speed') clearTimer();
 }
 
+// ─── SWIPE ───────────────────────────────────
+function setupSwipe() {
+  const wrap = document.getElementById('card-wrap');
+  let startX=0, startY=0, dragging=false;
+
+  const clone = wrap.cloneNode(false);
+  wrap.parentNode.replaceChild(clone, wrap);
+  // re-get elements after DOM replace
+  const newWrap = document.getElementById('card-wrap');
+
+  newWrap.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    dragging = false;
+  }, {passive:true});
+
+  newWrap.addEventListener('touchmove', e => {
+    const dx = e.touches[0].clientX - startX;
+    const dy = e.touches[0].clientY - startY;
+    if (!isFlipped) return;
+    if (Math.abs(dy) > Math.abs(dx) && !dragging) return;
+    e.preventDefault();
+    dragging = true;
+    const rot = dx / 18;
+    newWrap.style.transition = 'none';
+    newWrap.style.transform = `translateX(${dx}px) rotate(${rot}deg)`;
+    const pct = Math.min(Math.abs(dx)/120, 1);
+    document.getElementById('swipe-right').style.opacity = dx > 0 ? pct : 0;
+    document.getElementById('swipe-left').style.opacity  = dx < 0 ? pct : 0;
+  }, {passive:false});
+
+  newWrap.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = e.changedTouches[0].clientY - startY;
+
+    if (!dragging && Math.abs(dx) < 10 && Math.abs(dy) < 10) {
+      // tap
+      if (!isFlipped) flipCard();
+      return;
+    }
+
+    if (!isFlipped) { resetCardPos(newWrap); return; }
+
+    if (Math.abs(dx) > 90) {
+      const knew = dx > 0;
+      newWrap.style.transition = 'transform .35s ease, opacity .35s';
+      newWrap.style.transform = `translateX(${knew?500:-500}px) rotate(${knew?25:-25}deg)`;
+      newWrap.style.opacity = '0';
+      setTimeout(()=>answer(knew), 350);
+    } else {
+      resetCardPos(newWrap);
+    }
+    dragging = false;
+  }, {passive:true});
+
+  // Also handle click for desktop
+  newWrap.addEventListener('click', e => {
+    if (!isFlipped) flipCard();
+  });
+}
+
+function resetCardPos(wrap) {
+  wrap.style.transition = 'transform .3s, opacity .3s';
+  wrap.style.transform = '';
+  wrap.style.opacity = '1';
+  document.getElementById('swipe-right').style.opacity='0';
+  document.getElementById('swipe-left').style.opacity='0';
+}
+
+// ─── TIMER ───────────────────────────────────
+function startTimer() {
+  timerLeft = SPEED_SECONDS;
+  const fill = document.getElementById('timer-fill');
+  fill.style.transition = 'none';
+  fill.style.width = '100%';
+  setTimeout(()=>{
+    fill.style.transition = `width ${SPEED_SECONDS}s linear`;
+    fill.style.width = '0%';
+  },50);
+  timerInterval = setTimeout(()=>{
+    if (!isFlipped) {
+      flipCard();
+      setTimeout(()=>answer(false), 600);
+    } else {
+      answer(false);
+    }
+  }, SPEED_SECONDS * 1000);
+}
+function clearTimer() { if(timerInterval){clearTimeout(timerInterval);timerInterval=null;} }
+
+// ─── ANSWER ──────────────────────────────────
 function answer(knew) {
+  clearTimer();
   const p = session.queue[session.idx];
-  const xpEarned = knew ? 10 : 2;
-  session.xp += xpEarned;
-  if (knew) session.yes++; else session.no++;
+  const mult = session.mode==='boss' ? 3 : 1;
+  const xpGained = knew ? 10*mult : 2;
+  session.xp += xpGained;
+  if(knew) session.yes++; else session.no++;
 
-  // Spaced repetition update
-  let card = state.cards[p.id] || { ease: 2, interval: 1, correct: 0, wrong: 0 };
-  if (knew) {
-    card.correct++;
-    card.ease = Math.min(5, card.ease + 0.5);
-    card.interval = Math.round(card.interval * card.ease);
-  } else {
-    card.wrong++;
-    card.ease = Math.max(1, card.ease - 1);
-    card.interval = 1;
-  }
-  card.interval = Math.max(1, Math.min(card.interval, 30));
-  card.nextReview = Date.now() + card.interval * 24 * 60 * 60 * 1000;
+  // Spaced repetition
+  let card = state.cards[p.id] || {ease:2,interval:1,correct:0,wrong:0};
+  if(knew){ card.correct++; card.ease=Math.min(5,card.ease+0.5); card.interval=Math.round(card.interval*card.ease); }
+  else    { card.wrong++;   card.ease=Math.max(1,card.ease-1);   card.interval=1; }
+  card.interval = Math.max(1,Math.min(card.interval,30));
+  card.nextReview = Date.now() + card.interval*86400000;
   state.cards[p.id] = card;
   save();
 
   session.idx++;
-  if (session.idx < session.queue.length) {
-    showCard();
-  } else {
-    finishSession();
-  }
+  if(session.idx < session.queue.length) showCard();
+  else finishSession();
 }
 
-function finishSession() {
-  state.sessions++;
-  state.xp += session.xp;
+// ═══════════════════════════════════════════════
+// MULTIPLE CHOICE
+// ═══════════════════════════════════════════════
+function showChoiceCard() {
+  const p = session.queue[session.idx];
+  const total = session.queue.length;
 
-  // Streak bonus
-  let bonus = 0;
-  if (state.streak >= 7) bonus = 30;
-  else if (state.streak >= 3) bonus = 20;
-  else if (state.streak >= 1) bonus = 10;
-  state.xp += bonus;
+  document.getElementById('ch-prog').textContent = (session.idx+1) + ' / ' + total;
+  document.getElementById('ch-fill').style.width = (session.idx/total*100) + '%';
+  document.getElementById('ch-xp').textContent = session.xp;
+  document.getElementById('ch-phrase').textContent = '"' + p.phrase + '"';
 
-  const perfect = session.no === 0 && session.yes > 0;
-  state.lastPerfect = perfect;
+  // Build 4 options: 1 correct + 3 random wrong
+  const wrong = phrases.filter(x=>x.id!==p.id).sort(()=>Math.random()-.5).slice(0,3);
+  const options = [p, ...wrong].sort(()=>Math.random()-.5);
+
+  const grid = document.getElementById('choices-grid');
+  grid.innerHTML = '';
+  options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.textContent = opt.meaning;
+    btn.onclick = () => choiceAnswer(btn, opt.id === p.id, p);
+    grid.appendChild(btn);
+  });
+}
+
+function choiceAnswer(btn, correct, p) {
+  // Disable all buttons
+  document.querySelectorAll('.choice-btn').forEach(b => {
+    b.disabled = true;
+    if (b.textContent === p.meaning) b.className = 'choice-btn correct';
+  });
+  if (!correct) btn.className = 'choice-btn wrong';
+
+  const xpGained = correct ? 15 : 3;
+  session.xp += xpGained;
+  if(correct) session.yes++; else session.no++;
+
+  let card = state.cards[p.id] || {ease:2,interval:1,correct:0,wrong:0};
+  if(correct){ card.correct++; card.ease=Math.min(5,card.ease+0.5); card.interval=Math.round(card.interval*card.ease); }
+  else       { card.wrong++;   card.ease=Math.max(1,card.ease-1);   card.interval=1; }
+  card.interval = Math.max(1,Math.min(card.interval,30));
+  card.nextReview = Date.now() + card.interval*86400000;
+  state.cards[p.id] = card;
   save();
 
-  // Result screen
-  const msgs = perfect
-    ? ['Perfect score! 🔥', 'Unstoppable, Mykhailo!']
-    : session.yes > session.no
-    ? ['Great session! 🎯', "You're improving — keep it up"]
-    : ['Keep grinding 💪', 'Missed some — they\'ll come back'];
+  session.idx++;
+  setTimeout(()=>{
+    if(session.idx < session.queue.length) showChoiceCard();
+    else finishSession();
+  }, 1200);
+}
 
-  document.getElementById('result-emoji').textContent = perfect ? '🏆' : session.yes > session.no ? '🎯' : '💪';
-  document.getElementById('result-title').textContent = msgs[0];
-  document.getElementById('result-sub').textContent = msgs[1];
-  document.getElementById('result-xp').textContent = '+' + (session.xp + bonus) + ' XP';
-  document.getElementById('res-yes').textContent = session.yes;
-  document.getElementById('res-no').textContent = session.no;
+// ═══════════════════════════════════════════════
+// FINISH SESSION
+// ═══════════════════════════════════════════════
+function finishSession() {
+  clearTimer();
+  state.sessions++;
+  const baseXP = session.xp;
 
-  if (bonus > 0) {
-    document.getElementById('streak-bonus').style.display = 'flex';
-    document.getElementById('streak-bonus-xp').textContent = '+' + bonus + ' XP';
-  } else {
-    document.getElementById('streak-bonus').style.display = 'none';
-  }
+  let bonus = 0;
+  if(state.streak>=7) bonus=30; else if(state.streak>=3) bonus=20; else if(state.streak>=1) bonus=10;
+  state.xp += baseXP + bonus;
+
+  const perfect = session.no===0 && session.yes>0;
+  state.lastPerfect = perfect;
+  if(session.mode==='speed' && perfect) state.speedWins = (state.speedWins||0)+1;
+  if(session.mode==='boss'  && perfect) state.bossWins  = (state.bossWins||0)+1;
+  save();
+
+  const score = Math.round(session.yes/session.queue.length*100);
+  const [emoji,title,sub] = perfect
+    ? ['🏆','Perfect score!','Absolutely flawless, Mykhailo!']
+    : score>=80 ? ['🎯','Great session!','You\'re improving — keep it up']
+    : score>=50 ? ['💪','Keep grinding!','Missed some — they\'ll come back']
+    :             ['📚','More practice!','These phrases need your attention'];
+
+  document.getElementById('r-emoji').textContent = emoji;
+  document.getElementById('r-title').textContent = title;
+  document.getElementById('r-sub').textContent   = sub;
+  document.getElementById('r-xp').textContent    = '+' + (baseXP+bonus) + ' XP';
+  document.getElementById('r-yes').textContent   = session.yes;
+  document.getElementById('r-no').textContent    = session.no;
+
+  if(bonus>0){
+    document.getElementById('bonus-row').style.display='flex';
+    document.getElementById('bonus-val').textContent = '+'+bonus+' XP';
+  } else document.getElementById('bonus-row').style.display='none';
 
   showScreen('result-screen');
   updateHome();
@@ -721,36 +896,44 @@ function finishSession() {
 
 function goHome() { showScreen('home-screen'); updateHome(); }
 
-// ── UTIL ─────────────────────────────────────────────────
+// ═══════════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════════
 function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
-
 function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+function showTip(msg) {
+  const t=document.getElementById('tooltip'); t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2000);
 }
 
-// ── FALLBACK PHRASES (subset, in case fetch fails) ───────
-const FALLBACK_PHRASES = [
+// ═══════════════════════════════════════════════
+// FALLBACK PHRASES
+// ═══════════════════════════════════════════════
+const FALLBACK = [
   {id:0,phrase:"We should get going",meaning:"It's time to leave",example:"I need to get going or I'll be late.",section:"Everyday Conversation"},
-  {id:1,phrase:"I'm on it",meaning:"I'm handling it",example:"The report will be ready by noon — I'm on it.",section:"Everyday Conversation"},
+  {id:1,phrase:"I'm on it",meaning:"I'm handling it right now",example:"The report will be ready — I'm on it.",section:"Everyday Conversation"},
   {id:2,phrase:"That's on me",meaning:"I take responsibility for this",example:"We missed the deadline — that's on me.",section:"Everyday Conversation"},
-  {id:3,phrase:"Hold that thought",meaning:"Don't forget what you were about to say; wait a moment",example:"Hold that thought — I need to grab my phone.",section:"Everyday Conversation"},
+  {id:3,phrase:"Hold that thought",meaning:"Wait a moment — don't forget what you were about to say",example:"Hold that thought — let me grab my phone.",section:"Everyday Conversation"},
   {id:4,phrase:"Fire away",meaning:"Go ahead, I'm ready to listen",example:"Fire away, I'm ready to hear your ideas.",section:"Everyday Conversation"},
   {id:5,phrase:"We need to ramp up our marketing efforts",meaning:"Increase or grow something gradually and steadily",example:"The company is ramping up hiring before the launch.",section:"Business & Work"},
-  {id:6,phrase:"Don't try to reinvent the wheel",meaning:"Don't redo what already exists and works",example:"Just use the existing template — don't reinvent the wheel.",section:"Business & Work"},
+  {id:6,phrase:"Don't try to reinvent the wheel",meaning:"Don't redo what already exists and works well",example:"Just use the existing template — don't reinvent the wheel.",section:"Business & Work"},
   {id:7,phrase:"Give him a heads up",meaning:"Warn or inform someone in advance",example:"She gave me a heads up that the boss was angry.",section:"Business & Work"},
-  {id:8,phrase:"My brain just checked out",meaning:"I stopped paying attention briefly",example:"Sorry — my brain just checked out for a second.",section:"Idioms & Figurative Language"},
-  {id:9,phrase:"The project had a rocky start",meaning:"A difficult beginning, now running smoothly",example:"Rocky start, but we're on track now.",section:"Idioms & Figurative Language"},
+  {id:8,phrase:"My brain just checked out",meaning:"I stopped paying attention briefly",example:"Sorry — my brain just checked out for a second.",section:"Idioms"},
+  {id:9,phrase:"The project had a rocky start",meaning:"A difficult beginning, now running smoothly",example:"Rocky start, but we're on track now.",section:"Idioms"},
 ];
 
-// ── INIT ─────────────────────────────────────────────────
+// ═══════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════
 load();
 loadPhrases();
+renderModes();
 
 if (!state.pin) {
   document.getElementById('pin-sub').textContent = 'Choose a 4-digit PIN to protect your app';
