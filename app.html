@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f0f13">
+<title>My English</title>
+<style>
+:root {
+  --bg: #0f0f13;
+  --surface: #1a1a22;
+  --surface2: #23232f;
+  --border: #2e2e40;
+  --accent: #5b5fc7;
+  --accent2: #8b8ff7;
+  --text: #ffffff;
+  --muted: #888;
+  --dim: #444;
+  --green: #4caf74;
+  --red: #e05555;
+  --orange: #ff6b35;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+#app {
+  width: 100%;
+  max-width: 430px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── SCREENS ── */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: env(safe-area-inset-top, 20px) 24px env(safe-area-inset-bottom, 24px);
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.screen.active { opacity: 1; pointer-events: all; }
+
+/* ── PIN SCREEN ── */
+#pin-screen { justify-content: center; gap: 0; background: var(--bg); }
+.pin-logo { font-size: 52px; margin-bottom: 12px; margin-top: -40px; }
+.pin-title { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+.pin-sub { font-size: 13px; color: var(--muted); margin-top: 6px; margin-bottom: 36px; }
+.pin-dots { display: flex; gap: 18px; margin-bottom: 40px; }
+.dot {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: transparent;
+  transition: background 0.15s, transform 0.1s;
+}
+.dot.filled { background: var(--accent); transform: scale(1.1); }
+.dot.error { border-color: var(--red); background: var(--red); animation: shake 0.3s; }
+@keyframes shake {
+  0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 60%{transform:translateX(6px)}
+}
+.pin-pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; width: 100%; max-width: 280px; }
+.pin-btn {
+  background: var(--surface2);
+  border: none; border-radius: 50%;
+  color: var(--text); font-size: 22px; font-weight: 500;
+  aspect-ratio: 1; cursor: pointer;
+  transition: background 0.1s, transform 0.08s;
+  display: flex; align-items: center; justify-content: center;
+}
+.pin-btn:active { background: #3a3a50; transform: scale(0.93); }
+.pin-btn.empty { background: transparent; cursor: default; }
+.pin-btn.del { font-size: 18px; background: transparent; }
+#pin-error { color: var(--red); font-size: 12px; margin-top: -28px; margin-bottom: 12px; min-height: 16px; }
+
+/* ── HOME SCREEN ── */
+#home-screen { gap: 0; padding-top: max(env(safe-area-inset-top, 20px), 20px); }
+.home-header {
+  width: 100%; display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 24px;
+}
+.home-greeting { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+.home-date { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.streak-chip {
+  background: linear-gradient(135deg, var(--orange), #ff9f55);
+  border-radius: 20px; padding: 8px 14px;
+  font-size: 15px; font-weight: 800;
+  display: flex; align-items: center; gap: 5px;
+  box-shadow: 0 4px 20px rgba(255,107,53,0.35);
+  flex-shrink: 0;
+}
+
+.level-card {
+  width: 100%; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 20px;
+  padding: 16px 18px; margin-bottom: 14px;
+}
+.level-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.level-name { font-size: 14px; font-weight: 700; color: var(--accent2); }
+.xp-text { font-size: 12px; color: var(--muted); }
+.bar-bg { width: 100%; height: 8px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.bar-fill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width 0.6s ease;
+}
+
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; margin-bottom: 14px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 14px 8px; text-align: center; }
+.stat-num { font-size: 26px; font-weight: 900; }
+.stat-label { font-size: 10px; color: var(--muted); margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+.section-title { width: 100%; font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+
+.ach-row { display: flex; gap: 8px; width: 100%; margin-bottom: 20px; overflow-x: auto; padding-bottom: 4px; }
+.ach-badge {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 10px 12px;
+  font-size: 20px; flex-shrink: 0; text-align: center;
+  position: relative; cursor: pointer;
+  transition: transform 0.15s;
+}
+.ach-badge:active { transform: scale(0.95); }
+.ach-badge.locked { opacity: 0.25; filter: grayscale(1); }
+.ach-badge.unlocked { border-color: var(--accent); box-shadow: 0 0 14px rgba(91,95,199,0.3); }
+
+.due-banner {
+  width: 100%; background: linear-gradient(135deg, rgba(91,95,199,0.15), rgba(91,95,199,0.05));
+  border: 1px solid rgba(91,95,199,0.3); border-radius: 16px;
+  padding: 14px 16px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.due-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.due-text { font-size: 13px; color: var(--accent2); font-weight: 600; }
+.due-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+.start-btn {
+  width: 100%; background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border: none; border-radius: 20px; color: #fff;
+  font-size: 17px; font-weight: 700; padding: 18px;
+  cursor: pointer; letter-spacing: 0.3px;
+  box-shadow: 0 8px 30px rgba(91,95,199,0.4);
+  transition: transform 0.1s, box-shadow 0.1s;
+  margin-top: auto;
+}
+.start-btn:active { transform: scale(0.97); box-shadow: 0 4px 16px rgba(91,95,199,0.3); }
+
+/* ── CARD SCREEN ── */
+#card-screen { justify-content: flex-start; padding-top: max(env(safe-area-inset-top, 20px), 20px); }
+.card-topbar { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.card-progress { font-size: 13px; color: var(--muted); font-weight: 600; }
+.card-xp-label { font-size: 13px; color: var(--accent2); font-weight: 700; }
+.session-bar { width: 100%; height: 4px; background: var(--border); border-radius: 99px; overflow: hidden; margin-bottom: 20px; }
+.session-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 99px; transition: width 0.4s ease; }
+.card-section-tag { align-self: flex-start; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; font-weight: 600; }
+
+.flashcard {
+  width: 100%; flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  padding: 28px 22px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0; margin-bottom: 16px;
+  position: relative; overflow: hidden;
+  cursor: pointer; user-select: none;
+  transition: transform 0.1s;
+  min-height: 0;
+}
+.flashcard:active { transform: scale(0.99); }
+.flashcard::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(91,95,199,0.12), transparent 70%);
+  pointer-events: none;
+}
+.card-phrase {
+  font-size: 20px; font-weight: 700; line-height: 1.4;
+  text-align: center; color: var(--text);
+}
+.card-divider { width: 40px; height: 2px; background: var(--border); border-radius: 99px; margin: 18px 0; flex-shrink: 0; }
+.card-meaning { font-size: 15px; color: var(--accent2); line-height: 1.5; text-align: center; }
+.card-example { font-size: 12px; color: var(--dim); font-style: italic; line-height: 1.5; text-align: center; margin-top: 10px; }
+.card-tap-hint { font-size: 11px; color: var(--dim); letter-spacing: 1px; text-transform: uppercase; margin-top: 20px; }
+.card-answer-area { opacity: 0; transition: opacity 0.3s; pointer-events: none; display: contents; }
+.card-answer-area.visible { opacity: 1; pointer-events: all; }
+
+.answer-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; flex-shrink: 0; }
+.btn-no, .btn-yes {
+  border: none; border-radius: 18px; padding: 16px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  transition: transform 0.1s, opacity 0.1s;
+}
+.btn-no:active, .btn-yes:active { transform: scale(0.95); }
+.btn-no { background: rgba(224,85,85,0.15); border: 1px solid rgba(224,85,85,0.3); color: var(--red); }
+.btn-yes { background: rgba(76,175,116,0.15); border: 1px solid rgba(76,175,116,0.3); color: var(--green); }
+
+/* ── RESULT SCREEN ── */
+#result-screen { justify-content: center; gap: 16px; padding-top: max(env(safe-area-inset-top, 40px), 40px); }
+.result-emoji { font-size: 72px; }
+.result-title { font-size: 28px; font-weight: 900; letter-spacing: -0.5px; }
+.result-sub { font-size: 14px; color: var(--muted); margin-top: 4px; }
+.xp-gained {
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 22px; padding: 22px; width: 100%; text-align: center;
+  box-shadow: 0 0 30px rgba(91,95,199,0.2);
+}
+.xp-big { font-size: 42px; font-weight: 900; color: var(--accent2); letter-spacing: -1px; }
+.xp-sub { font-size: 12px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+.result-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+.rs { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 16px; text-align: center; }
+.rs-num { font-size: 28px; font-weight: 900; }
+.rs-num.g { color: var(--green); }
+.rs-num.r { color: var(--red); }
+.rs-label { font-size: 11px; color: var(--muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+.streak-bonus {
+  background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(255,107,53,0.1));
+  border: 1px solid rgba(255,107,53,0.3);
+  border-radius: 16px; padding: 14px 18px; width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.sb-label { font-size: 14px; font-weight: 600; color: var(--orange); }
+.sb-val { font-size: 16px; font-weight: 800; color: var(--orange); }
+.again-btn {
+  width: 100%; background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border: none; border-radius: 20px; color: #fff;
+  font-size: 17px; font-weight: 700; padding: 18px;
+  cursor: pointer; box-shadow: 0 8px 30px rgba(91,95,199,0.4);
+  transition: transform 0.1s;
+}
+.again-btn:active { transform: scale(0.97); }
+.home-link { font-size: 13px; color: var(--muted); background: none; border: none; cursor: pointer; padding: 4px; }
+.home-link:active { color: var(--text); }
+
+/* ── TOAST ── */
+#toast {
+  position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 14px; padding: 10px 20px;
+  font-size: 13px; font-weight: 600; color: var(--text);
+  opacity: 0; transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none; white-space: nowrap; z-index: 100;
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── SETUP PIN SCREEN ── */
+#setup-screen { justify-content: center; gap: 0; background: var(--bg); }
+
+/* scrollbar hide */
+.screen::-webkit-scrollbar { display: none; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- PIN SCREEN -->
+  <div id="pin-screen" class="screen active">
+    <div class="pin-logo">🧠</div>
+    <div class="pin-title">My English</div>
+    <div class="pin-sub" id="pin-sub">Enter your PIN</div>
+    <div class="pin-dots">
+      <div class="dot" id="d0"></div>
+      <div class="dot" id="d1"></div>
+      <div class="dot" id="d2"></div>
+      <div class="dot" id="d3"></div>
+    </div>
+    <div id="pin-error"></div>
+    <div class="pin-pad">
+      <button class="pin-btn" onclick="pinPress('1')">1</button>
+      <button class="pin-btn" onclick="pinPress('2')">2</button>
+      <button class="pin-btn" onclick="pinPress('3')">3</button>
+      <button class="pin-btn" onclick="pinPress('4')">4</button>
+      <button class="pin-btn" onclick="pinPress('5')">5</button>
+      <button class="pin-btn" onclick="pinPress('6')">6</button>
+      <button class="pin-btn" onclick="pinPress('7')">7</button>
+      <button class="pin-btn" onclick="pinPress('8')">8</button>
+      <button class="pin-btn" onclick="pinPress('9')">9</button>
+      <button class="pin-btn empty"></button>
+      <button class="pin-btn" onclick="pinPress('0')">0</button>
+      <button class="pin-btn del" onclick="pinDel()">⌫</button>
+    </div>
+  </div>
+
+  <!-- HOME SCREEN -->
+  <div id="home-screen" class="screen">
+    <div class="home-header">
+      <div>
+        <div class="home-greeting">Hey, Mykhailo 👋</div>
+        <div class="home-date" id="home-date"></div>
+      </div>
+      <div class="streak-chip">🔥 <span id="streak-num">0</span></div>
+    </div>
+
+    <div class="level-card">
+      <div class="level-row">
+        <div class="level-name" id="level-name">Beginner</div>
+        <div class="xp-text" id="xp-text">0 XP</div>
+      </div>
+      <div class="bar-bg"><div class="bar-fill" id="xp-bar" style="width:0%"></div></div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-total">0</div>
+        <div class="stat-label">Phrases</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-known">0%</div>
+        <div class="stat-label">Known</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-sessions">0</div>
+        <div class="stat-label">Sessions</div>
+      </div>
+    </div>
+
+    <div class="section-title">Achievements</div>
+    <div class="ach-row" id="ach-row"></div>
+
+    <div class="due-banner" id="due-banner">
+      <div class="due-dot"></div>
+      <div>
+        <div class="due-text" id="due-text">Loading phrases...</div>
+        <div class="due-sub" id="due-sub"></div>
+      </div>
+    </div>
+
+    <button class="start-btn" id="start-btn" onclick="startSession()">Start Practice →</button>
+  </div>
+
+  <!-- CARD SCREEN -->
+  <div id="card-screen" class="screen">
+    <div class="card-topbar">
+      <div class="card-progress" id="card-progress">1 / 10</div>
+      <div class="card-xp-label">⚡ <span id="session-xp">0</span> XP</div>
+    </div>
+    <div class="session-bar"><div class="session-fill" id="session-fill" style="width:0%"></div></div>
+    <div class="card-section-tag" id="card-section"></div>
+    <div class="flashcard" id="flashcard" onclick="revealCard()">
+      <div class="card-phrase" id="card-phrase"></div>
+      <div class="card-answer-area" id="card-answer">
+        <div class="card-divider"></div>
+        <div class="card-meaning" id="card-meaning"></div>
+        <div class="card-example" id="card-example"></div>
+      </div>
+      <div class="card-tap-hint" id="card-hint">tap to reveal</div>
+    </div>
+    <div class="answer-btns" id="answer-btns" style="opacity:0;pointer-events:none;transition:opacity 0.3s">
+      <button class="btn-no" onclick="answer(false)">✗ Didn't know</button>
+      <button class="btn-yes" onclick="answer(true)">✓ Knew it</button>
+    </div>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div id="result-screen" class="screen">
+    <div class="result-emoji" id="result-emoji">🎯</div>
+    <div>
+      <div class="result-title" id="result-title">Session done!</div>
+      <div class="result-sub" id="result-sub"></div>
+    </div>
+    <div class="xp-gained">
+      <div class="xp-big" id="result-xp">+0 XP</div>
+      <div class="xp-sub">earned this session</div>
+    </div>
+    <div class="result-stats">
+      <div class="rs"><div class="rs-num g" id="res-yes">0</div><div class="rs-label">Knew it</div></div>
+      <div class="rs"><div class="rs-num r" id="res-no">0</div><div class="rs-label">Missed</div></div>
+    </div>
+    <div class="streak-bonus" id="streak-bonus" style="display:none">
+      <div class="sb-label">🔥 Streak bonus</div>
+      <div class="sb-val" id="streak-bonus-xp">+20 XP</div>
+    </div>
+    <button class="again-btn" onclick="startSession()">Practice Again →</button>
+    <button class="home-link" onclick="goHome()">← Back to home</button>
+  </div>
+
+</div>
+<div id="toast"></div>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────
+const PIN_KEY      = 'eng_pin';
+const STATE_KEY    = 'eng_state';
+const SESSION_SIZE = 10;
+
+const LEVELS = [
+  { name: 'Beginner',     min: 0,    max: 500  },
+  { name: 'Pre-Inter',    min: 500,  max: 1200 },
+  { name: 'Intermediate', min: 1200, max: 2500 },
+  { name: 'Upper-Inter',  min: 2500, max: 4500 },
+  { name: 'Advanced',     min: 4500, max: 7500 },
+  { name: 'Fluent 🎓',   min: 7500, max: 99999 },
+];
+
+const ACHIEVEMENTS = [
+  { id: 'first',    emoji: '🚀', label: 'First session',   check: s => s.sessions >= 1 },
+  { id: 'streak3',  emoji: '🔥', label: '3-day streak',    check: s => s.streak >= 3 },
+  { id: 'streak7',  emoji: '💪', label: '7-day streak',    check: s => s.streak >= 7 },
+  { id: 'streak30', emoji: '🏆', label: '30-day streak',   check: s => s.streak >= 30 },
+  { id: 'c50',      emoji: '💯', label: '50 phrases known', check: s => knownCount(s) >= 50 },
+  { id: 'c100',     emoji: '⭐', label: '100 phrases',     check: s => knownCount(s) >= 100 },
+  { id: 'perfect',  emoji: '🎯', label: 'Perfect session', check: s => s.lastPerfect },
+  { id: 'fluent',   emoji: '🎓', label: 'All known',       check: s => s.xp >= 7500 },
+];
+
+// ── STATE ────────────────────────────────────────────────
+let phrases = [];
+let state   = {};
+let session = { queue: [], idx: 0, yes: 0, no: 0, xp: 0 };
+let revealed = false;
+let pinBuffer = '';
+let settingPin = false;
+let tmpPin = '';
+
+function defaultState() {
+  return { pin: null, xp: 0, streak: 0, lastDate: null, sessions: 0, cards: {}, lastPerfect: false, unlocked: [] };
+}
+
+function save() { localStorage.setItem(STATE_KEY, JSON.stringify(state)); }
+
+function load() {
+  try { state = JSON.parse(localStorage.getItem(STATE_KEY)) || defaultState(); }
+  catch { state = defaultState(); }
+  if (!state.cards) state.cards = {};
+}
+
+function knownCount(s) {
+  return Object.values(s.cards).filter(c => c.ease >= 3).length;
+}
+
+// ── PHRASES ──────────────────────────────────────────────
+async function loadPhrases() {
+  try {
+    const r = await fetch('phrases.json?v=' + Date.now());
+    if (!r.ok) throw new Error();
+    phrases = await r.json();
+  } catch {
+    phrases = FALLBACK_PHRASES;
+  }
+  updateHome();
+}
+
+// ── PIN ──────────────────────────────────────────────────
+function pinPress(d) {
+  if (pinBuffer.length >= 4) return;
+  pinBuffer += d;
+  updateDots();
+  if (pinBuffer.length === 4) setTimeout(() => submitPin(), 120);
+}
+
+function pinDel() {
+  pinBuffer = pinBuffer.slice(0, -1);
+  updateDots();
+}
+
+function updateDots() {
+  for (let i = 0; i < 4; i++) {
+    const el = document.getElementById('d' + i);
+    el.className = 'dot' + (i < pinBuffer.length ? ' filled' : '');
+  }
+}
+
+function submitPin() {
+  if (settingPin) {
+    if (!tmpPin) {
+      tmpPin = pinBuffer;
+      pinBuffer = '';
+      updateDots();
+      document.getElementById('pin-sub').textContent = 'Confirm your PIN';
+      return;
+    }
+    if (pinBuffer === tmpPin) {
+      state.pin = pinBuffer;
+      save();
+      settingPin = false; tmpPin = '';
+      showToast('PIN set! 🔐');
+      showScreen('home-screen');
+    } else {
+      pinError('PINs don\'t match — try again');
+      tmpPin = ''; pinBuffer = '';
+    }
+    return;
+  }
+
+  if (!state.pin) {
+    // First launch — set PIN
+    settingPin = true;
+    tmpPin = '';
+    document.getElementById('pin-sub').textContent = 'Choose a 4-digit PIN';
+    pinBuffer = '';
+    updateDots();
+    return;
+  }
+
+  if (pinBuffer === state.pin) {
+    updateStreak();
+    showScreen('home-screen');
+  } else {
+    pinError('Wrong PIN');
+    pinBuffer = '';
+  }
+}
+
+function pinError(msg) {
+  document.getElementById('pin-error').textContent = msg;
+  for (let i = 0; i < 4; i++) document.getElementById('d' + i).className = 'dot error';
+  setTimeout(() => {
+    document.getElementById('pin-error').textContent = '';
+    updateDots();
+  }, 800);
+}
+
+// ── STREAK ───────────────────────────────────────────────
+function updateStreak() {
+  const today = todayStr();
+  if (state.lastDate === today) return;
+  const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
+  const yStr = yesterday.toISOString().slice(0, 10);
+  state.streak = (state.lastDate === yStr) ? state.streak + 1 : 1;
+  state.lastDate = today;
+  save();
+}
+
+function todayStr() { return new Date().toISOString().slice(0, 10); }
+
+// ── HOME ─────────────────────────────────────────────────
+function updateHome() {
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const now = new Date();
+  document.getElementById('home-date').textContent =
+    days[now.getDay()] + ' · ' + now.toLocaleDateString('en-GB', { day:'numeric', month:'short' });
+
+  document.getElementById('streak-num').textContent = state.streak;
+
+  // Level
+  const lvl = getLevel();
+  document.getElementById('level-name').textContent = '⚡ ' + lvl.name;
+  const pct = Math.round((state.xp - lvl.min) / (lvl.max - lvl.min) * 100);
+  document.getElementById('xp-bar').style.width = Math.min(pct, 100) + '%';
+  document.getElementById('xp-text').textContent = state.xp + ' / ' + lvl.max + ' XP';
+
+  // Stats
+  document.getElementById('stat-total').textContent = phrases.length;
+  const kn = knownCount(state);
+  document.getElementById('stat-known').textContent =
+    phrases.length ? Math.round(kn / phrases.length * 100) + '%' : '0%';
+  document.getElementById('stat-sessions').textContent = state.sessions;
+
+  // Achievements
+  renderAchievements();
+
+  // Due banner
+  const due = getDueQueue();
+  document.getElementById('due-text').textContent =
+    due.length + ' phrase' + (due.length === 1 ? '' : 's') + ' ready to practice';
+  document.getElementById('due-sub').textContent =
+    kn + ' known · ' + (phrases.length - kn) + ' to learn';
+}
+
+function getLevel() {
+  return LEVELS.find(l => state.xp >= l.min && state.xp < l.max) || LEVELS[LEVELS.length - 1];
+}
+
+function renderAchievements() {
+  const row = document.getElementById('ach-row');
+  row.innerHTML = '';
+  ACHIEVEMENTS.forEach(a => {
+    const unlocked = a.check(state);
+    if (unlocked && !state.unlocked.includes(a.id)) {
+      state.unlocked.push(a.id);
+      save();
+    }
+    const el = document.createElement('div');
+    el.className = 'ach-badge' + (unlocked ? ' unlocked' : ' locked');
+    el.textContent = a.emoji;
+    el.title = a.label;
+    row.appendChild(el);
+  });
+}
+
+// ── SESSION ──────────────────────────────────────────────
+function getDueQueue() {
+  if (!phrases.length) return [];
+  const now = Date.now();
+  const due = phrases.filter(p => {
+    const c = state.cards[p.id];
+    if (!c) return true; // new
+    return c.nextReview <= now;
+  });
+  // shuffle
+  for (let i = due.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [due[i], due[j]] = [due[j], due[i]];
+  }
+  return due;
+}
+
+function startSession() {
+  const due = getDueQueue();
+  if (!due.length) { showToast('No phrases due — come back tomorrow! 🎉'); return; }
+  session.queue = due.slice(0, SESSION_SIZE);
+  session.idx = 0; session.yes = 0; session.no = 0; session.xp = 0;
+  showCard();
+  showScreen('card-screen');
+}
+
+function showCard() {
+  revealed = false;
+  const p = session.queue[session.idx];
+  const total = session.queue.length;
+
+  document.getElementById('card-progress').textContent = (session.idx + 1) + ' / ' + total;
+  document.getElementById('session-fill').style.width = (session.idx / total * 100) + '%';
+  document.getElementById('session-xp').textContent = session.xp;
+  document.getElementById('card-section').textContent = p.section;
+  document.getElementById('card-phrase').textContent = '"' + p.phrase + '"';
+  document.getElementById('card-meaning').textContent = p.meaning;
+  document.getElementById('card-example').textContent = p.example ? '"' + p.example + '"' : '';
+  document.getElementById('card-hint').style.display = 'block';
+
+  const ans = document.getElementById('card-answer');
+  ans.className = 'card-answer-area';
+
+  document.getElementById('answer-btns').style.opacity = '0';
+  document.getElementById('answer-btns').style.pointerEvents = 'none';
+}
+
+function revealCard() {
+  if (revealed) return;
+  revealed = true;
+  document.getElementById('card-hint').style.display = 'none';
+  document.getElementById('card-answer').className = 'card-answer-area visible';
+  document.getElementById('answer-btns').style.opacity = '1';
+  document.getElementById('answer-btns').style.pointerEvents = 'all';
+}
+
+function answer(knew) {
+  const p = session.queue[session.idx];
+  const xpEarned = knew ? 10 : 2;
+  session.xp += xpEarned;
+  if (knew) session.yes++; else session.no++;
+
+  // Spaced repetition update
+  let card = state.cards[p.id] || { ease: 2, interval: 1, correct: 0, wrong: 0 };
+  if (knew) {
+    card.correct++;
+    card.ease = Math.min(5, card.ease + 0.5);
+    card.interval = Math.round(card.interval * card.ease);
+  } else {
+    card.wrong++;
+    card.ease = Math.max(1, card.ease - 1);
+    card.interval = 1;
+  }
+  card.interval = Math.max(1, Math.min(card.interval, 30));
+  card.nextReview = Date.now() + card.interval * 24 * 60 * 60 * 1000;
+  state.cards[p.id] = card;
+  save();
+
+  session.idx++;
+  if (session.idx < session.queue.length) {
+    showCard();
+  } else {
+    finishSession();
+  }
+}
+
+function finishSession() {
+  state.sessions++;
+  state.xp += session.xp;
+
+  // Streak bonus
+  let bonus = 0;
+  if (state.streak >= 7) bonus = 30;
+  else if (state.streak >= 3) bonus = 20;
+  else if (state.streak >= 1) bonus = 10;
+  state.xp += bonus;
+
+  const perfect = session.no === 0 && session.yes > 0;
+  state.lastPerfect = perfect;
+  save();
+
+  // Result screen
+  const msgs = perfect
+    ? ['Perfect score! 🔥', 'Unstoppable, Mykhailo!']
+    : session.yes > session.no
+    ? ['Great session! 🎯', "You're improving — keep it up"]
+    : ['Keep grinding 💪', 'Missed some — they\'ll come back'];
+
+  document.getElementById('result-emoji').textContent = perfect ? '🏆' : session.yes > session.no ? '🎯' : '💪';
+  document.getElementById('result-title').textContent = msgs[0];
+  document.getElementById('result-sub').textContent = msgs[1];
+  document.getElementById('result-xp').textContent = '+' + (session.xp + bonus) + ' XP';
+  document.getElementById('res-yes').textContent = session.yes;
+  document.getElementById('res-no').textContent = session.no;
+
+  if (bonus > 0) {
+    document.getElementById('streak-bonus').style.display = 'flex';
+    document.getElementById('streak-bonus-xp').textContent = '+' + bonus + ' XP';
+  } else {
+    document.getElementById('streak-bonus').style.display = 'none';
+  }
+
+  showScreen('result-screen');
+  updateHome();
+}
+
+function goHome() { showScreen('home-screen'); updateHome(); }
+
+// ── UTIL ─────────────────────────────────────────────────
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── FALLBACK PHRASES (subset, in case fetch fails) ───────
+const FALLBACK_PHRASES = [
+  {id:0,phrase:"We should get going",meaning:"It's time to leave",example:"I need to get going or I'll be late.",section:"Everyday Conversation"},
+  {id:1,phrase:"I'm on it",meaning:"I'm handling it",example:"The report will be ready by noon — I'm on it.",section:"Everyday Conversation"},
+  {id:2,phrase:"That's on me",meaning:"I take responsibility for this",example:"We missed the deadline — that's on me.",section:"Everyday Conversation"},
+  {id:3,phrase:"Hold that thought",meaning:"Don't forget what you were about to say; wait a moment",example:"Hold that thought — I need to grab my phone.",section:"Everyday Conversation"},
+  {id:4,phrase:"Fire away",meaning:"Go ahead, I'm ready to listen",example:"Fire away, I'm ready to hear your ideas.",section:"Everyday Conversation"},
+  {id:5,phrase:"We need to ramp up our marketing efforts",meaning:"Increase or grow something gradually and steadily",example:"The company is ramping up hiring before the launch.",section:"Business & Work"},
+  {id:6,phrase:"Don't try to reinvent the wheel",meaning:"Don't redo what already exists and works",example:"Just use the existing template — don't reinvent the wheel.",section:"Business & Work"},
+  {id:7,phrase:"Give him a heads up",meaning:"Warn or inform someone in advance",example:"She gave me a heads up that the boss was angry.",section:"Business & Work"},
+  {id:8,phrase:"My brain just checked out",meaning:"I stopped paying attention briefly",example:"Sorry — my brain just checked out for a second.",section:"Idioms & Figurative Language"},
+  {id:9,phrase:"The project had a rocky start",meaning:"A difficult beginning, now running smoothly",example:"Rocky start, but we're on track now.",section:"Idioms & Figurative Language"},
+];
+
+// ── INIT ─────────────────────────────────────────────────
+load();
+loadPhrases();
+
+if (!state.pin) {
+  document.getElementById('pin-sub').textContent = 'Choose a 4-digit PIN to protect your app';
+  settingPin = true;
+}
+</script>
+</body>
+</html>
