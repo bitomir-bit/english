@@ -5,7 +5,7 @@ Commands: /start, /study, /stats, /add, /reload
 """
 import json, time, logging, os, threading, urllib.request, urllib.parse
 from datetime import date, datetime
-import sheets, srs, claude_api
+import sheets, srs
 
 TOKEN   = os.environ.get("TELEGRAM_TOKEN", "8668507518:AAEOlluogIQvX011YrgkDhj_WPrqoXXxPxg")
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "258041181")
@@ -244,100 +244,15 @@ def finish_session(chat_id):
 # ── Add word flow ──────────────────────────────────────────────────
 
 def start_add_word(chat_id):
-    add_word_state[chat_id] = {"step": "awaiting_input"}
-    resp = send(chat_id,
-                "➕ <b>Add a new card</b>\n\nSend me the word or phrase:",
-                reply_markup=inline_kbd([[("❌ Cancel", "cancel_add")]]))
-    add_word_state[chat_id]["prompt_msg_id"] = resp["result"]["message_id"]
-
-def handle_word_input(chat_id, phrase):
-    state = add_word_state.get(chat_id, {})
-    if state.get("step") != "awaiting_input":
-        return False  # not in add-word flow
-
-    # Show loading
-    loading_resp = send(chat_id, f"⏳ Generating card for <b>{phrase}</b>…")
-    loading_id   = loading_resp["result"]["message_id"]
-
-    card = claude_api.generate_card(phrase)
-
-    if not card:
-        edit(chat_id, loading_id, "❌ Failed to generate card. Try again or check your ANTHROPIC_API_KEY.")
-        add_word_state.pop(chat_id, None)
-        return True
-
-    add_word_state[chat_id] = {
-        "step":       "previewing",
-        "phrase":     phrase,
-        "card":       card,
-        "loading_id": loading_id,
-    }
-
-    # Delete loading message and show preview
-    try:
-        _api("deleteMessage", chat_id=chat_id, message_id=loading_id)
-    except Exception:
-        pass
-
-    show_card_preview(chat_id)
-    return True
-
-def show_card_preview(chat_id):
-    state = add_word_state.get(chat_id, {})
-    card  = state.get("card", {})
-    emoji = SUBTYPE_EMOJI.get(card.get("subtype", ""), "📖")
-
-    blank_line = f"\n<b>Blank:</b> {card['blank']}" if card.get("blank") else ""
-    text = (f"{emoji} <b>{card.get('subtype', '')}</b>\n\n"
-            f"<b>Front:</b> {card.get('front', '')}\n\n"
-            f"<b>Back:</b> {card.get('back', '')}"
-            f"{blank_line}\n\n"
-            f"<i>Looks good? Save it or cancel.</i>")
-    send(chat_id, text, reply_markup=inline_kbd([
-        [("✅ Save card", "confirm_card"), ("❌ Cancel", "cancel_add")],
-    ]))
-
-def confirm_add_word(chat_id):
-    state  = add_word_state.pop(chat_id, {})
-    card   = state.get("card", {})
-    phrase = state.get("phrase", "")
-
-    if not card:
-        send(chat_id, "Something went wrong. Try again.",
-             reply_markup=inline_kbd([[("🏠 Main menu", "menu")]]))
-        return
-
-    new_id = sheets.append_card(
-        phrase  = phrase,
-        subtype = card.get("subtype", "Vocabulary"),
-        front   = card.get("front", ""),
-        back    = card.get("back", ""),
-        blank   = card.get("blank", ""),
-        answer  = card.get("answer", ""),
-        section = card.get("section", "Vocabulary (Single Words)"),
-        source  = "Telegram bot",
-    )
-
-    # Add to in-memory deck immediately
-    all_cards.append({
-        "id":      str(new_id),
-        "phrase":  phrase,
-        "subtype": card.get("subtype", "Vocabulary"),
-        "front":   card.get("front", ""),
-        "back":    card.get("back", ""),
-        "blank":   card.get("blank", ""),
-        "answer":  card.get("answer", ""),
-        "section": card.get("section", ""),
-    })
-
     send(chat_id,
-         f"✅ <b>{phrase}</b> added to your deck!\n"
-         f"<i>Status: Review — edit in the sheet when ready.</i>\n"
-         f"Total cards: <b>{len(all_cards)}</b>",
-         reply_markup=inline_kbd([
-             [("📚 Study now", "study"), ("➕ Add another", "add_word")],
-             [("🏠 Main menu", "menu")],
-         ]))
+         "➕ <b>Adding words</b>\n\n"
+         "Add words directly in the <a href='https://docs.google.com/spreadsheets/d/1W1ytTATU8shA_f9iHE_rSOR4ySNA2GlvnMC2u6-o2zI'>Google Sheet</a> "
+         "(set Status = <b>Ready</b>), then tap 🔄 Reload in the menu.\n\n"
+         "Or send words to this chat and I'll add them for you.",
+         reply_markup=inline_kbd([[("🏠 Main menu", "menu")]]))
+
+def handle_word_input(_chat_id, _phrase):
+    return False  # add-word via AI disabled
 
 # ── Callback router ────────────────────────────────────────────────
 
@@ -361,8 +276,6 @@ def handle_callback(cq):
         send_weak(chat_id)
     elif data == "add_word":
         start_add_word(chat_id)
-    elif data == "confirm_card":
-        confirm_add_word(chat_id)
     elif data == "cancel_add":
         add_word_state.pop(chat_id, None)
         send(chat_id, "Cancelled.",
