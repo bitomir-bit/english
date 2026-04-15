@@ -89,6 +89,7 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 .mode-emoji{font-size:26px;margin-bottom:6px}
 .mode-name{font-size:13px;font-weight:700}
 .mode-desc{font-size:10px;color:var(--muted);margin-top:3px;line-height:1.4}
+.mode-card.m-fill{--mode-color:#4caf74}
 .mode-card.m-choice{--mode-color:#2196f3}
 .mode-card.m-speed{--mode-color:#ff6b35}
 .mode-card.m-weak{--mode-color:#e05555}
@@ -153,8 +154,8 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 }
 .card-face.back{transform:rotateY(180deg)}
 .face-hint{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:16px}
-.face-meaning{font-size:18px;color:var(--accent2);line-height:1.5;text-align:center;font-weight:600}
-.face-example{font-size:12px;color:var(--dim);font-style:italic;line-height:1.5;text-align:center;margin-top:10px}
+.face-meaning{font-size:26px;color:var(--accent2);line-height:1.4;text-align:center;font-weight:700}
+.face-example{font-size:19px;color:#888;font-style:italic;line-height:1.5;text-align:center;margin-top:12px}
 .face-phrase{font-size:20px;font-weight:800;line-height:1.4;text-align:center;color:var(--text)}
 .face-section{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-top:12px}
 .tap-hint{
@@ -253,6 +254,53 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 }
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+/* ── BUG BUTTON ── */
+.bug-btn{background:none;border:none;font-size:16px;cursor:pointer;opacity:.4;padding:4px 6px;transition:opacity .15s,transform .1s;flex-shrink:0}
+.bug-btn.flagged{opacity:1;filter:hue-rotate(0deg)}
+.bug-btn:active{opacity:1;transform:scale(1.3)}
+
+/* ── GEAR BUTTON ── */
+.gear-btn{background:none;border:none;font-size:19px;cursor:pointer;opacity:.45;padding:4px;transition:opacity .15s;flex-shrink:0}
+.gear-btn:active{opacity:1}
+
+/* ── FILL-IN-BLANK SCREEN ── */
+#fill-screen{justify-content:flex-start;padding-top:max(env(safe-area-inset-top,16px),16px)}
+.fill-clue-box{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:20px 18px;text-align:center;margin-bottom:12px;flex-shrink:0}
+.fill-clue-hint{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#4caf74;margin-bottom:8px;font-weight:700}
+.fill-section-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.fill-meaning{font-size:20px;font-weight:700;color:var(--text);line-height:1.45}
+.fill-sentence-box{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:18px;padding:18px 16px;font-size:19px;font-weight:600;color:var(--accent2);line-height:1.5;text-align:center;margin-bottom:12px;flex-shrink:0}
+.blank-slot{color:var(--dim);letter-spacing:3px;font-weight:900}
+.fill-input{width:100%;background:var(--s2);border:2px solid var(--border);border-radius:16px;padding:15px 16px;font-size:18px;color:var(--text);font-family:inherit;outline:none;transition:border-color .2s;margin-bottom:10px;display:block}
+.fill-input:focus{border-color:var(--accent)}
+.fill-input:disabled{opacity:.85}
+.fill-check-btn{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;padding:15px;cursor:pointer;margin-bottom:10px;transition:transform .1s;flex-shrink:0}
+.fill-check-btn:active{transform:scale(.97)}
+.fill-reveal{display:none;width:100%;background:var(--surface);border:1px solid var(--green);border-radius:18px;padding:16px 18px;text-align:center;margin-bottom:10px;flex-shrink:0}
+.fill-reveal.show{display:block}
+.fill-reveal-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:8px;font-weight:700}
+.fill-reveal-phrase{font-size:20px;font-weight:800;color:var(--text);line-height:1.4}
+
+/* ── SETTINGS SCREEN ── */
+#settings-screen{justify-content:flex-start;gap:12px;padding-top:max(env(safe-area-inset-top,20px),20px)}
+.settings-back{background:none;border:none;color:var(--muted);font-size:13px;cursor:pointer;padding:0;align-self:flex-start;margin-bottom:2px}
+.settings-hdr{width:100%;font-size:22px;font-weight:800}
+.settings-section-lbl{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;align-self:flex-start}
+.settings-card{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:16px}
+.settings-label{font-size:14px;font-weight:700;margin-bottom:6px}
+.settings-sub{font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.5}
+.settings-input{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--text);font-family:inherit;outline:none;transition:border-color .2s}
+.settings-input:focus{border-color:var(--accent)}
+.settings-save-btn{background:var(--accent);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:700;padding:11px;cursor:pointer;margin-top:10px;transition:transform .1s;width:100%}
+.settings-save-btn:active{transform:scale(.97)}
+.sync-status{font-size:12px;margin-top:8px;min-height:16px}
+.sync-status.ok{color:var(--green)}
+.sync-status.err{color:var(--red)}
+.flagged-item{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);gap:8px}
+.flagged-item:last-child{border-bottom:none}
+.flagged-phrase{font-size:13px;line-height:1.4;flex:1}
+.unflag-btn{background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px;flex-shrink:0;padding:2px 6px;border:1px solid var(--border);border-radius:8px}
+
 /* ── TOOLTIP ── */
 #tooltip{
   position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
@@ -299,7 +347,10 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
         <div class="home-greeting">Hey, Mykhailo 👋</div>
         <div class="home-date" id="home-date"></div>
       </div>
-      <div class="streak-chip">🔥 <span id="streak-num">0</span></div>
+      <div style="display:flex;align-items:flex-start;gap:8px">
+        <button class="gear-btn" onclick="showSettings()" title="Settings">⚙️</button>
+        <div class="streak-chip">🔥 <span id="streak-num">0</span></div>
+      </div>
     </div>
     <div class="level-card">
       <div class="level-row">
@@ -329,6 +380,7 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
     <div class="card-topbar">
       <button class="exit-btn" onclick="exitSession()">✕</button>
       <div class="card-prog" id="card-prog">1 / 10</div>
+      <button class="bug-btn" id="bug-btn" onclick="flagCard()" title="Flag this card">🐛</button>
       <div class="card-xp-lbl">⚡ <span id="sess-xp">0</span> XP</div>
     </div>
     <div class="session-bar"><div class="session-fill" id="sess-fill" style="width:0%"></div></div>
@@ -405,6 +457,63 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
     <button class="home-link" onclick="goHome()">← Back to home</button>
   </div>
 
+  <!-- FILL-IN-BLANK SCREEN -->
+  <div id="fill-screen" class="screen">
+    <div class="card-topbar">
+      <button class="exit-btn" onclick="exitSession()">✕</button>
+      <div class="card-prog" id="fill-prog">1 / 10</div>
+      <button class="bug-btn" id="fill-bug-btn" onclick="flagFillCard()" title="Flag this card">🐛</button>
+      <div class="card-xp-lbl">⚡ <span id="fill-xp">0</span> XP</div>
+    </div>
+    <div class="session-bar"><div class="session-fill" id="fill-fill" style="width:0%"></div></div>
+    <div class="mode-badge" style="color:#4caf74">✏️ FILL IN THE BLANK</div>
+
+    <div class="fill-clue-box">
+      <div class="fill-clue-hint" id="fill-clue-hint">Fill in the blank</div>
+      <div class="fill-section-lbl" id="fill-section-lbl"></div>
+      <div class="fill-meaning" id="fill-meaning"></div>
+    </div>
+
+    <div class="fill-sentence-box" id="fill-sentence-box"></div>
+
+    <input class="fill-input" id="fill-input" type="text" placeholder="Type your answer…"
+           onkeydown="if(event.key==='Enter' && !fillState.revealed) checkFillAnswer()">
+
+    <button class="fill-check-btn" id="fill-check-btn" onclick="checkFillAnswer()">Check →</button>
+
+    <div class="fill-reveal" id="fill-reveal">
+      <div class="fill-reveal-label">✓ Full phrase</div>
+      <div class="fill-reveal-phrase" id="fill-reveal-phrase"></div>
+    </div>
+
+    <div class="answer-btns hidden" id="fill-answer-btns">
+      <button class="btn-again" onclick="rateFillCard('again')">Again<span class="btn-interval" id="fill-int-again">1d</span></button>
+      <button class="btn-hard"  onclick="rateFillCard('hard')">Hard<span class="btn-interval" id="fill-int-hard">3d</span></button>
+      <button class="btn-good"  onclick="rateFillCard('good')">Good<span class="btn-interval" id="fill-int-good">4d</span></button>
+      <button class="btn-easy"  onclick="rateFillCard('easy')">Easy<span class="btn-interval" id="fill-int-easy">7d</span></button>
+    </div>
+  </div>
+
+  <!-- SETTINGS SCREEN -->
+  <div id="settings-screen" class="screen">
+    <button class="settings-back" onclick="showScreen('home-screen')">← Back</button>
+    <div class="settings-hdr">Settings ⚙️</div>
+
+    <div class="settings-section-lbl">GitHub Sync</div>
+    <div class="settings-card">
+      <div class="settings-label">Personal Access Token</div>
+      <div class="settings-sub">Syncs your SRS progress to a private file in your GitHub repo — so it's saved across devices. Create a token at <b>github.com → Settings → Developer settings → Personal access tokens</b> with <b>repo</b> scope.</div>
+      <input class="settings-input" id="gh-pat-input" type="password" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off">
+      <button class="settings-save-btn" onclick="saveGhToken()">Save &amp; Sync Now</button>
+      <div class="sync-status" id="sync-status"></div>
+    </div>
+
+    <div class="settings-section-lbl">Flagged Cards 🐛</div>
+    <div class="settings-card">
+      <div id="flagged-list"><div style="color:var(--muted);font-size:13px">No flagged cards yet</div></div>
+    </div>
+  </div>
+
 </div>
 <div id="toast"></div>
 <div id="tooltip"></div>
@@ -419,6 +528,7 @@ const SPEED_SECONDS = 5;
 
 const MODES = [
   { id:'classic', name:'Classic',         emoji:'🃏', desc:'Flip cards · swipe to answer', cls:'m-classic' },
+  { id:'fill',    name:'Fill-in-blank',   emoji:'✏️', desc:'Complete the sentence',        cls:'m-fill'    },
   { id:'choice',  name:'Multi Choice',    emoji:'🎯', desc:'Pick the right meaning',       cls:'m-choice'  },
   { id:'speed',   name:'Speed Round',     emoji:'⚡', desc:'5 seconds per card',           cls:'m-speed'   },
   { id:'weak',    name:'Weak Phrases',    emoji:'💪', desc:'Focus on what you miss',       cls:'m-weak'    },
@@ -694,6 +804,9 @@ function startSession() {
   if (mode === 'choice') {
     showChoiceCard();
     showScreen('choice-screen');
+  } else if (mode === 'fill') {
+    showFillCard();
+    showScreen('fill-screen');
   } else {
     showCardScreen();
     showScreen('card-screen');
@@ -750,6 +863,9 @@ function showCard() {
   document.getElementById('swipe-right').style.opacity = '0';
   document.getElementById('swipe-left').style.opacity = '0';
   document.getElementById('answer-btns').className = 'answer-btns hidden';
+
+  const flagged = (state.flagged || []).includes(session.queue[session.idx]?.id);
+  document.getElementById('bug-btn').className = 'bug-btn' + (flagged ? ' flagged' : '');
 
   if (session.mode === 'speed') startTimer();
   setupSwipe();
@@ -1010,6 +1126,7 @@ function finishSession() {
 
   showScreen('result-screen');
   updateHome();
+  ghPush(); // background sync to GitHub if token set
 }
 
 function goHome() { showScreen('home-screen'); updateHome(); }
@@ -1029,6 +1146,279 @@ function showToast(msg) {
 function showTip(msg) {
   const t=document.getElementById('tooltip'); t.textContent=msg; t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2000);
+}
+
+// ═══════════════════════════════════════════════
+// FILL-IN-BLANK MODE
+// ═══════════════════════════════════════════════
+let fillState = {};
+
+function makeBlank(p) {
+  const example = (p.example || '').trim();
+  if (!example) return { sentence: null, answer: p.phrase };
+
+  const stop = new Set(['a','an','the','is','am','are','was','were','be','been','being',
+    'have','has','had','do','does','did','will','would','could','should','may','might',
+    'to','of','in','on','at','by','for','with','from','i','you','he','she','it','we',
+    'they','me','him','her','us','them','my','your','his','this','that','now','just',
+    'so','not','no','but','and','or','if','then','when','up','out','back','get','got']);
+
+  const keyWords = p.phrase.toLowerCase().replace(/[.,!?'"]/g,'').split(/\s+/)
+    .filter(w => w.length > 2 && !stop.has(w));
+
+  if (!keyWords.length) return { sentence: null, answer: p.phrase };
+
+  const exLower = example.toLowerCase();
+  let bestWord = null, bestStart = -1, bestEnd = -1;
+
+  for (const kw of keyWords) {
+    const idx = exLower.indexOf(kw);
+    if (idx < 0) continue;
+    const before = idx === 0 || /[\s.,!?'"]/.test(example[idx - 1]);
+    const after  = idx + kw.length >= example.length || /[\s.,!?'"]/.test(example[idx + kw.length]);
+    if ((before || after) && kw.length > (bestWord ? bestWord.length : 0)) {
+      bestWord = kw; bestStart = idx; bestEnd = idx + kw.length;
+    }
+  }
+
+  if (!bestWord) return { sentence: null, answer: p.phrase };
+
+  const answer   = example.slice(bestStart, bestEnd);
+  const sentence = example.slice(0, bestStart) + '<span class="blank-slot">___</span>' + example.slice(bestEnd);
+  return { sentence, answer };
+}
+
+function showFillCard() {
+  fillState = { revealed: false };
+  const p     = session.queue[session.idx];
+  const total = session.queue.length;
+
+  document.getElementById('fill-prog').textContent      = (session.idx+1) + ' / ' + total;
+  document.getElementById('fill-fill').style.width      = (session.idx / total * 100) + '%';
+  document.getElementById('fill-xp').textContent        = session.xp;
+  document.getElementById('fill-meaning').textContent   = p.meaning;
+  document.getElementById('fill-section-lbl').textContent = p.section;
+
+  const { sentence, answer } = makeBlank(p);
+  fillState.answer  = answer;
+  fillState.phrase  = p.phrase;
+  fillState.p       = p;
+
+  const sentEl = document.getElementById('fill-sentence-box');
+  if (sentence) {
+    sentEl.innerHTML     = sentence;
+    sentEl.style.display = 'block';
+    document.getElementById('fill-clue-hint').textContent = 'Fill in the blank';
+  } else {
+    sentEl.style.display = 'none';
+    document.getElementById('fill-clue-hint').textContent = 'What\'s the phrase?';
+  }
+
+  const inp = document.getElementById('fill-input');
+  inp.value   = '';
+  inp.disabled = false;
+  inp.style.borderColor = '';
+  inp.style.color       = '';
+
+  document.getElementById('fill-reveal').classList.remove('show');
+  document.getElementById('fill-answer-btns').className = 'answer-btns hidden';
+  document.getElementById('fill-check-btn').style.display = 'block';
+
+  // Mark bug button if flagged
+  const flagged = (state.flagged || []).includes(p.id);
+  document.getElementById('fill-bug-btn').className = 'bug-btn' + (flagged ? ' flagged' : '');
+
+  setTimeout(() => document.getElementById('fill-input').focus(), 350);
+}
+
+function checkFillAnswer() {
+  if (fillState.revealed) return;
+  fillState.revealed = true;
+
+  const inp    = document.getElementById('fill-input');
+  const input  = inp.value.trim();
+  const answer = fillState.answer;
+  const correct = input.toLowerCase() === answer.toLowerCase();
+
+  inp.disabled       = true;
+  inp.style.borderColor = correct ? 'var(--green)' : 'var(--red)';
+  inp.style.color       = correct ? 'var(--green)' : 'var(--red)';
+
+  document.getElementById('fill-check-btn').style.display = 'none';
+  document.getElementById('fill-reveal-phrase').textContent = fillState.phrase;
+  document.getElementById('fill-reveal').classList.add('show');
+
+  const p    = fillState.p;
+  const card = state.cards[p.id] ? migrateCard(state.cards[p.id]) : {reps:0,interval:1,ease:INIT_EASE};
+  const iv   = _previewIntervals(card);
+  document.getElementById('fill-int-again').textContent = _fmtDays(iv.again);
+  document.getElementById('fill-int-hard').textContent  = _fmtDays(iv.hard);
+  document.getElementById('fill-int-good').textContent  = _fmtDays(iv.good);
+  document.getElementById('fill-int-easy').textContent  = _fmtDays(iv.easy);
+  document.getElementById('fill-answer-btns').className = 'answer-btns';
+}
+
+function rateFillCard(rating) {
+  const p         = fillState.p;
+  const xpGained  = XP_MAP[rating];
+  session.xp     += xpGained;
+  const knew      = rating !== 'again';
+  if (knew) session.yes++; else session.no++;
+
+  let card = state.cards[p.id] ? migrateCard(state.cards[p.id])
+                                : {reps:0,interval:1,ease:INIT_EASE,correct:0,wrong:0};
+  const newInterval = _nextInterval(card, rating);
+  const newEase     = Math.max(MIN_EASE, (card.ease||INIT_EASE) + EASE_DELTA[rating]);
+  const dueDate     = new Date(); dueDate.setDate(dueDate.getDate() + newInterval);
+  card.reps     = knew ? (card.reps||0) + 1 : 0;
+  card.interval = newInterval;
+  card.ease     = Math.round(newEase * 1000) / 1000;
+  card.due      = dueDate.toISOString().slice(0,10);
+  if (knew) card.correct = (card.correct||0) + 1;
+  else      card.wrong   = (card.wrong||0)   + 1;
+  state.cards[p.id] = card;
+  save();
+
+  session.idx++;
+  if (session.idx < session.queue.length) showFillCard();
+  else finishSession();
+}
+
+function flagFillCard() {
+  const p = fillState.p;
+  if (!p) return;
+  if (!state.flagged) state.flagged = [];
+  if (!state.flagged.includes(p.id)) {
+    state.flagged.push(p.id);
+    save();
+  }
+  document.getElementById('fill-bug-btn').className = 'bug-btn flagged';
+  showToast('🐛 Flagged — check Settings to review');
+}
+
+// ═══════════════════════════════════════════════
+// BUG FLAG (classic / speed / weak / boss modes)
+// ═══════════════════════════════════════════════
+function flagCard() {
+  if (!session.queue.length) return;
+  const p = session.queue[session.idx];
+  if (!p) return;
+  if (!state.flagged) state.flagged = [];
+  if (!state.flagged.includes(p.id)) {
+    state.flagged.push(p.id);
+    save();
+  }
+  document.getElementById('bug-btn').className = 'bug-btn flagged';
+  showToast('🐛 Flagged — check Settings to review');
+}
+
+// ═══════════════════════════════════════════════
+// SETTINGS
+// ═══════════════════════════════════════════════
+function showSettings() {
+  const stored = localStorage.getItem('gh_pat') || '';
+  document.getElementById('gh-pat-input').value = stored ? '••••••••••••••••' : '';
+  renderFlagged();
+  showScreen('settings-screen');
+}
+
+function renderFlagged() {
+  const list = document.getElementById('flagged-list');
+  const flagged = state.flagged || [];
+  if (!flagged.length) {
+    list.innerHTML = '<div style="color:var(--muted);font-size:13px">No flagged cards yet</div>';
+    return;
+  }
+  list.innerHTML = flagged.map(id => {
+    const p = phrases.find(x => x.id === id);
+    const label = p ? `"${p.phrase}"` : `Card #${id}`;
+    return `<div class="flagged-item">
+      <div class="flagged-phrase">${label}</div>
+      <button class="unflag-btn" onclick="unflagCard(${JSON.stringify(id)})">Remove</button>
+    </div>`;
+  }).join('');
+}
+
+function unflagCard(id) {
+  state.flagged = (state.flagged || []).filter(x => x !== id);
+  save();
+  renderFlagged();
+}
+
+// ═══════════════════════════════════════════════
+// GITHUB SYNC
+// ═══════════════════════════════════════════════
+const GH_REPO      = 'bitomir-bit/english';
+const GH_STATE_FILE = 'srs_state.json';
+
+async function ghGetFile() {
+  const token = localStorage.getItem('gh_pat');
+  if (!token) return null;
+  try {
+    const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_STATE_FILE}`, {
+      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
+    });
+    if (r.status === 404) return { data: null, sha: null };
+    if (!r.ok) return null;
+    const resp = await r.json();
+    const data = JSON.parse(atob(resp.content.replace(/\n/g, '')));
+    return { data, sha: resp.sha };
+  } catch { return null; }
+}
+
+async function ghPush() {
+  const token = localStorage.getItem('gh_pat');
+  if (!token) return false;
+  try {
+    const existing = await ghGetFile();
+    if (existing === null) return false;
+    const payload = JSON.stringify({ cards: state.cards, flagged: state.flagged || [] }, null, 2);
+    const content  = btoa(unescape(encodeURIComponent(payload)));
+    const body     = { message: `sync ${todayStr()}`, content };
+    if (existing.sha) body.sha = existing.sha;
+    const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_STATE_FILE}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${token}`,
+        Accept: 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+    return r.ok;
+  } catch { return false; }
+}
+
+async function ghLoadOnStartup() {
+  const result = await ghGetFile();
+  if (!result || !result.data) return;
+  // Merge: GitHub wins for reviewed cards, local keeps new-only cards
+  if (result.data.cards)   state.cards   = { ...state.cards,   ...result.data.cards };
+  if (result.data.flagged) state.flagged  = result.data.flagged;
+  save();
+}
+
+async function saveGhToken() {
+  const inp = document.getElementById('gh-pat-input');
+  const val = inp.value.trim();
+  if (!val || val.startsWith('•')) {
+    // No change, just sync with existing token
+    const status = document.getElementById('sync-status');
+    status.textContent = 'Syncing…';
+    status.className = 'sync-status';
+    const ok = await ghPush();
+    status.textContent = ok ? '✓ Synced successfully' : '✗ Sync failed — check your token';
+    status.className = 'sync-status ' + (ok ? 'ok' : 'err');
+    return;
+  }
+  localStorage.setItem('gh_pat', val);
+  inp.value = '••••••••••••••••';
+  const status = document.getElementById('sync-status');
+  status.textContent = 'Testing & syncing…';
+  status.className = 'sync-status';
+  const ok = await ghPush();
+  status.textContent = ok ? '✓ Token saved & synced!' : '✗ Failed — check token has repo scope';
+  status.className = 'sync-status ' + (ok ? 'ok' : 'err');
 }
 
 // ═══════════════════════════════════════════════
@@ -1053,6 +1443,7 @@ const FALLBACK = [
 load();
 loadPhrases();
 renderModes();
+ghLoadOnStartup();
 
 if (!state.pin) {
   document.getElementById('pin-sub').textContent = 'Choose a 4-digit PIN to protect your app';
