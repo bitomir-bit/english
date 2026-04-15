@@ -805,7 +805,9 @@ function setupSwipe() {
     document.getElementById('swipe-left').style.opacity  = dx < 0 ? pct : 0;
   }, {passive:false, signal:sig});
 
+  let lastTouch = 0;
   wrap.addEventListener('touchend', e => {
+    lastTouch = Date.now();
     const dx = e.changedTouches[0].clientX - startX;
     const dy = e.changedTouches[0].clientY - startY;
     if (!dragging && Math.abs(dx) < 10 && Math.abs(dy) < 10) {
@@ -824,7 +826,7 @@ function setupSwipe() {
   }, {passive:true, signal:sig});
 
   wrap.addEventListener('click', () => {
-    if (!dragging) flipCard();
+    if (Date.now() - lastTouch > 300 && !dragging) flipCard();
   }, {signal:sig});
 }
 
