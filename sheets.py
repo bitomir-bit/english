@@ -21,27 +21,29 @@ def _service():
 
 # ── Cards ──────────────────────────────────────────────────────────
 
-def load_cards(status_filter=None):
-    """Return all non-flagged cards. Includes SRS state from sheet columns K-N."""
+def load_all():
+    """Single API call — returns (cards, srs_state, id_row_map)."""
     result = _service().spreadsheets().values().get(
         spreadsheetId=SHEET_ID,
         range=f"{SHEET_NAME}!A:N"
     ).execute()
     rows = result.get("values", [])
     if not rows:
-        return []
+        return [], {}, {}
 
-    cards = []
-    for row in rows[1:]:
+    cards       = []
+    srs_state   = {}
+    id_row_map  = {}
+
+    for i, row in enumerate(rows[1:], start=2):
         row = list(row) + [""] * (14 - len(row))
-        cid     = row[0].strip()
-        status  = row[9].strip()
+        cid    = row[0].strip()
+        status = row[9].strip()
 
-        if "flagged" in status.lower():
-            continue
-        if status_filter and status.lower() != status_filter.lower():
-            continue
-        if not row[3].strip():  # no front
+        if cid.isdigit():
+            id_row_map[cid] = i
+
+        if "flagged" in status.lower() or not row[3].strip():
             continue
 
         cards.append({
@@ -54,39 +56,33 @@ def load_cards(status_filter=None):
             "answer":  row[6].strip(),
             "section": row[7].strip(),
         })
-    return cards
 
-# ── SRS state persisted in sheet columns K-N ──────────────────────
-# K=Times Reviewed, L=Interval (days), M=Due Date, N=Ease Factor
-
-def load_srs_state():
-    """Build an srs state dict from sheet columns K-N. Returns {card_id: {...}}."""
-    result = _service().spreadsheets().values().get(
-        spreadsheetId=SHEET_ID,
-        range=f"{SHEET_NAME}!A:N"
-    ).execute()
-    rows  = result.get("values", [])
-    state = {}
-    for row in rows[1:]:
-        row = list(row) + [""] * (14 - len(row))
-        cid = row[0].strip()
-        if not cid.isdigit():
-            continue
-        reps     = row[10].strip()
-        interval = row[11].strip()
-        due      = row[12].strip()
-        ease     = row[13].strip()
-        if reps:  # only include cards that have been reviewed
+        reps = row[10].strip()
+        if reps and cid.isdigit():
             try:
-                state[cid] = {
+                srs_state[cid] = {
                     "reps":     int(reps),
-                    "interval": int(interval) if interval else 1,
-                    "due":      due,
-                    "ease":     float(ease) if ease else 2.5,
+                    "interval": int(row[11]) if row[11].strip() else 1,
+                    "due":      row[12].strip(),
+                    "ease":     float(row[13]) if row[13].strip() else 2.5,
                 }
             except ValueError:
                 pass
-    return state
+
+    return cards, srs_state, id_row_map
+
+# Keep these for backwards compatibility
+def load_cards(status_filter=None):
+    cards, _, _ = load_all()
+    return cards
+
+def load_srs_state():
+    _, srs_state, _ = load_all()
+    return srs_state
+
+def build_id_row_map():
+    _, _, id_row_map = load_all()
+    return id_row_map
 
 def save_card_state(card_id: str, card_state: dict, id_row_map: dict):
     """Write one card's SRS state to K-N immediately after rating."""
@@ -104,14 +100,6 @@ def save_card_state(card_id: str, card_state: dict, id_row_map: dict):
             round(card_state.get("ease", 2.5), 2),
         ]]}
     ).execute()
-
-def build_id_row_map():
-    """Return {card_id: sheet_row_number} for fast lookups."""
-    result = _service().spreadsheets().values().get(
-        spreadsheetId=SHEET_ID, range=f"{SHEET_NAME}!A:A"
-    ).execute()
-    rows = result.get("values", [])
-    return {row[0]: i + 1 for i, row in enumerate(rows) if row and row[0].isdigit()}
 
 def sync_scores(srs_state: dict):
     """Bulk-write all SRS state to sheet. Called at session end."""

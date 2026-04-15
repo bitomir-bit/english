@@ -327,8 +327,7 @@ def handle_callback(cq):
 def reload_cards(chat_id=None):
     global all_cards, id_row_map
     log.info("Reloading cards from sheet…")
-    all_cards  = sheets.load_cards()
-    id_row_map = sheets.build_id_row_map()
+    all_cards, _, id_row_map = sheets.load_all()
     log.info(f"Reloaded — {len(all_cards)} cards")
     if chat_id:
         send(chat_id, f"🔄 Deck reloaded — <b>{len(all_cards)}</b> cards ready.",
@@ -389,17 +388,12 @@ def _reminder_loop():
 def run():
     global all_cards
     log.info("Loading cards from Google Sheets…")
-    all_cards = sheets.load_cards()
+    all_cards, sheet_state, id_row_map_local = sheets.load_all()
+    global id_row_map
+    id_row_map = id_row_map_local
     log.info(f"Loaded {len(all_cards)} cards")
-
-    log.info("Loading SRS state from sheet…")
-    sheet_state = sheets.load_srs_state()
     srs.load_from_sheet(sheet_state)
     log.info(f"SRS state: {len(sheet_state)} reviewed cards")
-
-    log.info("Building ID→row map…")
-    global id_row_map
-    id_row_map = sheets.build_id_row_map()
 
     # Start daily reminder in background thread
     t = threading.Thread(target=_reminder_loop, daemon=True)
