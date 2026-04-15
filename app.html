@@ -756,21 +756,25 @@ function showCard() {
 }
 
 function flipCard() {
-  if (isFlipped) return;
-  isFlipped = true;
-  document.getElementById('card-inner').classList.add('flipped');
-  document.getElementById('tap-hint').style.opacity = '0';
-  document.getElementById('answer-btns').className = 'answer-btns';
-  if (session.mode === 'speed') clearTimer();
+  isFlipped = !isFlipped;
+  const inner = document.getElementById('card-inner');
+  inner.classList.toggle('flipped', isFlipped);
+  document.getElementById('tap-hint').style.opacity = isFlipped ? '0' : '1';
+  document.getElementById('answer-btns').className = 'answer-btns' + (isFlipped ? '' : ' hidden');
 
-  // Show preview intervals on buttons
-  const p = session.queue[session.idx];
-  const card = state.cards[p.id] ? migrateCard(state.cards[p.id]) : {reps:0,interval:1,ease:INIT_EASE};
-  const iv = _previewIntervals(card);
-  document.getElementById('int-again').textContent = _fmtDays(iv.again);
-  document.getElementById('int-hard').textContent  = _fmtDays(iv.hard);
-  document.getElementById('int-good').textContent  = _fmtDays(iv.good);
-  document.getElementById('int-easy').textContent  = _fmtDays(iv.easy);
+  if (isFlipped) {
+    if (session.mode === 'speed') clearTimer();
+    // Show preview intervals on buttons
+    const p = session.queue[session.idx];
+    const card = state.cards[p.id] ? migrateCard(state.cards[p.id]) : {reps:0,interval:1,ease:INIT_EASE};
+    const iv = _previewIntervals(card);
+    document.getElementById('int-again').textContent = _fmtDays(iv.again);
+    document.getElementById('int-hard').textContent  = _fmtDays(iv.hard);
+    document.getElementById('int-good').textContent  = _fmtDays(iv.good);
+    document.getElementById('int-easy').textContent  = _fmtDays(iv.easy);
+  } else {
+    if (session.mode === 'speed') startTimer();
+  }
 }
 
 // ─── SWIPE ───────────────────────────────────
@@ -805,7 +809,7 @@ function setupSwipe() {
     const dx = e.changedTouches[0].clientX - startX;
     const dy = e.changedTouches[0].clientY - startY;
     if (!dragging && Math.abs(dx) < 10 && Math.abs(dy) < 10) {
-      if (!isFlipped) flipCard();
+      flipCard();
       dragging = false; return;
     }
     if (!isFlipped) { resetCardPos(); dragging = false; return; }
@@ -820,7 +824,7 @@ function setupSwipe() {
   }, {passive:true, signal:sig});
 
   wrap.addEventListener('click', () => {
-    if (!isFlipped && !dragging) flipCard();
+    if (!dragging) flipCard();
   }, {signal:sig});
 }
 
