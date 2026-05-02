@@ -2350,5 +2350,334 @@
     "meaning": "4 different meanings:",
     "example": "",
     "section": "Common Corrections & Awkward Phrases"
+  },
+  {
+    "phrase": "Compelled",
+    "meaning": "Forced or strongly driven to do something",
+    "example": "She felt compelled to speak up during the meeting, even though it was uncomfortable.",
+    "section": "Vocabulary (Single Words)",
+    "id": 336
+  },
+  {
+    "phrase": "Jerky",
+    "meaning": "Moving with sudden jolts; OR (informal) rude/stupid; OR dried meat snack",
+    "example": "The video feed was jerky and kept cutting out. / He was pretty jerky to her in front of the whole team.",
+    "section": "Vocabulary (Single Words)",
+    "id": 337
+  },
+  {
+    "phrase": "Jersey",
+    "meaning": "A soft knitted sweater or fabric; also a US state and a British island",
+    "example": "He wore a dark jersey to the office — casual but smart.",
+    "section": "Vocabulary (Single Words)",
+    "id": 338
+  },
+  {
+    "phrase": "To offset slow performance",
+    "meaning": "To compensate for or counterbalance poor results",
+    "example": "We ran a flash sale to offset slow performance in Q1.",
+    "section": "Business & Work",
+    "id": 339
+  },
+  {
+    "phrase": "The project hit a few hiccups along the way",
+    "meaning": "Had small, temporary problems or delays — hiccup = minor glitch, not medical",
+    "example": "The launch hit a few hiccups, but we shipped by Friday.",
+    "section": "Business & Work",
+    "id": 340
+  },
+  {
+    "phrase": "I have the hiccups",
+    "meaning": "The medical condition — repeated involuntary spasms of the diaphragm",
+    "example": "Sorry, I have the hiccups — give me a second before I start the call.",
+    "section": "Everyday Conversation",
+    "id": 341
+  },
+  {
+    "phrase": "What constitutes a premium car service is up for debate",
+    "meaning": "What counts as premium is arguable — people don't agree on the definition",
+    "example": "What constitutes good customer support is up for debate — every team defines it differently.",
+    "section": "Business & Work",
+    "id": 342
+  },
+  {
+    "phrase": "\"For sale: baby shoes, never worn.\"",
+    "meaning": "Hemingway's 6-word story — implies the baby never survived to use them",
+    "example": "It's like that Hemingway line — 'For sale: baby shoes, never worn.' Six words, but you feel everything.",
+    "section": "Idioms & Figurative Language",
+    "id": 343
+  },
+  {
+    "phrase": "Condenser",
+    "meaning": "Device that condenses vapor to liquid; in electronics: capacitor; in AC: cools air",
+    "example": "The AC stopped working — turned out the condenser was clogged.",
+    "section": "Vocabulary (Single Words)",
+    "id": 344
+  },
+  {
+    "phrase": "A chain is only as strong as its weakest link",
+    "meaning": "A system's strength depends entirely on its most vulnerable part",
+    "example": "Our pipeline is solid, but if the API feed breaks, everything breaks — a chain is only as strong as its weakest link.",
+    "section": "Idioms & Figurative Language",
+    "id": 345
+  },
+  {
+    "phrase": "Should I just give you her personal number?",
+    "meaning": "At a Swedish pharmacy — 'personal number' = personnummer, used to access prescriptions",
+    "example": "I'd like to pick up a prescription for my daughter — should I just give you her personal number?",
+    "section": "Everyday Conversation",
+    "id": 346
+  },
+  {
+    "phrase": "What is the cause of this?",
+    "meaning": "What caused this? / Why did this happen?",
+    "example": "The conversion rate dropped 20% overnight. What is the cause of this?",
+    "section": "Everyday Conversation",
+    "id": 347
+  },
+  {
+    "phrase": "I was overwhelmed with tasks today",
+    "meaning": "Had too many tasks at once — felt unable to cope",
+    "example": "I was overwhelmed with tasks today — three urgent tickets came in right before standup.",
+    "section": "Everyday Conversation",
+    "id": 348
+  },
+  {
+    "phrase": "I managed to finish the presentation",
+    "meaning": "Succeeded in completing it despite difficulty or time pressure",
+    "example": "I managed to finish the presentation just before the client call — it was close.",
+    "section": "Business & Work",
+    "id": 349
+  },
+  {
+    "phrase": "I managed to finish my workout",
+    "meaning": "Succeeded in finishing despite tiredness or a busy day",
+    "example": "I managed to finish my workout even though I only had 30 minutes.",
+    "section": "Everyday Conversation",
+    "id": 350
+  },
+  {
+    "phrase": "I might be a few minutes late for the meeting",
+    "meaning": "Possibly arriving slightly after the start time",
+    "example": "Just a heads up — I might be a few minutes late, I'm wrapping up another call.",
+    "section": "Business & Work",
+    "id": 351
+  },
+  {
+    "phrase": "I couldn't help but get the jitters",
+    "meaning": "Couldn't avoid feeling nervous — jitters = anxiety before something important",
+    "example": "I couldn't help but get the jitters before the big presentation, even though I knew the material cold.",
+    "section": "Idioms & Figurative Language",
+    "id": 352
+  },
+  {
+    "phrase": "Affection",
+    "meaning": "A gentle feeling of fondness or love toward someone",
+    "example": "He showed real affection for his team — always remembered birthdays and checked in on people.",
+    "section": "Vocabulary (Single Words)",
+    "id": 353
+  },
+  {
+    "phrase": "Claws",
+    "meaning": "Sharp curved nails on an animal's feet; to scratch",
+    "example": "The cat left claw marks all over the sofa.",
+    "section": "Vocabulary (Single Words)",
+    "id": 354
+  },
+  {
+    "phrase": "Qualia",
+    "meaning": "Subjective inner experiences — how things feel from the inside (philosophy)",
+    "example": "The redness of red — that's a quale. No one can fully explain why it feels that way to you personally.",
+    "section": "Vocabulary (Single Words)",
+    "id": 355
+  },
+  {
+    "phrase": "I can't join — I have a meeting clash",
+    "meaning": "Two meetings overlap at the same time, so I can't attend one",
+    "example": "I can't join the 2pm sync — I have a meeting clash with the weekly review.",
+    "section": "Business & Work",
+    "id": 356
+  },
+  {
+    "phrase": "Complexity is the enemy of execution",
+    "meaning": "The more complicated a plan, the harder it is to actually carry out",
+    "example": "We tried to build too many features at once — complexity is the enemy of execution.",
+    "section": "Business & Work",
+    "id": 357
+  },
+  {
+    "phrase": "Preliminary",
+    "meaning": "Introductory or preparatory — the first step before the main thing",
+    "example": "This is just a preliminary analysis — we'll do a deeper dive next week.",
+    "section": "Vocabulary (Single Words)",
+    "id": 358
+  },
+  {
+    "phrase": "Lock, Stock and Two Smoking Barrels",
+    "meaning": "British crime film (1998); 'lock, stock and barrel' = everything, completely",
+    "example": "They acquired the startup lock, stock and barrel — offices, staff, IP, everything.",
+    "section": "Idioms & Figurative Language",
+    "id": 359
+  },
+  {
+    "phrase": "Let's agree on a time and do it on the weekend",
+    "meaning": "Let's schedule a specific time to meet or do something on the weekend",
+    "example": "Let's agree on a time and do it on the weekend — Saturday morning works for me.",
+    "section": "Everyday Conversation",
+    "id": 360
+  },
+  {
+    "phrase": "Choke point",
+    "meaning": "A narrow place where flow or progress is restricted or slowed down",
+    "example": "The checkout page is a choke point in our funnel — most drop-offs happen right there.",
+    "section": "Business & Work",
+    "id": 361
+  },
+  {
+    "phrase": "Caveats",
+    "meaning": "Warnings, conditions, or limitations attached to a statement",
+    "example": "The results look strong, but there are a few caveats — the sample size was small.",
+    "section": "Vocabulary (Single Words)",
+    "id": 362
+  },
+  {
+    "phrase": "Let's get this ball rolling",
+    "meaning": "Let's start / Let's begin doing this",
+    "example": "Everyone's here — let's get this ball rolling. First item on the agenda.",
+    "section": "Idioms & Figurative Language",
+    "id": 363
+  },
+  {
+    "phrase": "I'm rolling out the A/B test today",
+    "meaning": "Deploying/launching the A/B test — very common in growth and product teams",
+    "example": "I'm rolling out the A/B test today — we'll have initial data by Thursday.",
+    "section": "Business & Work",
+    "id": 364
+  },
+  {
+    "phrase": "Apologies for being late",
+    "meaning": "A formal/polite way to say sorry for arriving or responding late",
+    "example": "Apologies for being late — the previous meeting ran over.",
+    "section": "Business & Work",
+    "id": 365
+  },
+  {
+    "phrase": "Take it with a pinch of salt",
+    "meaning": "Don't believe something completely — be slightly skeptical",
+    "example": "The vendor's numbers look great, but take them with a pinch of salt — they have an incentive to impress.",
+    "section": "Idioms & Figurative Language",
+    "id": 366
+  },
+  {
+    "phrase": "Timewise",
+    "meaning": "Regarding time / in terms of how much time is needed or available",
+    "example": "Timewise, we're tight — we have two weeks to ship this feature.",
+    "section": "Vocabulary (Single Words)",
+    "id": 367
+  },
+  {
+    "phrase": "Edge cases",
+    "meaning": "Unusual or rare scenarios that don't behave like typical cases",
+    "example": "The main flow works, but we haven't tested edge cases — what happens if the user has no order history?",
+    "section": "Business & Work",
+    "id": 368
+  },
+  {
+    "phrase": "Condition type is composite",
+    "meaning": "The condition is made up of multiple rules combined, not a single rule",
+    "example": "The trigger won't fire — condition type is composite, so all three rules need to be true at the same time.",
+    "section": "Business & Work",
+    "id": 369
+  },
+  {
+    "phrase": "Imbalance doesn't seem to be tagged correctly",
+    "meaning": "The system isn't marking or categorizing these unusual cases as it should",
+    "example": "The alert fired but nothing was flagged — imbalance doesn't seem to be tagged correctly in the dashboard.",
+    "section": "Business & Work",
+    "id": 370
+  },
+  {
+    "phrase": "Endurance",
+    "meaning": "The ability to withstand hardship, pain, or difficulty over a long time",
+    "example": "Building a product from scratch takes real endurance — it's a marathon, not a sprint.",
+    "section": "Vocabulary (Single Words)",
+    "id": 371
+  },
+  {
+    "phrase": "Perseverance",
+    "meaning": "Continuing steadily despite difficulty or slow progress",
+    "example": "His perseverance paid off — he kept improving his English every day for a year.",
+    "section": "Vocabulary (Single Words)",
+    "id": 372
+  },
+  {
+    "phrase": "Iterate",
+    "meaning": "To repeat a process, refining and improving each time",
+    "example": "We don't need a perfect solution on day one — let's ship v1 and iterate based on feedback.",
+    "section": "Business & Work",
+    "id": 373
+  },
+  {
+    "phrase": "Discard",
+    "meaning": "To throw away or get rid of something no longer needed",
+    "example": "We reviewed all the hypotheses and decided to discard the ones with no supporting data.",
+    "section": "Vocabulary (Single Words)",
+    "id": 374
+  },
+  {
+    "phrase": "Paramount",
+    "meaning": "More important than anything else; supreme",
+    "example": "User trust is paramount — we never share data without explicit consent.",
+    "section": "Vocabulary (Single Words)",
+    "id": 375
+  },
+  {
+    "phrase": "I have to drop off",
+    "meaning": "I need to leave a call or meeting; also: leave someone at a location",
+    "example": "I have to drop off in five minutes — can we schedule a follow-up for tomorrow?",
+    "section": "Business & Work",
+    "id": 376
+  },
+  {
+    "phrase": "I jumped out",
+    "meaning": "Left a call or meeting suddenly / exited quickly",
+    "example": "Sorry I jumped out of the call — my kid needed me.",
+    "section": "Everyday Conversation",
+    "id": 377
+  },
+  {
+    "phrase": "Ćevapčići",
+    "meaning": "Small grilled minced meat sausages — traditional dish from Bosnia & Serbia",
+    "example": "We made ćevapčići at the barbecue — people who'd never tried them absolutely loved them.",
+    "section": "Everyday Conversation",
+    "id": 378
+  },
+  {
+    "phrase": "The convo",
+    "meaning": "Informal for 'the conversation'",
+    "example": "Did you catch the convo in the Slack thread? They're changing the whole rollout plan.",
+    "section": "Vocabulary (Single Words)",
+    "id": 379
+  },
+  {
+    "phrase": "Reconciliation",
+    "meaning": "Restoring friendly relations; or making two conflicting things consistent",
+    "example": "The numbers in the report don't match the dashboard — we need a reconciliation before the board meeting.",
+    "section": "Vocabulary (Single Words)",
+    "id": 380
+  },
+  {
+    "phrase": "It's indicative",
+    "meaning": "It's a sign of / it suggests something",
+    "example": "The high bounce rate is indicative of a poor landing page experience.",
+    "section": "Business & Work",
+    "id": 381
+  },
+  {
+    "phrase": "Diminishing remaining universe",
+    "meaning": "As items are selected or used, the pool of remaining options shrinks",
+    "example": "We've sent to 80% of the segment — the diminishing remaining universe means our CTR will naturally drop from here.",
+    "section": "Business & Work",
+    "id": 382
   }
 ]
