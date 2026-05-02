@@ -12,8 +12,7 @@
   --bg: #0f0f13; --surface: #1a1a22; --s2: #23232f; --border: #2e2e40;
   --accent: #5b5fc7; --accent2: #8b8ff7;
   --text: #fff; --muted: #777; --dim: #444;
-  --green: #4caf74; --red: #e05555; --orange: #ff6b35;
-  --mode-color: #5b5fc7;
+  --green: #4caf74; --red: #e05555;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden;background:var(--bg)}
@@ -55,57 +54,10 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 .home-hdr{width:100%;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px}
 .home-greeting{font-size:26px;font-weight:800;letter-spacing:-.5px}
 .home-date{font-size:12px;color:var(--muted);margin-top:4px}
-.streak-chip{
-  background:linear-gradient(135deg,var(--orange),#ff9f55);border-radius:20px;
-  padding:8px 14px;font-size:15px;font-weight:800;display:flex;align-items:center;
-  gap:5px;box-shadow:0 4px 20px rgba(255,107,53,.35);flex-shrink:0
-}
-.level-card{
-  width:100%;background:var(--surface);border:1px solid var(--border);
-  border-radius:20px;padding:15px 18px;margin-bottom:12px
-}
-.level-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.level-name{font-size:14px;font-weight:700;color:var(--accent2)}
-.xp-text{font-size:12px;color:var(--muted)}
-.bar-bg{width:100%;height:8px;background:var(--border);border-radius:99px;overflow:hidden}
-.bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .6s}
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;margin-bottom:12px}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;margin-bottom:16px}
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 8px;text-align:center}
 .stat-num{font-size:26px;font-weight:900}
 .stat-lbl{font-size:10px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.5px}
-
-/* Mode selector */
-.sec-label{width:100%;font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
-.modes-row{display:flex;gap:10px;width:100%;overflow-x:auto;padding-bottom:4px;margin-bottom:12px}
-.modes-row::-webkit-scrollbar{display:none}
-.modes-row{touch-action:pan-x!important}
-.mode-card{
-  flex-shrink:0;background:var(--surface);border:2px solid var(--border);
-  border-radius:18px;padding:14px 16px;cursor:pointer;
-  transition:border-color .2s,transform .1s;min-width:120px;text-align:center
-}
-.mode-card:active{transform:scale(.96)}
-.mode-card.selected{border-color:var(--mode-color);background:rgba(91,95,199,.08)}
-.mode-emoji{font-size:26px;margin-bottom:6px}
-.mode-name{font-size:13px;font-weight:700}
-.mode-desc{font-size:10px;color:var(--muted);margin-top:3px;line-height:1.4}
-.mode-card.m-fill{--mode-color:#4caf74}
-.mode-card.m-choice{--mode-color:#2196f3}
-.mode-card.m-speed{--mode-color:#ff6b35}
-.mode-card.m-weak{--mode-color:#e05555}
-.mode-card.m-boss{--mode-color:#9c27b0}
-
-.ach-row{display:flex;gap:8px;width:100%;overflow-x:auto;padding-bottom:4px;margin-bottom:14px}
-.ach-row::-webkit-scrollbar{display:none}
-.ach-badge{
-  background:var(--surface);border:1px solid var(--border);border-radius:14px;
-  padding:10px 12px;font-size:20px;flex-shrink:0;cursor:pointer;
-  transition:transform .15s
-}
-.ach-badge:active{transform:scale(.92)}
-.ach-badge.locked{opacity:.2;filter:grayscale(1)}
-.ach-badge.unlocked{border-color:var(--accent);box-shadow:0 0 14px rgba(91,95,199,.3)}
-
 .due-banner{
   width:100%;background:rgba(91,95,199,.1);border:1px solid rgba(91,95,199,.25);
   border-radius:16px;padding:13px 16px;margin-bottom:14px;display:flex;align-items:center;gap:12px
@@ -125,14 +77,11 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 #card-screen{justify-content:flex-start;padding-top:max(env(safe-area-inset-top,16px),16px)}
 .card-topbar{width:100%;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .card-prog{font-size:13px;color:var(--muted);font-weight:600}
-.card-xp-lbl{font-size:13px;color:var(--accent2);font-weight:700}
-.session-bar{width:100%;height:4px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:4px}
+.session-bar{width:100%;height:4px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:14px}
 .session-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px;transition:width .4s}
-.timer-bar-wrap{width:100%;height:4px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:14px}
-.timer-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--orange),var(--red));border-radius:99px;transform-origin:left;transition:width linear}
 .mode-badge{
   align-self:flex-start;font-size:10px;letter-spacing:2px;text-transform:uppercase;
-  font-weight:700;color:var(--mode-color);margin-bottom:8px
+  font-weight:700;color:var(--accent);margin-bottom:8px
 }
 
 /* Flip card */
@@ -157,11 +106,6 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 .face-meaning{font-size:26px;color:var(--accent2);line-height:1.4;text-align:center;font-weight:700}
 .face-example{font-size:19px;color:#888;font-style:italic;line-height:1.5;text-align:center;margin-top:12px}
 .face-phrase{font-size:20px;font-weight:800;line-height:1.4;text-align:center;color:var(--text)}
-.face-section{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-top:12px}
-.tap-hint{
-  position:absolute;bottom:18px;left:0;right:0;text-align:center;
-  font-size:11px;color:var(--dim);letter-spacing:1px;text-transform:uppercase
-}
 
 /* Swipe overlay */
 .swipe-overlay{
@@ -172,68 +116,27 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 .swipe-overlay.right{background:rgba(76,175,116,.2);color:var(--green)}
 .swipe-overlay.left{background:rgba(224,85,85,.2);color:var(--red)}
 
-.answer-btns{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%;flex-shrink:0;transition:opacity .25s .05s}
-.answer-btns.hidden{opacity:0;pointer-events:none}
-.btn-again,.btn-hard,.btn-good,.btn-easy{min-width:0;border-radius:14px;padding:12px 4px;font-size:13px;font-weight:700;cursor:pointer;transition:transform .1s;display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1.2}
+.answer-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;flex-shrink:0}
+.btn-again,.btn-good,.btn-easy{
+  min-width:0;border-radius:14px;padding:12px 4px;font-size:13px;font-weight:700;
+  cursor:pointer;transition:transform .1s;display:flex;flex-direction:column;
+  align-items:center;gap:3px;line-height:1.2
+}
 .btn-again{background:rgba(224,85,85,.12);border:1px solid rgba(224,85,85,.3);color:var(--red)}
-.btn-hard{background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.3);color:var(--orange)}
 .btn-good{background:rgba(76,175,116,.12);border:1px solid rgba(76,175,116,.3);color:var(--green)}
 .btn-easy{background:rgba(91,95,199,.12);border:1px solid rgba(91,95,199,.3);color:var(--accent2)}
-.btn-again:active,.btn-hard:active,.btn-good:active,.btn-easy:active{transform:scale(.94)}
+.btn-again:active,.btn-good:active,.btn-easy:active{transform:scale(.94)}
 .btn-interval{font-size:10px;opacity:.65;font-weight:500}
-
-/* ── CHOICE SCREEN ── */
-#choice-screen{justify-content:flex-start;padding-top:max(env(safe-area-inset-top,16px),16px)}
-.choice-topbar{width:100%;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.choice-session-bar{width:100%;height:4px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:16px}
-.choice-fill{height:100%;background:linear-gradient(90deg,#2196f3,#64b5f6);border-radius:99px;transition:width .4s}
-.choice-phrase-box{
-  width:100%;background:var(--surface);border:1px solid var(--border);border-radius:22px;
-  padding:24px 20px;text-align:center;margin-bottom:16px;flex-shrink:0
-}
-.choice-phrase-hint{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#2196f3;margin-bottom:12px;font-weight:700}
-.choice-phrase{font-size:20px;font-weight:800;line-height:1.4}
-.choice-question{font-size:13px;color:var(--muted);margin-bottom:14px;align-self:flex-start;font-weight:600}
-.choices-grid{display:flex;flex-direction:column;gap:10px;width:100%}
-.choice-btn{
-  background:var(--surface);border:1px solid var(--border);border-radius:16px;
-  padding:16px;text-align:left;font-size:14px;color:var(--text);cursor:pointer;
-  line-height:1.4;transition:background .15s,border-color .15s,transform .1s;font-family:inherit
-}
-.choice-btn:active:not([disabled]){transform:scale(.98)}
-.choice-btn.correct{background:rgba(76,175,116,.15);border-color:var(--green);color:var(--green)}
-.choice-btn.wrong{background:rgba(224,85,85,.1);border-color:rgba(224,85,85,.3);color:var(--red)}
-
-/* ── BOSS BATTLE overlay ── */
-.boss-header{
-  width:100%;background:linear-gradient(135deg,rgba(156,39,176,.3),rgba(156,39,176,.1));
-  border:1px solid rgba(156,39,176,.4);border-radius:16px;padding:12px 16px;margin-bottom:12px;
-  text-align:center
-}
-.boss-title{font-size:16px;font-weight:800;color:#ce93d8}
-.boss-sub{font-size:11px;color:rgba(206,147,216,.6);margin-top:2px}
 
 /* ── RESULT ── */
 #result-screen{justify-content:center;gap:14px;padding-top:max(env(safe-area-inset-top,40px),40px)}
 .result-emoji{font-size:72px}
 .result-title{font-size:28px;font-weight:900;letter-spacing:-.5px;text-align:center}
 .result-sub{font-size:14px;color:var(--muted);text-align:center}
-.xp-card{
-  width:100%;background:var(--surface);border:1px solid var(--accent);border-radius:22px;
-  padding:22px;text-align:center;box-shadow:0 0 30px rgba(91,95,199,.2)
-}
-.xp-big{font-size:44px;font-weight:900;color:var(--accent2);letter-spacing:-1px}
-.xp-sub{font-size:11px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
 .result-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
 .rs{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;text-align:center}
 .rs-num{font-size:28px;font-weight:900} .rs-num.g{color:var(--green)} .rs-num.r{color:var(--red)}
 .rs-lbl{font-size:11px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.5px}
-.bonus-row{
-  width:100%;background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.3);
-  border-radius:16px;padding:13px 18px;display:flex;justify-content:space-between;align-items:center
-}
-.bonus-lbl{font-size:14px;font-weight:600;color:var(--orange)}
-.bonus-val{font-size:16px;font-weight:800;color:var(--orange)}
 .again-btn{
   width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;
   border-radius:20px;color:#fff;font-size:17px;font-weight:700;padding:18px;cursor:pointer;
@@ -256,30 +159,12 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 
 /* ── BUG BUTTON ── */
 .bug-btn{background:none;border:none;font-size:16px;cursor:pointer;opacity:.4;padding:4px 6px;transition:opacity .15s,transform .1s;flex-shrink:0}
-.bug-btn.flagged{opacity:1;filter:hue-rotate(0deg)}
+.bug-btn.flagged{opacity:1}
 .bug-btn:active{opacity:1;transform:scale(1.3)}
 
 /* ── GEAR BUTTON ── */
 .gear-btn{background:none;border:none;font-size:19px;cursor:pointer;opacity:.45;padding:4px;transition:opacity .15s;flex-shrink:0}
 .gear-btn:active{opacity:1}
-
-/* ── FILL-IN-BLANK SCREEN ── */
-#fill-screen{justify-content:flex-start;padding-top:max(env(safe-area-inset-top,16px),16px)}
-.fill-clue-box{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:20px 18px;text-align:center;margin-bottom:12px;flex-shrink:0}
-.fill-clue-hint{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#4caf74;margin-bottom:8px;font-weight:700}
-.fill-section-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.fill-meaning{font-size:20px;font-weight:700;color:var(--text);line-height:1.45}
-.fill-sentence-box{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:18px;padding:18px 16px;font-size:19px;font-weight:600;color:var(--accent2);line-height:1.5;text-align:center;margin-bottom:12px;flex-shrink:0}
-.blank-slot{color:var(--dim);letter-spacing:3px;font-weight:900}
-.fill-input{width:100%;background:var(--s2);border:2px solid var(--border);border-radius:16px;padding:15px 16px;font-size:18px;color:var(--text);font-family:inherit;outline:none;transition:border-color .2s;margin-bottom:10px;display:block}
-.fill-input:focus{border-color:var(--accent)}
-.fill-input:disabled{opacity:.85}
-.fill-check-btn{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:16px;color:#fff;font-size:16px;font-weight:700;padding:15px;cursor:pointer;margin-bottom:10px;transition:transform .1s;flex-shrink:0}
-.fill-check-btn:active{transform:scale(.97)}
-.fill-reveal{display:none;width:100%;background:var(--surface);border:1px solid var(--green);border-radius:18px;padding:16px 18px;text-align:center;margin-bottom:10px;flex-shrink:0}
-.fill-reveal.show{display:block}
-.fill-reveal-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:8px;font-weight:700}
-.fill-reveal-phrase{font-size:20px;font-weight:800;color:var(--text);line-height:1.4}
 
 /* ── SETTINGS SCREEN ── */
 #settings-screen{justify-content:flex-start;gap:12px;padding-top:max(env(safe-area-inset-top,20px),20px)}
@@ -347,59 +232,38 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
         <div class="home-greeting">Hey, Mykhailo 👋</div>
         <div class="home-date" id="home-date"></div>
       </div>
-      <div style="display:flex;align-items:flex-start;gap:8px">
-        <button class="gear-btn" onclick="showSettings()" title="Settings">⚙️</button>
-        <div class="streak-chip">🔥 <span id="streak-num">0</span></div>
-      </div>
-    </div>
-    <div class="level-card">
-      <div class="level-row">
-        <div class="level-name" id="level-name">Beginner</div>
-        <div class="xp-text" id="xp-text">0 XP</div>
-      </div>
-      <div class="bar-bg"><div class="bar-fill" id="xp-bar" style="width:0%"></div></div>
+      <button class="gear-btn" onclick="showSettings()" title="Settings">⚙️</button>
     </div>
     <div class="stats-row">
       <div class="stat-card"><div class="stat-num" id="s-total">0</div><div class="stat-lbl">Phrases</div></div>
       <div class="stat-card"><div class="stat-num" id="s-known">0%</div><div class="stat-lbl">Known</div></div>
       <div class="stat-card"><div class="stat-num" id="s-sess">0</div><div class="stat-lbl">Sessions</div></div>
     </div>
-    <div class="sec-label">Practice Mode</div>
-    <div class="modes-row" id="modes-row"></div>
-    <div class="sec-label">Achievements</div>
-    <div class="ach-row" id="ach-row"></div>
     <div class="due-banner">
       <div class="due-dot"></div>
       <div><div class="due-text" id="due-text">Ready</div><div class="due-sub" id="due-sub"></div></div>
     </div>
-    <button class="start-btn" id="start-btn" onclick="startSession()">Start Practice →</button>
+    <button class="start-btn" onclick="startSession()">Start Practice →</button>
   </div>
 
-  <!-- CARD SCREEN (classic / speed / weak / boss) -->
+  <!-- CARD SCREEN -->
   <div id="card-screen" class="screen">
     <div class="card-topbar">
       <button class="exit-btn" onclick="exitSession()">✕</button>
       <div class="card-prog" id="card-prog">1 / 10</div>
       <button class="bug-btn" id="bug-btn" onclick="flagCard()" title="Flag this card">🐛</button>
-      <div class="card-xp-lbl">⚡ <span id="sess-xp">0</span> XP</div>
     </div>
     <div class="session-bar"><div class="session-fill" id="sess-fill" style="width:0%"></div></div>
-    <div class="timer-bar-wrap" id="timer-wrap" style="display:none">
-      <div class="timer-fill" id="timer-fill" style="width:100%"></div>
-    </div>
-    <div class="mode-badge" id="mode-badge"></div>
-    <div id="boss-header-wrap"></div>
+    <div class="mode-badge">🃏 CLASSIC</div>
 
     <div class="card-wrap" id="card-wrap">
       <div class="card-inner" id="card-inner">
-        <!-- FRONT: phrase -->
+        <!-- FRONT -->
         <div class="card-face front">
           <div class="face-hint">What does this mean?</div>
           <div class="face-phrase" id="face-phrase"></div>
-          <div class="face-section" id="face-section"></div>
-          <div class="tap-hint" id="tap-hint">tap to reveal meaning</div>
         </div>
-        <!-- BACK: meaning + example -->
+        <!-- BACK -->
         <div class="card-face back">
           <div class="face-hint">Meaning:</div>
           <div class="face-meaning" id="face-meaning"></div>
@@ -410,28 +274,11 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
       <div class="swipe-overlay left" id="swipe-left">✗</div>
     </div>
 
-    <div class="answer-btns hidden" id="answer-btns">
-      <button class="btn-again" onclick="rateCard('again')">Again<span class="btn-interval" id="int-again">1d</span></button>
-      <button class="btn-hard"  onclick="rateCard('hard')">Hard<span class="btn-interval" id="int-hard">3d</span></button>
-      <button class="btn-good"  onclick="rateCard('good')">Good<span class="btn-interval" id="int-good">4d</span></button>
+    <div class="answer-btns" id="answer-btns">
+      <button class="btn-again" onclick="rateCard('again')">Hard<span class="btn-interval" id="int-again">1d</span></button>
+      <button class="btn-good"  onclick="rateCard('good')">Repeat<span class="btn-interval" id="int-good">4d</span></button>
       <button class="btn-easy"  onclick="rateCard('easy')">Easy<span class="btn-interval" id="int-easy">7d</span></button>
     </div>
-  </div>
-
-  <!-- MULTIPLE CHOICE SCREEN -->
-  <div id="choice-screen" class="screen">
-    <div class="choice-topbar">
-      <button class="exit-btn" onclick="exitSession()">✕</button>
-      <div class="card-prog" id="ch-prog">1 / 10</div>
-      <div class="card-xp-lbl">⚡ <span id="ch-xp">0</span> XP</div>
-    </div>
-    <div class="choice-session-bar"><div class="choice-fill" id="ch-fill" style="width:0%"></div></div>
-    <div class="choice-phrase-box">
-      <div class="choice-phrase-hint">🎯 Multiple Choice</div>
-      <div class="choice-phrase" id="ch-phrase"></div>
-    </div>
-    <div class="choice-question">Which meaning is correct?</div>
-    <div class="choices-grid" id="choices-grid"></div>
   </div>
 
   <!-- RESULT -->
@@ -441,57 +288,12 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
       <div class="result-title" id="r-title">Great session!</div>
       <div class="result-sub" id="r-sub"></div>
     </div>
-    <div class="xp-card">
-      <div class="xp-big" id="r-xp">+0 XP</div>
-      <div class="xp-sub">earned this session</div>
-    </div>
     <div class="result-stats">
       <div class="rs"><div class="rs-num g" id="r-yes">0</div><div class="rs-lbl">Knew it</div></div>
       <div class="rs"><div class="rs-num r" id="r-no">0</div><div class="rs-lbl">Missed</div></div>
     </div>
-    <div class="bonus-row" id="bonus-row" style="display:none">
-      <div class="bonus-lbl">🔥 Streak bonus</div>
-      <div class="bonus-val" id="bonus-val">+20 XP</div>
-    </div>
     <button class="again-btn" onclick="startSession()">Practice Again →</button>
     <button class="home-link" onclick="goHome()">← Back to home</button>
-  </div>
-
-  <!-- FILL-IN-BLANK SCREEN -->
-  <div id="fill-screen" class="screen">
-    <div class="card-topbar">
-      <button class="exit-btn" onclick="exitSession()">✕</button>
-      <div class="card-prog" id="fill-prog">1 / 10</div>
-      <button class="bug-btn" id="fill-bug-btn" onclick="flagFillCard()" title="Flag this card">🐛</button>
-      <div class="card-xp-lbl">⚡ <span id="fill-xp">0</span> XP</div>
-    </div>
-    <div class="session-bar"><div class="session-fill" id="fill-fill" style="width:0%"></div></div>
-    <div class="mode-badge" style="color:#4caf74">✏️ FILL IN THE BLANK</div>
-
-    <div class="fill-clue-box">
-      <div class="fill-clue-hint" id="fill-clue-hint">Fill in the blank</div>
-      <div class="fill-section-lbl" id="fill-section-lbl"></div>
-      <div class="fill-meaning" id="fill-meaning"></div>
-    </div>
-
-    <div class="fill-sentence-box" id="fill-sentence-box"></div>
-
-    <input class="fill-input" id="fill-input" type="text" placeholder="Type your answer…"
-           onkeydown="if(event.key==='Enter' && !fillState.revealed) checkFillAnswer()">
-
-    <button class="fill-check-btn" id="fill-check-btn" onclick="checkFillAnswer()">Check →</button>
-
-    <div class="fill-reveal" id="fill-reveal">
-      <div class="fill-reveal-label">✓ Full phrase</div>
-      <div class="fill-reveal-phrase" id="fill-reveal-phrase"></div>
-    </div>
-
-    <div class="answer-btns hidden" id="fill-answer-btns">
-      <button class="btn-again" onclick="rateFillCard('again')">Again<span class="btn-interval" id="fill-int-again">1d</span></button>
-      <button class="btn-hard"  onclick="rateFillCard('hard')">Hard<span class="btn-interval" id="fill-int-hard">3d</span></button>
-      <button class="btn-good"  onclick="rateFillCard('good')">Good<span class="btn-interval" id="fill-int-good">4d</span></button>
-      <button class="btn-easy"  onclick="rateFillCard('easy')">Easy<span class="btn-interval" id="fill-int-easy">7d</span></button>
-    </div>
   </div>
 
   <!-- SETTINGS SCREEN -->
@@ -524,62 +326,25 @@ body{display:flex;justify-content:center;font-family:-apple-system,BlinkMacSyste
 // ═══════════════════════════════════════════════
 const SK = 'eng_state2';
 const SESSION_SIZE = 10;
-const SPEED_SECONDS = 5;
-
-const MODES = [
-  { id:'classic', name:'Classic',         emoji:'🃏', desc:'Flip cards · swipe to answer', cls:'m-classic' },
-  { id:'fill',    name:'Fill-in-blank',   emoji:'✏️', desc:'Complete the sentence',        cls:'m-fill'    },
-  { id:'choice',  name:'Multi Choice',    emoji:'🎯', desc:'Pick the right meaning',       cls:'m-choice'  },
-  { id:'speed',   name:'Speed Round',     emoji:'⚡', desc:'5 seconds per card',           cls:'m-speed'   },
-  { id:'weak',    name:'Weak Phrases',    emoji:'💪', desc:'Focus on what you miss',       cls:'m-weak'    },
-  { id:'boss',    name:'Boss Battle',     emoji:'🏆', desc:'10 hardest · 3× XP',          cls:'m-boss'    },
-];
-
-const LEVELS = [
-  { name:'Beginner',     min:0,    max:500  },
-  { name:'Pre-Inter',    min:500,  max:1200 },
-  { name:'Intermediate', min:1200, max:2500 },
-  { name:'Upper-Inter',  min:2500, max:4500 },
-  { name:'Advanced',     min:4500, max:7500 },
-  { name:'Fluent 🎓',   min:7500, max:99999},
-];
-
-const ACHS = [
-  { id:'first',   emoji:'🚀', label:'First session',    check: s => s.sessions >= 1 },
-  { id:'str3',    emoji:'🔥', label:'3-day streak',     check: s => s.streak >= 3   },
-  { id:'str7',    emoji:'💪', label:'7-day streak',     check: s => s.streak >= 7   },
-  { id:'str30',   emoji:'🏆', label:'30-day streak',    check: s => s.streak >= 30  },
-  { id:'k50',     emoji:'💯', label:'50 phrases known', check: s => knownCount() >= 50  },
-  { id:'k100',    emoji:'⭐', label:'100 phrases known',check: s => knownCount() >= 100 },
-  { id:'perf',    emoji:'🎯', label:'Perfect session',  check: s => s.lastPerfect   },
-  { id:'speed1',  emoji:'⚡', label:'Speed demon',      check: s => s.speedWins >= 1},
-  { id:'boss1',   emoji:'👹', label:'Beat the boss',    check: s => s.bossWins >= 1 },
-  { id:'fluent',  emoji:'🎓', label:'Fluent!',          check: s => s.xp >= 7500   },
-];
 
 // ═══════════════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════════════
 let phrases = [];
 let state   = {};
-let session = { queue:[], idx:0, yes:0, no:0, xp:0, mode:'classic' };
+let session = { queue:[], idx:0, yes:0, no:0 };
 let isFlipped = false;
-let timerInterval = null;
-let timerLeft = SPEED_SECONDS;
 let pinBuf = '', settingPin = false, tmpPin = '';
-let selectedMode = 'classic';
 let swipeAbort = null;
 
 function defaultState() {
-  return { pin:null, xp:0, streak:0, lastDate:null, sessions:0, cards:{},
-           lastPerfect:false, unlocked:[], speedWins:0, bossWins:0 };
+  return { pin:null, sessions:0, lastDate:null, cards:{} };
 }
 function save() { localStorage.setItem(SK, JSON.stringify(state)); }
 function load() {
   try { state = JSON.parse(localStorage.getItem(SK)) || defaultState(); }
   catch { state = defaultState(); }
   if (!state.cards) state.cards = {};
-  if (!state.unlocked) state.unlocked = [];
 }
 function knownCount() {
   return Object.values(state.cards).filter(c => (c.reps||0) >= 2).length;
@@ -589,8 +354,8 @@ function knownCount() {
 // SM-2
 // ═══════════════════════════════════════════════
 const MIN_EASE = 1.3, INIT_EASE = 2.5;
-const NEW_INTERVAL = { again:1, hard:3, good:4, easy:7 };
-const EASE_DELTA   = { again:-0.2, hard:-0.1, good:0, easy:0.1 };
+const NEW_INTERVAL = { again:1, good:4, easy:7 };
+const EASE_DELTA   = { again:-0.2, good:0, easy:0.1 };
 
 function _nextInterval(card, rating) {
   const reps     = card.reps     || 0;
@@ -604,7 +369,6 @@ function _nextInterval(card, rating) {
   if (reps === 0) return NEW_INTERVAL[rating];
   if (reps === 1) return NEW_INTERVAL[rating] * 2;
 
-  if (rating === 'hard') return Math.max(3, Math.round(interval * 1.2));
   if (rating === 'easy') return Math.round(interval * newEase * 1.3);
   return Math.round(interval * newEase); // good
 }
@@ -612,7 +376,6 @@ function _nextInterval(card, rating) {
 function _previewIntervals(card) {
   return {
     again: 1,
-    hard:  _nextInterval(card, 'hard'),
     good:  _nextInterval(card, 'good'),
     easy:  _nextInterval(card, 'easy'),
   };
@@ -622,7 +385,6 @@ function _fmtDays(d) { return d === 1 ? '1d' : d < 30 ? d+'d' : Math.round(d/30)
 
 function todayStr() { return new Date().toISOString().slice(0,10); }
 
-// Migrate old {nextReview timestamp} → new {due date string}
 function migrateCard(c) {
   if (!c.due && c.nextReview) {
     c.due  = new Date(c.nextReview).toISOString().slice(0,10);
@@ -665,30 +427,18 @@ function renderDots() {
 function submitPin() {
   if (settingPin) {
     if (!tmpPin) { tmpPin = pinBuf; pinBuf = ''; renderDots(); document.getElementById('pin-sub').textContent = 'Confirm your PIN'; return; }
-    if (pinBuf === tmpPin) { state.pin = pinBuf; save(); settingPin=false; tmpPin=''; showToast('PIN saved 🔐'); updateStreak(); showScreen('home-screen'); }
+    if (pinBuf === tmpPin) { state.pin = pinBuf; save(); settingPin=false; tmpPin=''; showToast('PIN saved 🔐'); showScreen('home-screen'); }
     else { pinErr("PINs don't match"); tmpPin=''; pinBuf=''; }
     return;
   }
   if (!state.pin) { settingPin=true; tmpPin=''; document.getElementById('pin-sub').textContent = 'Choose a 4-digit PIN'; pinBuf=''; renderDots(); return; }
-  if (pinBuf === state.pin) { updateStreak(); showScreen('home-screen'); }
+  if (pinBuf === state.pin) { showScreen('home-screen'); }
   else { pinErr('Wrong PIN'); pinBuf=''; }
 }
 function pinErr(msg) {
   document.getElementById('pin-err').textContent = msg;
   for(let i=0;i<4;i++) document.getElementById('d'+i).className='dot err';
   setTimeout(()=>{ document.getElementById('pin-err').textContent=''; renderDots(); },900);
-}
-
-// ═══════════════════════════════════════════════
-// STREAK
-// ═══════════════════════════════════════════════
-function updateStreak() {
-  const today = todayStr();
-  if (state.lastDate === today) return;
-  const d = new Date(); d.setDate(d.getDate()-1);
-  state.streak = (state.lastDate === d.toISOString().slice(0,10)) ? state.streak+1 : 1;
-  state.lastDate = today;
-  save();
 }
 
 // ═══════════════════════════════════════════════
@@ -699,158 +449,57 @@ function updateHome() {
   const now = new Date();
   document.getElementById('home-date').textContent =
     DAYS[now.getDay()] + ' · ' + now.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
-  document.getElementById('streak-num').textContent = state.streak;
-
-  const lvl = getLevel();
-  document.getElementById('level-name').textContent = '⚡ ' + lvl.name;
-  const pct = Math.round((state.xp - lvl.min) / (lvl.max - lvl.min) * 100);
-  document.getElementById('xp-bar').style.width = Math.min(pct,100) + '%';
-  document.getElementById('xp-text').textContent = state.xp + ' / ' + lvl.max + ' XP';
 
   document.getElementById('s-total').textContent = phrases.length;
   const kn = knownCount();
   document.getElementById('s-known').textContent = phrases.length ? Math.round(kn/phrases.length*100)+'%' : '0%';
   document.getElementById('s-sess').textContent = state.sessions;
 
-  renderModes();
-  renderAchs();
-
-  const due = getDueQueue('classic');
-  const dueCount = due.length;
-  document.getElementById('due-text').textContent = dueCount + ' phrase' + (dueCount===1?'':'s') + ' due today';
+  const due = getDueQueue();
+  document.getElementById('due-text').textContent = due.length + ' phrase' + (due.length===1?'':'s') + ' due today';
   document.getElementById('due-sub').textContent = kn + ' learned · ' + (phrases.length - Object.keys(state.cards).length) + ' new';
-}
-
-function getLevel() {
-  return LEVELS.find(l => state.xp >= l.min && state.xp < l.max) || LEVELS[LEVELS.length-1];
-}
-
-function renderModes() {
-  const row = document.getElementById('modes-row');
-  row.innerHTML = '';
-  MODES.forEach(m => {
-    const el = document.createElement('div');
-    el.className = 'mode-card ' + m.cls + (selectedMode===m.id ? ' selected' : '');
-    el.innerHTML = `<div class="mode-emoji">${m.emoji}</div><div class="mode-name">${m.name}</div><div class="mode-desc">${m.desc}</div>`;
-    el.onclick = () => { selectedMode = m.id; renderModes(); };
-    row.appendChild(el);
-  });
-}
-
-function renderAchs() {
-  const row = document.getElementById('ach-row');
-  row.innerHTML = '';
-  ACHS.forEach(a => {
-    const unlocked = a.check(state);
-    if (unlocked && !state.unlocked.includes(a.id)) { state.unlocked.push(a.id); save(); }
-    const el = document.createElement('div');
-    el.className = 'ach-badge ' + (unlocked ? 'unlocked' : 'locked');
-    el.textContent = a.emoji;
-    el.onclick = () => showTip(a.label + (unlocked ? ' ✓' : ' — locked'));
-    row.appendChild(el);
-  });
 }
 
 // ═══════════════════════════════════════════════
 // SESSION
 // ═══════════════════════════════════════════════
-function getDueQueue(mode) {
+function getDueQueue() {
   if (!phrases.length) return [];
   const today = todayStr();
-  let pool;
-
-  if (mode === 'weak') {
-    pool = phrases.filter(p => {
-      const c = state.cards[p.id];
-      return c && ((c.wrong||0) >= 1 || (c.ease||INIT_EASE) <= 1.8);
-    });
-    if (!pool.length) pool = phrases.filter(p => {
-      const c = state.cards[p.id];
-      return !c || (migrateCard(c).due <= today);
-    });
-  } else if (mode === 'boss') {
-    pool = [...phrases].sort((a,b) => {
-      const ea = state.cards[a.id]?.ease ?? INIT_EASE;
-      const eb = state.cards[b.id]?.ease ?? INIT_EASE;
-      return ea - eb;
-    }).slice(0, 20);
-  } else {
-    // Due cards (new + overdue) sorted oldest first, then new cards
-    const due = [], newCards = [];
-    for (const p of phrases) {
-      const c = state.cards[p.id];
-      if (!c) { newCards.push(p); continue; }
-      const m = migrateCard(c);
-      if (m.due <= today) due.push({ due: m.due, p });
-    }
-    due.sort((a,b) => a.due < b.due ? -1 : 1);
-    pool = [...due.map(x=>x.p), ...newCards];
+  const due = [], newCards = [];
+  for (const p of phrases) {
+    const c = state.cards[p.id];
+    if (!c) { newCards.push(p); continue; }
+    const m = migrateCard(c);
+    if (m.due <= today) due.push({ due: m.due, p });
   }
-
-  if (mode !== 'classic' && mode !== 'boss') {
-    // shuffle non-classic modes
-    for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
-  }
-  return pool;
+  due.sort((a,b) => a.due < b.due ? -1 : 1);
+  return [...due.map(x=>x.p), ...newCards];
 }
 
 function startSession() {
-  const mode = selectedMode;
-  const due = getDueQueue(mode);
+  const due = getDueQueue();
   if (!due.length) { showToast('No phrases due — come back tomorrow! 🎉'); return; }
-  const size = mode === 'boss' ? 10 : SESSION_SIZE;
-  session = { queue: due.slice(0,size), idx:0, yes:0, no:0, xp:0, mode };
-
-  if (mode === 'choice') {
-    showChoiceCard();
-    showScreen('choice-screen');
-  } else if (mode === 'fill') {
-    showFillCard();
-    showScreen('fill-screen');
-  } else {
-    showCardScreen();
-    showScreen('card-screen');
-  }
-}
-
-// ═══════════════════════════════════════════════
-// CARD SCREEN (classic / speed / weak / boss)
-// ═══════════════════════════════════════════════
-function showCardScreen() {
-  const mode = session.mode;
-  const modeInfo = MODES.find(m=>m.id===mode);
-  const modeColors = { classic:'#5b5fc7', speed:'#ff6b35', weak:'#e05555', boss:'#9c27b0' };
-  document.documentElement.style.setProperty('--mode-color', modeColors[mode]||'#5b5fc7');
-  document.getElementById('mode-badge').textContent = modeInfo.emoji + ' ' + modeInfo.name.toUpperCase();
-
-  // Boss header
-  const bw = document.getElementById('boss-header-wrap');
-  if (mode === 'boss') {
-    bw.innerHTML = '<div class="boss-header"><div class="boss-title">👹 BOSS BATTLE</div><div class="boss-sub">3× XP · 10 hardest phrases</div></div>';
-  } else bw.innerHTML = '';
-
-  // Timer bar
-  document.getElementById('timer-wrap').style.display = mode==='speed' ? 'block' : 'none';
-
+  session = { queue: due.slice(0, SESSION_SIZE), idx:0, yes:0, no:0 };
   showCard();
+  showScreen('card-screen');
 }
 
+// ═══════════════════════════════════════════════
+// CARD SCREEN
+// ═══════════════════════════════════════════════
 function showCard() {
-  clearTimer();
   isFlipped = false;
   const p = session.queue[session.idx];
   const total = session.queue.length;
 
   document.getElementById('card-prog').textContent = (session.idx+1) + ' / ' + total;
   document.getElementById('sess-fill').style.width = (session.idx/total*100) + '%';
-  document.getElementById('sess-xp').textContent = session.xp;
   document.getElementById('face-meaning').textContent = p.meaning;
   document.getElementById('face-example').textContent = p.example ? '"' + p.example + '"' : '';
   document.getElementById('face-phrase').textContent = '"' + p.phrase + '"';
-  document.getElementById('face-section').textContent = p.section;
-  document.getElementById('tap-hint').style.opacity = '1';
 
-  // Reset card
+  // Reset card position
   const inner = document.getElementById('card-inner');
   inner.style.transition = 'none';
   inner.classList.remove('flipped');
@@ -862,35 +511,23 @@ function showCard() {
 
   document.getElementById('swipe-right').style.opacity = '0';
   document.getElementById('swipe-left').style.opacity = '0';
-  document.getElementById('answer-btns').className = 'answer-btns hidden';
 
-  const flagged = (state.flagged || []).includes(session.queue[session.idx]?.id);
+  const flagged = (state.flagged || []).includes(p.id);
   document.getElementById('bug-btn').className = 'bug-btn' + (flagged ? ' flagged' : '');
 
-  if (session.mode === 'speed') startTimer();
+  // Show interval previews on buttons
+  const card = state.cards[p.id] ? migrateCard(state.cards[p.id]) : {reps:0,interval:1,ease:INIT_EASE};
+  const iv = _previewIntervals(card);
+  document.getElementById('int-again').textContent = _fmtDays(iv.again);
+  document.getElementById('int-good').textContent  = _fmtDays(iv.good);
+  document.getElementById('int-easy').textContent  = _fmtDays(iv.easy);
+
   setupSwipe();
 }
 
 function flipCard() {
   isFlipped = !isFlipped;
-  const inner = document.getElementById('card-inner');
-  inner.classList.toggle('flipped', isFlipped);
-  document.getElementById('tap-hint').style.opacity = isFlipped ? '0' : '1';
-  document.getElementById('answer-btns').className = 'answer-btns' + (isFlipped ? '' : ' hidden');
-
-  if (isFlipped) {
-    if (session.mode === 'speed') clearTimer();
-    // Show preview intervals on buttons
-    const p = session.queue[session.idx];
-    const card = state.cards[p.id] ? migrateCard(state.cards[p.id]) : {reps:0,interval:1,ease:INIT_EASE};
-    const iv = _previewIntervals(card);
-    document.getElementById('int-again').textContent = _fmtDays(iv.again);
-    document.getElementById('int-hard').textContent  = _fmtDays(iv.hard);
-    document.getElementById('int-good').textContent  = _fmtDays(iv.good);
-    document.getElementById('int-easy').textContent  = _fmtDays(iv.easy);
-  } else {
-    if (session.mode === 'speed') startTimer();
-  }
+  document.getElementById('card-inner').classList.toggle('flipped', isFlipped);
 }
 
 // ─── SWIPE ───────────────────────────────────
@@ -908,7 +545,6 @@ function setupSwipe() {
   }, {passive:true, signal:sig});
 
   wrap.addEventListener('touchmove', e => {
-    if (!isFlipped) return;
     const dx = e.touches[0].clientX - startX;
     const dy = e.touches[0].clientY - startY;
     if (Math.abs(dy) > Math.abs(dx) && !dragging) return;
@@ -930,13 +566,12 @@ function setupSwipe() {
       flipCard();
       dragging = false; return;
     }
-    if (!isFlipped) { resetCardPos(); dragging = false; return; }
     if (Math.abs(dx) > 90) {
-      const knew = dx > 0;
+      const right = dx > 0;
       wrap.style.transition = 'transform .35s ease, opacity .35s';
-      wrap.style.transform = `translateX(${knew?500:-500}px) rotate(${knew?25:-25}deg)`;
+      wrap.style.transform = `translateX(${right?500:-500}px) rotate(${right?25:-25}deg)`;
       wrap.style.opacity = '0';
-      setTimeout(() => answer(knew), 350);
+      setTimeout(() => rateCard(right ? 'easy' : 'again'), 350);
     } else { resetCardPos(); }
     dragging = false;
   }, {passive:true, signal:sig});
@@ -955,37 +590,9 @@ function resetCardPos() {
   document.getElementById('swipe-left').style.opacity  = '0';
 }
 
-// ─── TIMER ───────────────────────────────────
-function startTimer() {
-  timerLeft = SPEED_SECONDS;
-  const fill = document.getElementById('timer-fill');
-  fill.style.transition = 'none';
-  fill.style.width = '100%';
-  setTimeout(()=>{
-    fill.style.transition = `width ${SPEED_SECONDS}s linear`;
-    fill.style.width = '0%';
-  },50);
-  timerInterval = setTimeout(()=>{
-    if (!isFlipped) {
-      flipCard();
-      setTimeout(()=>answer(false), 600);
-    } else {
-      answer(false);
-    }
-  }, SPEED_SECONDS * 1000);
-}
-function clearTimer() { if(timerInterval){clearTimeout(timerInterval);timerInterval=null;} }
-
 // ─── ANSWER ──────────────────────────────────
-const XP_MAP = { again:2, hard:5, good:10, easy:15 };
-
 function rateCard(rating) {
-  clearTimer();
   const p    = session.queue[session.idx];
-  const mult = session.mode === 'boss' ? 3 : 1;
-  const xpGained = XP_MAP[rating] * mult;
-  session.xp += xpGained;
-
   const knew = rating !== 'again';
   if (knew) session.yes++; else session.no++;
 
@@ -993,7 +600,7 @@ function rateCard(rating) {
                                 : {reps:0, interval:1, ease:INIT_EASE, correct:0, wrong:0};
 
   const newInterval = _nextInterval(card, rating);
-  const newEase     = Math.max(MIN_EASE, (card.ease||INIT_EASE) + EASE_DELTA[rating]);
+  const newEase     = Math.max(MIN_EASE, (card.ease||INIT_EASE) + (EASE_DELTA[rating]||0));
   const newReps     = rating === 'again' ? 0 : (card.reps||0) + 1;
   const dueDate     = new Date(); dueDate.setDate(dueDate.getDate() + newInterval);
 
@@ -1023,89 +630,15 @@ function rateCard(rating) {
   }, 310);
 }
 
-// Legacy shim (swipe calls this)
-function answer(knew) { rateCard(knew ? 'good' : 'again'); }
-
-// ═══════════════════════════════════════════════
-// MULTIPLE CHOICE
-// ═══════════════════════════════════════════════
-function showChoiceCard() {
-  const p = session.queue[session.idx];
-  const total = session.queue.length;
-
-  document.getElementById('ch-prog').textContent = (session.idx+1) + ' / ' + total;
-  document.getElementById('ch-fill').style.width = (session.idx/total*100) + '%';
-  document.getElementById('ch-xp').textContent = session.xp;
-  document.getElementById('ch-phrase').textContent = '"' + p.phrase + '"';
-
-  // Build 4 options: 1 correct + 3 random wrong
-  const wrong = phrases.filter(x=>x.id!==p.id).sort(()=>Math.random()-.5).slice(0,3);
-  const options = [p, ...wrong].sort(()=>Math.random()-.5);
-
-  const grid = document.getElementById('choices-grid');
-  grid.innerHTML = '';
-  options.forEach(opt => {
-    const btn = document.createElement('button');
-    btn.className = 'choice-btn';
-    btn.textContent = opt.meaning;
-    btn.onclick = () => choiceAnswer(btn, opt.id === p.id, p);
-    grid.appendChild(btn);
-  });
-}
-
-function choiceAnswer(btn, correct, p) {
-  // Disable all buttons
-  document.querySelectorAll('.choice-btn').forEach(b => {
-    b.disabled = true;
-    if (b.textContent === p.meaning) b.className = 'choice-btn correct';
-  });
-  if (!correct) btn.className = 'choice-btn wrong';
-
-  const xpGained = correct ? 15 : 3;
-  session.xp += xpGained;
-  if(correct) session.yes++; else session.no++;
-
-  const rating = correct ? 'good' : 'again';
-  let card = state.cards[p.id] ? migrateCard(state.cards[p.id])
-                                : {reps:0, interval:1, ease:INIT_EASE, correct:0, wrong:0};
-  const newInterval = _nextInterval(card, rating);
-  const newEase     = Math.max(MIN_EASE, (card.ease||INIT_EASE) + EASE_DELTA[rating]);
-  const dueDate     = new Date(); dueDate.setDate(dueDate.getDate() + newInterval);
-  card.reps     = correct ? (card.reps||0) + 1 : 0;
-  card.interval = newInterval;
-  card.ease     = Math.round(newEase * 1000) / 1000;
-  card.due      = dueDate.toISOString().slice(0,10);
-  if(correct) card.correct = (card.correct||0) + 1;
-  else        card.wrong   = (card.wrong||0)   + 1;
-  state.cards[p.id] = card;
-  save();
-
-  session.idx++;
-  setTimeout(()=>{
-    if(session.idx < session.queue.length) showChoiceCard();
-    else finishSession();
-  }, 1200);
-}
-
 // ═══════════════════════════════════════════════
 // FINISH SESSION
 // ═══════════════════════════════════════════════
 function finishSession() {
-  clearTimer();
   state.sessions++;
-  const baseXP = session.xp;
-
-  let bonus = 0;
-  if(state.streak>=7) bonus=30; else if(state.streak>=3) bonus=20; else if(state.streak>=1) bonus=10;
-  state.xp += baseXP + bonus;
-
-  const perfect = session.no===0 && session.yes>0;
-  state.lastPerfect = perfect;
-  if(session.mode==='speed' && perfect) state.speedWins = (state.speedWins||0)+1;
-  if(session.mode==='boss'  && perfect) state.bossWins  = (state.bossWins||0)+1;
   save();
 
   const score = Math.round(session.yes/session.queue.length*100);
+  const perfect = session.no===0 && session.yes>0;
   const [emoji,title,sub] = perfect
     ? ['🏆','Perfect score!','Absolutely flawless, Mykhailo!']
     : score>=80 ? ['🎯','Great session!','You\'re improving — keep it up']
@@ -1115,22 +648,16 @@ function finishSession() {
   document.getElementById('r-emoji').textContent = emoji;
   document.getElementById('r-title').textContent = title;
   document.getElementById('r-sub').textContent   = sub;
-  document.getElementById('r-xp').textContent    = '+' + (baseXP+bonus) + ' XP';
   document.getElementById('r-yes').textContent   = session.yes;
   document.getElementById('r-no').textContent    = session.no;
 
-  if(bonus>0){
-    document.getElementById('bonus-row').style.display='flex';
-    document.getElementById('bonus-val').textContent = '+'+bonus+' XP';
-  } else document.getElementById('bonus-row').style.display='none';
-
   showScreen('result-screen');
   updateHome();
-  ghPush(); // background sync to GitHub if token set
+  ghPush();
 }
 
 function goHome() { showScreen('home-screen'); updateHome(); }
-function exitSession() { clearTimer(); if(swipeAbort){swipeAbort.abort();swipeAbort=null;} goHome(); }
+function exitSession() { if(swipeAbort){swipeAbort.abort();swipeAbort=null;} goHome(); }
 
 // ═══════════════════════════════════════════════
 // UTILS
@@ -1149,155 +676,7 @@ function showTip(msg) {
 }
 
 // ═══════════════════════════════════════════════
-// FILL-IN-BLANK MODE
-// ═══════════════════════════════════════════════
-let fillState = {};
-
-function makeBlank(p) {
-  const example = (p.example || '').trim();
-  if (!example) return { sentence: null, answer: p.phrase };
-
-  const stop = new Set(['a','an','the','is','am','are','was','were','be','been','being',
-    'have','has','had','do','does','did','will','would','could','should','may','might',
-    'to','of','in','on','at','by','for','with','from','i','you','he','she','it','we',
-    'they','me','him','her','us','them','my','your','his','this','that','now','just',
-    'so','not','no','but','and','or','if','then','when','up','out','back','get','got']);
-
-  const keyWords = p.phrase.toLowerCase().replace(/[.,!?'"]/g,'').split(/\s+/)
-    .filter(w => w.length > 2 && !stop.has(w));
-
-  if (!keyWords.length) return { sentence: null, answer: p.phrase };
-
-  const exLower = example.toLowerCase();
-  let bestWord = null, bestStart = -1, bestEnd = -1;
-
-  for (const kw of keyWords) {
-    const idx = exLower.indexOf(kw);
-    if (idx < 0) continue;
-    const before = idx === 0 || /[\s.,!?'"]/.test(example[idx - 1]);
-    const after  = idx + kw.length >= example.length || /[\s.,!?'"]/.test(example[idx + kw.length]);
-    if ((before || after) && kw.length > (bestWord ? bestWord.length : 0)) {
-      bestWord = kw; bestStart = idx; bestEnd = idx + kw.length;
-    }
-  }
-
-  if (!bestWord) return { sentence: null, answer: p.phrase };
-
-  const answer   = example.slice(bestStart, bestEnd);
-  const sentence = example.slice(0, bestStart) + '<span class="blank-slot">___</span>' + example.slice(bestEnd);
-  return { sentence, answer };
-}
-
-function showFillCard() {
-  fillState = { revealed: false };
-  const p     = session.queue[session.idx];
-  const total = session.queue.length;
-
-  document.getElementById('fill-prog').textContent      = (session.idx+1) + ' / ' + total;
-  document.getElementById('fill-fill').style.width      = (session.idx / total * 100) + '%';
-  document.getElementById('fill-xp').textContent        = session.xp;
-  document.getElementById('fill-meaning').textContent   = p.meaning;
-  document.getElementById('fill-section-lbl').textContent = p.section;
-
-  const { sentence, answer } = makeBlank(p);
-  fillState.answer  = answer;
-  fillState.phrase  = p.phrase;
-  fillState.p       = p;
-
-  const sentEl = document.getElementById('fill-sentence-box');
-  if (sentence) {
-    sentEl.innerHTML     = sentence;
-    sentEl.style.display = 'block';
-    document.getElementById('fill-clue-hint').textContent = 'Fill in the blank';
-  } else {
-    sentEl.style.display = 'none';
-    document.getElementById('fill-clue-hint').textContent = 'What\'s the phrase?';
-  }
-
-  const inp = document.getElementById('fill-input');
-  inp.value   = '';
-  inp.disabled = false;
-  inp.style.borderColor = '';
-  inp.style.color       = '';
-
-  document.getElementById('fill-reveal').classList.remove('show');
-  document.getElementById('fill-answer-btns').className = 'answer-btns hidden';
-  document.getElementById('fill-check-btn').style.display = 'block';
-
-  // Mark bug button if flagged
-  const flagged = (state.flagged || []).includes(p.id);
-  document.getElementById('fill-bug-btn').className = 'bug-btn' + (flagged ? ' flagged' : '');
-
-  setTimeout(() => document.getElementById('fill-input').focus(), 350);
-}
-
-function checkFillAnswer() {
-  if (fillState.revealed) return;
-  fillState.revealed = true;
-
-  const inp    = document.getElementById('fill-input');
-  const input  = inp.value.trim();
-  const answer = fillState.answer;
-  const correct = input.toLowerCase() === answer.toLowerCase();
-
-  inp.disabled       = true;
-  inp.style.borderColor = correct ? 'var(--green)' : 'var(--red)';
-  inp.style.color       = correct ? 'var(--green)' : 'var(--red)';
-
-  document.getElementById('fill-check-btn').style.display = 'none';
-  document.getElementById('fill-reveal-phrase').textContent = fillState.phrase;
-  document.getElementById('fill-reveal').classList.add('show');
-
-  const p    = fillState.p;
-  const card = state.cards[p.id] ? migrateCard(state.cards[p.id]) : {reps:0,interval:1,ease:INIT_EASE};
-  const iv   = _previewIntervals(card);
-  document.getElementById('fill-int-again').textContent = _fmtDays(iv.again);
-  document.getElementById('fill-int-hard').textContent  = _fmtDays(iv.hard);
-  document.getElementById('fill-int-good').textContent  = _fmtDays(iv.good);
-  document.getElementById('fill-int-easy').textContent  = _fmtDays(iv.easy);
-  document.getElementById('fill-answer-btns').className = 'answer-btns';
-}
-
-function rateFillCard(rating) {
-  const p         = fillState.p;
-  const xpGained  = XP_MAP[rating];
-  session.xp     += xpGained;
-  const knew      = rating !== 'again';
-  if (knew) session.yes++; else session.no++;
-
-  let card = state.cards[p.id] ? migrateCard(state.cards[p.id])
-                                : {reps:0,interval:1,ease:INIT_EASE,correct:0,wrong:0};
-  const newInterval = _nextInterval(card, rating);
-  const newEase     = Math.max(MIN_EASE, (card.ease||INIT_EASE) + EASE_DELTA[rating]);
-  const dueDate     = new Date(); dueDate.setDate(dueDate.getDate() + newInterval);
-  card.reps     = knew ? (card.reps||0) + 1 : 0;
-  card.interval = newInterval;
-  card.ease     = Math.round(newEase * 1000) / 1000;
-  card.due      = dueDate.toISOString().slice(0,10);
-  if (knew) card.correct = (card.correct||0) + 1;
-  else      card.wrong   = (card.wrong||0)   + 1;
-  state.cards[p.id] = card;
-  save();
-
-  session.idx++;
-  if (session.idx < session.queue.length) showFillCard();
-  else finishSession();
-}
-
-function flagFillCard() {
-  const p = fillState.p;
-  if (!p) return;
-  if (!state.flagged) state.flagged = [];
-  if (!state.flagged.includes(p.id)) {
-    state.flagged.push(p.id);
-    save();
-  }
-  document.getElementById('fill-bug-btn').className = 'bug-btn flagged';
-  showToast('🐛 Flagged — check Settings to review');
-}
-
-// ═══════════════════════════════════════════════
-// BUG FLAG (classic / speed / weak / boss modes)
+// BUG FLAG
 // ═══════════════════════════════════════════════
 function flagCard() {
   if (!session.queue.length) return;
@@ -1392,7 +771,6 @@ async function ghPush() {
 async function ghLoadOnStartup() {
   const result = await ghGetFile();
   if (!result || !result.data) return;
-  // Merge: GitHub wins for reviewed cards, local keeps new-only cards
   if (result.data.cards)   state.cards   = { ...state.cards,   ...result.data.cards };
   if (result.data.flagged) state.flagged  = result.data.flagged;
   save();
@@ -1402,7 +780,6 @@ async function saveGhToken() {
   const inp = document.getElementById('gh-pat-input');
   const val = inp.value.trim();
   if (!val || val.startsWith('•')) {
-    // No change, just sync with existing token
     const status = document.getElementById('sync-status');
     status.textContent = 'Syncing…';
     status.className = 'sync-status';
@@ -1442,7 +819,6 @@ const FALLBACK = [
 // ═══════════════════════════════════════════════
 load();
 loadPhrases();
-renderModes();
 ghLoadOnStartup();
 
 if (!state.pin) {
